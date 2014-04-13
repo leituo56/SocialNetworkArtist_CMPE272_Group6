@@ -1,0 +1,7 @@
+djangoSandbox/*
+src/SocialNwk/.idea/*
+*.pyc
+
+*.sqlite3
+
+*.jpg

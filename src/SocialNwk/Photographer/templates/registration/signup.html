@@ -1,0 +1,11 @@
+<h1>Create an account</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.username.errors }}
+    <p><label for="id_username">Username:</label> {{ form.username }} <span class="helptext">{{ form.username.help_text }}</span></p>
+    {{ form.password1.errors }}
+    <p><label for="id_username">Password:</label> {{ form.password1 }} <span class="helptext">{{ form.password1.help_text }}</span></p>
+    {{ form.password2.errors }}
+    <p><label for="id_username">Password confirmation:</label> {{ form.password2 }} <span class="helptext">{{ form.password2.help_text }}</span></p>
+    <input type="submit" value="Create the account">
+</form>
