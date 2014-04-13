@@ -15,26 +15,26 @@ Dirctory
 Installation
 -----------
  - Check your Python Version, 2.7.* would be best
- ```sh
+ ```
 Python -V
 ```
  - Install Django 1.6.2, see [django]
  - Check your Django version
- ```sh
+ ```
  python -c "import django; print(django.get_version())"
  ```
  - Modify <your path>/src/SocialNwk/SocialNwk/setting.py 
  - Change MEDIA_ROOT
- ```sh
+ ```
  MEDIA_ROOT = '/Users/leituo56/Documents/Code/Git/CMPE272-Group6/src/SocialNwk/media/'    # Change To Your Directory
  ```
  - Sync your database. Notice Django do not provide migration, alter table manually if table already exist
- ```sh
+ ```
  python manage.py syncdb
  ```
  - Set a super user for your db
  - Run your server
- ```sh
+ ```
  python manage.py runserver
  ```
  - Visit http://127.0.0.1:8000/
