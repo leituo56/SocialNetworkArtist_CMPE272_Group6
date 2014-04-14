@@ -19,7 +19,7 @@ DEBUG = False
 
 TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -75,6 +75,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+ADMIN_MEDIA_PREFIX = '/static/admin/'
 
-MEDIA_ROOT = '/var/www/SocialNwk/media/'    # Change To Your Directory
+#MEDIA_ROOT = '/var/www/SocialNwk/media/'    # Change To Your Directory
 MEDIA_URL = '/media/'
