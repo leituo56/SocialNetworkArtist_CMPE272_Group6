@@ -77,5 +77,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
-#MEDIA_ROOT = '/var/www/SocialNwk/media/'    # Change To Your Directory
+MEDIA_ROOT = '/var/www/SocialNwk/media/'    # Change To Your Directory
 MEDIA_URL = '/media/'

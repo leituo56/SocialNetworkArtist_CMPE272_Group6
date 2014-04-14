@@ -14,7 +14,7 @@ def test(request):
 
 
 def home(request):
-    work_list = Work.objects.all()
+    work_list = Work.objects.all().reverse()
     if request.user.is_authenticated():
         user_list = User.objects.all()
         return render(request, 'index.html', {'user_list': user_list, 'work_list': work_list})
