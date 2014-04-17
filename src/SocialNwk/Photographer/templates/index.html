@@ -1,3 +1,6 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+
 {% if user.is_authenticated %}
     <p>Welcome, <b>{{ user.username }}</b>. Thanks for logging in.</p>
 {% else %}
@@ -5,11 +8,11 @@
 {% endif %}
 <ul>
     {% if not user.is_authenticated %}
-    <li><a href="/signup/">Sign up</a></li>
-    <li><a href="/login/">Log In</a></li>
+    <li><a href="{% url 'photo:signup' %}">Sign up</a></li>
+    <li><a href="{% url 'photo:login' %}">Log In</a></li>
     {% else %}
-    <li><a href="/logout/">Log out</a></li>
-    <li><a href="/upload/">Upload</a></li>
+    <li><a href="{% url 'photo:logout' %}">Log out</a></li>
+    <li><a href="{% url 'photo:upload' %}">Upload</a></li>
     {% endif %}
 </ul>
 
