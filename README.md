@@ -19,6 +19,15 @@ Installation
 Python -V
 ```
  - Install Django 1.6.2, see [django]
+ - install Django Rest Framework
+ - install Markdown
+ - install django-filter
+```
+pip install Django==1.6.2
+pip install djangorestframework
+pip install markdown       # Markdown support for the browsable API.
+pip install django-filter  # Filtering support
+```
  - Check your Django version
  ```
  python -c "import django; print(django.get_version())"
