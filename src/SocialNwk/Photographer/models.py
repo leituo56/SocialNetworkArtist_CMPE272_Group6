@@ -13,7 +13,7 @@ def get_file_path(instance, filename):
 
 
 class Work(models.Model):
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(User, related_name='Works')
     title = models.CharField(max_length=50)
     file = models.FileField(upload_to=get_file_path)
-    upload_time = models.DateTimeField('upload time')
+    upload_time = models.DateTimeField(auto_now_add=True)
