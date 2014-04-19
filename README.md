@@ -1,7 +1,7 @@
 SocialNetworkArtist_CMPE272_Group6
 ==============
 
-> This is a team project for CMPE272 Class
+> This is a team project for CMPE272 Class- Xiaoli's branch
 > in San Jose State University
  - Team 6 project
  - Field: Web Developing - Social Network
