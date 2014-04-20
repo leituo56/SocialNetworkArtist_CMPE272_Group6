@@ -1,14 +1,13 @@
 SocialNetworkArtist_CMPE272_Group6
 ==============
 
-> This is a team project for CMPE272 Class- Xiaoli's branch
-
-> - in San Jose State University
+> This is a team project for CMPE272 (Spring 2014)
+> at San Jose State University
  - Team 6 project
- - Field: Web Developing - Social Network
- - Title: Social Network for Photographers
+ - Field: Web Development - Social Network
+ - Title: Social Network for Professional Photographers
 
-Dirctory
+Directory
 -----------
  - Design: Product documentation Link
  - src:	source code
@@ -20,6 +19,15 @@ Installation
 Python -V
 ```
  - Install Django 1.6.2, see [django]
+ - install Django Rest Framework
+ - install Markdown
+ - install django-filter
+```
+pip install Django==1.6.2
+pip install djangorestframework
+pip install markdown       # Markdown support for the browsable API.
+pip install django-filter  # Filtering support
+```
  - Check your Django version
  ```
  python -c "import django; print(django.get_version())"
@@ -51,7 +59,7 @@ Team Member
 --------------
 * Xiaoli Jiang <jiangxiaoli821104@gmail.com>
 * Tuo Lei <leituo56@gmail.com>
-* Sammie-Xiu Lu <sammiexiu@gmail.com>
+* Xiumei Lu <sammiexiu@gmail.com>
 * Jennifer Wu <jenn.j.wu@gmail.com>
 * Wenjia Zhang <wenjiazhang519@gmail.com>
 
