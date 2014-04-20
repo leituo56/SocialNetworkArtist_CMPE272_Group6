@@ -1,11 +1,16 @@
 SocialNetworkArtist_CMPE272_Group6
 ==============
 
+<<<<<<< HEAD
 > This is a team project for CMPE272(S2014) Class
 > in San Jose State University
+=======
+> This is a team project for CMPE272 (Spring 2014)
+> at San Jose State University
+>>>>>>> 1fe6818ae7b1001610da9686634cf71d9ea7eea3
  - Team 6 project
- - Field: Web Developing - Social Network
- - Title: Social Network for Photographers
+ - Field: Web Development - Social Network
+ - Title: Social Network for Professional Photographers
 
 Dirctory
 -----------
@@ -59,7 +64,7 @@ Team Member
 --------------
 * Xiaoli Jiang <jiangxiaoli821104@gmail.com>
 * Tuo Lei <leituo56@gmail.com>
-* Sammie-Xiu Lu <sammiexiu@gmail.com>
+* Xiumei Lu <sammiexiu@gmail.com>
 * Jennifer Wu <jenn.j.wu@gmail.com>
 * Wenjia Zhang <wenjiazhang519@gmail.com>
 
