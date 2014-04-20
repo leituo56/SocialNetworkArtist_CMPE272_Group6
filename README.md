@@ -57,7 +57,7 @@ This work uses a number of open source projects to work properly:
 
 Team Member
 --------------
-* Xiaoli Jiang <jiangxiaoli821104@gmail.com>
+* Xiaoli Jiang <jiangxiaoli1104@gmail.com>
 * Tuo Lei <leituo56@gmail.com>
 * Xiumei Lu <sammiexiu@gmail.com>
 * Jennifer Wu <jenn.j.wu@gmail.com>
