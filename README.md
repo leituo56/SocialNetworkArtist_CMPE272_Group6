@@ -7,7 +7,7 @@ SocialNetworkArtist_CMPE272_Group6
  - Field: Web Development - Social Network
  - Title: Social Network for Professional Photographers
 
-Dirctory
+Directory
 -----------
  - Design: Product documentation Link
  - src:	source code
