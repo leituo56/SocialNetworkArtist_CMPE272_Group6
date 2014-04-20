@@ -1,13 +1,8 @@
 SocialNetworkArtist_CMPE272_Group6
 ==============
 
-<<<<<<< HEAD
-> This is a team project for CMPE272(S2014) Class
-> in San Jose State University
-=======
 > This is a team project for CMPE272 (Spring 2014)
 > at San Jose State University
->>>>>>> 1fe6818ae7b1001610da9686634cf71d9ea7eea3
  - Team 6 project
  - Field: Web Development - Social Network
  - Title: Social Network for Professional Photographers
