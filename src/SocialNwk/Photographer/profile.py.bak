@@ -14,7 +14,7 @@ def GetDict(user_id):
   if num_rows != 1:
     pass  # TODO: handle error
   
-  row = cur.fetchall()
+  row = cur.fetchall()[0]
 
   dict = {'ID': str(row[0]),
           'name': row[1],

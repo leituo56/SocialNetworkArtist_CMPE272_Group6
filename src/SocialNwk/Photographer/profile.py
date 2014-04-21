@@ -29,7 +29,6 @@ def GetDict(user_id):
 
 
 def Index(request):
-  #return HttpResponse("Hello, world. You're at the poll index.")
   t = loader.get_template('profile.html')
 
   c = RequestContext(request, GetDict(request.GET['user_id']))
