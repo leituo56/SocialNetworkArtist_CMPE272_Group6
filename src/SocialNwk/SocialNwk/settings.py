@@ -89,3 +89,5 @@ REST_FRAMEWORK = {
     'PAGINATE_BY': 10,
     'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
 }
+
+AUTH_PROFILE_MODULE = "Photographer.UserProfile"
