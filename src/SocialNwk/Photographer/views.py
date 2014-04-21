@@ -3,19 +3,26 @@ from django.contrib.auth import *
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 from datetime import datetime
 from Photographer.forms import DocumentForm
 from Photographer.models import *
 from Photographer.serializers import *
-from rest_framework import generics
 from Photographer.permissions import *
-from rest_framework.filters import DjangoFilterBackend
+from rest_framework import generics
+#from rest_framework.filters import DjangoFilterBackend
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+import rest_framework.reverse
 
+
+@ensure_csrf_cookie
 def test(request):
     return render(request, 'test.html')
 
 
+@ensure_csrf_cookie
 def home(request):
     work_list = Work.objects.all().order_by('-upload_time')
     if request.user.is_authenticated():
@@ -63,6 +70,8 @@ def logout_view(request):
 
 
 def upload(request):
+    if not request.user.is_authenticated():
+        return redirect(reverse('photo:login'))
     # Handle file upload
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
@@ -77,6 +86,16 @@ def upload(request):
     return render(request, 'upload.html', {'form': form})
 
 
+@api_view(('GET',))
+def api_root(request, format=None):
+    return Response(
+        {
+            'users': rest_framework.reverse.reverse('photo:user-list', request=request),
+            'photos': rest_framework.reverse.reverse('photo:photo-list', request=request),
+        }
+    )
+
+
 class UserList(generics.ListAPIView):
     def get_queryset(self):
         queryset = User.objects.all()
@@ -84,8 +103,9 @@ class UserList(generics.ListAPIView):
         print even
         print type(even)
         if even is not None:
+            print 'aaa'
             queryset = queryset.filter(id=int(even))
-            return queryset
+        return queryset
     serializer_class = UserSerializer
 
 
@@ -97,9 +117,22 @@ class UserDetail(generics.RetrieveAPIView):
 class PhotoList(generics.ListCreateAPIView):
     def pre_save(self, obj):
         obj.author = self.request.user
-    queryset = Work.objects.all().order_by('-upload_time')
+    # def get_queryset(self):
+    #     queryset = Work.objects.all()
+    #     author = self.request.QUERY_PARAMS.get('author', None)
+    #     print author
+    #     if author is not None:
+    #         queryset = queryset.filter(author=author)
+    #     return queryset
+    # queryset = Work.objects.all().order_by('-upload_time')
     serializer_class = PhotoSerializer
-    filter_fields = ('id', 'title')
+    filter_fields = ('id', 'author', 'title')
+
+    def get_queryset(self):
+        user = self.request.user
+        #queryset = user.works.all()
+        queryset = Work.objects.all().order_by('-upload_time')
+        return queryset
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
