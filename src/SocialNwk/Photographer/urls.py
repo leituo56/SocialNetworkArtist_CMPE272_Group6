@@ -2,7 +2,6 @@ __author__ = 'leituo56'
 from django.conf.urls import patterns, url
 from django.contrib.auth.views import login, logout
 from Photographer import views
-from Photographer import profile
 from django.conf.urls import include
 from rest_framework.urlpatterns import format_suffix_patterns
 
@@ -19,7 +18,6 @@ urlpatterns = patterns('',
     url(r'^api/photos/$', views.PhotoList.as_view(), name='photo-list'),
     url(r'^api/photos/(?P<pk>[0-9]+)/$', views.PhotoDetail.as_view(), name='photo-detail'),
 
-    url(r'^test/$', views.test, name = 'test'),
-    url(r'^profile.*$', profile.Index)
+    url(r'^test/$', views.test, name = 'test')
 )
 urlpatterns = format_suffix_patterns(urlpatterns)
