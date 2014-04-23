@@ -11,6 +11,7 @@ Directory
 -----------
  - Design: Product documentation Link
  - src:	source code
+ - script: update script for Tuo Lei's amazon ec2
 
 Installation
 -----------
@@ -32,11 +33,7 @@ pip install django-filter  # Filtering support
  ```
  python -c "import django; print(django.get_version())"
  ```
- - Modify <your path>/src/SocialNwk/SocialNwk/setting.py 
- - Change MEDIA_ROOT
- ```
- MEDIA_ROOT = '/Users/leituo56/Documents/Code/Git/CMPE272-Group6/src/SocialNwk/media/'    # Change To Your Directory
- ```
+ - Modify <your path>/src/SocialNwk/SocialNwk/setting.py if needed, you can use a custome setting. There's no need to commit setting.py unless it's needed.
  - Sync your database. Notice Django do not provide migration, alter table manually if table already exist
  ```
  python manage.py syncdb
@@ -54,6 +51,7 @@ This work uses a number of open source projects to work properly:
 
 * [django] - The Web framework for perfectionists with deadlines.
 * [jQuery] - The Write Less, Do More, JavaScript Library. 
+* [django rest framework] -  A powerful and flexible toolkit that makes it easy to build Web APIs.
 
 Team Member
 --------------
@@ -70,3 +68,4 @@ MIT
 
 [django]:https://www.djangoproject.com
 [jQuery]:http://jquery.com
+[django rest framework]:http://www.django-rest-framework.org/
