@@ -13,16 +13,21 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ('url', 'id', 'username', 'works', 'follows', 'followers')
-
         #depth = 1
 
 
 class PhotoSerializer(serializers.HyperlinkedModelSerializer):
-    #author = serializers.Field(source='author.id')
+    #author = serializers.RelatedField()
     author = serializers.PrimaryKeyRelatedField(read_only=True)
     authorName = serializers.Field(source='author.username')
-    #author = serializers.RelatedField()
     url = serializers.HyperlinkedIdentityField(view_name='photo:photo-detail')
+
+    portrait = serializers.Field(source='portrait')
+    landscape = serializers.Field(source='landscape')
+    telephoto = serializers.Field(source='telephoto')
+    low_light = serializers.Field(source='low_light')
+    high_speed = serializers.Field(source='high_speed')
+    long_exposure = serializers.Field(source='long_exposure')
 
     def transform_file(self, obj, value):
         if obj is not None:
@@ -32,5 +37,7 @@ class PhotoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Work
         fields = ('url', 'id', 'author', 'authorName',
-                  'title', 'file', 'upload_time')
+                  'title', 'file', 'upload_time', 'make', 'model', 'exposure_time',
+                  'fnumber', 'focal_length', 'iso', 'processing_software',
+                  'portrait', 'landscape', 'telephoto', 'low_light', 'high_speed', 'long_exposure')
         #depth = 1
