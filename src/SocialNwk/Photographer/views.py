@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import *
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -87,12 +87,35 @@ def upload(request):
     return render(request, 'upload.html', {'form': form})
 
 
+# Follow a user
+@api_view(['GET', 'POST', ])
+def follow(request, pk, format=None):
+    user = request.user
+    target = get_object_or_404(User, pk=pk)
+    if not user.is_authenticated() and target:
+        return redirect(reverse('photo:login'))
+    user.profile.follows.add(target.profile)
+    return Response(data={'success': 1})
+
+# Unfollow a user
+@api_view(['GET', 'POST', ])
+def unfollow(request, pk, format=None):
+    user = request.user
+    target = get_object_or_404(User, pk=pk)
+    if not user.is_authenticated() and target:
+        return redirect(reverse('photo:login'))
+    user.profile.follows.remove(target.profile)
+    return Response(data={'success': 1})
+
+# API root
 @api_view(('GET',))
 def api_root(request, format=None):
     return Response(
         {
             'users': rest_framework.reverse.reverse('photo:user-list', request=request),
             'photos': rest_framework.reverse.reverse('photo:photo-list', request=request),
+            'follow someone': 'example: /api/users/1/follow',
+            'unfollow someone': 'example: /api/users/1/unfollow',
         }
     )
 
@@ -123,9 +146,17 @@ class PhotoList(generics.ListCreateAPIView):
     def get_queryset(self):
         queryset = Work.objects.all()
         user = self.request.user
+
+        # Return photos uploaded by authenticated user
         me = self.request.QUERY_PARAMS.get('me', None)
         if me is not None and self.request.user.is_authenticated():
             queryset = queryset.filter(author=user)
+
+        # Return photos uploaded by followers
+        feed = self.request.QUERY_PARAMS.get('feed', None)
+        if feed is not None and self.request.user.is_authenticated():
+            lists = user.profile.follows.all()
+            queryset = queryset.filter(author__in=lists)
         return queryset
 
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)

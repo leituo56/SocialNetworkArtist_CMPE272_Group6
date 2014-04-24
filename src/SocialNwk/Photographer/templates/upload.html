@@ -1,13 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Upload{% endblock %}
+{% block content %}
 <!-- Upload form. Note enctype attribute! -->
 <form action="{% url 'photo:upload' %}" method="post" enctype="multipart/form-data">
+    <h2>Upload Photos!</h2>
     {% csrf_token %}
-    <p>{{ form.non_field_errors }}</p>
-    <p>{{ form.title.errors }}</p>
-    <p>{{ form.title.label_tag }} {{ form.title }} {{ form.title.help_text }}</p>
-    <p>{{ form.file.label_tag }} {{ form.file.help_text }}</p>
-    <p>
-        {{ form.file.errors }}
-        {{ form.file }}
-    </p>
-    <p><input type="submit" value="Upload" /></p>
+
+    <div id="error1">{{ form.non_field_errors }}</div>
+
+    {{ form.title.label_tag }} {{ form.title }}
+     <div id="error1">{{ form.title.help_text }}{{ form.title.errors }}</div>
+    <br/>
+
+    {{ form.file.label_tag }}
+    <div id="error1">{{ form.file.help_text }}{{ form.file.errors }}</div>
+    <br/>
+
+    <div id="error1">{{ form.file }}</div>
+    <input type="submit" value="Upload" />
 </form>
+{% endblock %}

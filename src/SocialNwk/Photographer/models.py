@@ -45,6 +45,9 @@ class Work(models.Model):
         self.long_exposure = self.exposure_time > 8
         super(Work, self).save(*args, **kwargs)
 
+    def __unicode__(self):
+        return str(self.id) + ',' + str(self.title)
+
     class Meta:
         ordering = ['-upload_time']
 
