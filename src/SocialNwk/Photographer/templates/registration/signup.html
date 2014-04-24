@@ -1,11 +1,63 @@
-<h1>Create an account</h1>
-<form action="" method="post">
+{% extends "base.html" %}
+{% block title %}Sign Up{% endblock %}
+{% block head_script %}
+<script>
+    function checkEmail()
+    {
+        var email = document.signup.username.value;
+        var atpos = email.indexOf("@");
+        var dotpos = email.lastIndexOf(".");
+        if (atpos<1 || dotpos<atpos+2 || dotpos+2>=str1.length) {
+            document.getElementById("error1").innerHTML="Not a valid email address. Please use an email of the form: abc@something.xyz";
+            //alert ("Not a valid email address. Please use an email of the form: abc@something.xyz");
+            //document.signup.username.focus();
+        }//end if
+    }//end checkEmail
+
+    function checkPass() {
+        //password must be between 5-30 characters
+        var str2 = document.signup.password.value;
+        if (str2.length < 5 || str2.length > 30) {
+            document.getElementById("error2").innerHTML="Password must be between 5-30 characters";
+
+            //alert ("Your password must be between 5-30 characters");
+            //document.signup.password.focus();
+        }
+    }//end checkPass
+</script>
+{% endblock %}
+{% block content %}
+<form name="signup" action="" method="post">
     {% csrf_token %}
-    {{ form.username.errors }}
-    <p><label for="id_username">Username:</label> {{ form.username }} <span class="helptext">{{ form.username.help_text }}</span></p>
-    {{ form.password1.errors }}
-    <p><label for="id_username">Password:</label> {{ form.password1 }} <span class="helptext">{{ form.password1.help_text }}</span></p>
-    {{ form.password2.errors }}
-    <p><label for="id_username">Password confirmation:</label> {{ form.password2 }} <span class="helptext">{{ form.password2.help_text }}</span></p>
-    <input type="submit" value="Create the account">
+    <h2>Register for an Account</h2>
+    <input type="text" name="username" placeholder="Email"
+            onblur="checkEmail()" required="required">
+    <div id="error1">{{ form.username.errors }}</div>
+    <!--pattern not used for email bc current one are not perfect-->
+    <br/>
+
+    <input type="password" name="password1" placeholder="Password (5-30 char)"
+            onblur="checkPass()" required="required" pattern=".{5,30}">
+    <div id="error2">{{ form.password1.errors }}</div>
+    <br/>
+    <input type="password" name="password2" placeholder="Repeat Password"
+            onblur="checkPass()" required="required" pattern=".{5,30}">
+    <div id="error2">{{ form.password2.errors }}</div>
+    <br/>
+
+    <input type="submit" name="submitbutton" value="Signup">
+    <p>Already registered? Please login <a href="{% url 'photo:login' %}">here</a>.</p>
 </form>
+{% endblock %}
+
+{#<form action="" method="post">#}
+{#    <h1>Create an account</h1>#}
+{#    {% csrf_token %}#}
+{#    {{ form.username.errors }}#}
+{#    <p><label for="id_username">Username:</label> {{ form.username }} <span class="helptext">{{ form.username.help_text }}</span></p>#}
+{#    {{ form.password1.errors }}#}
+{#    <p><label for="id_username">Password:</label> {{ form.password1 }} <span class="helptext">{{ form.password1.help_text }}</span></p>#}
+{#    {{ form.password2.errors }}#}
+{#    <p><label for="id_username">Password confirmation:</label> {{ form.password2 }} <span class="helptext">{{ form.password2.help_text }}</span></p>#}
+{#    <input type="submit" value="Create the account">#}
+{#</form>#}

@@ -1,0 +1,39 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html id='{% block html_id %}login_signup{% endblock %}'>
+	<head>
+		<title>CMPE272 GROUP6:{% block title %}Photographer Social Network{% endblock %}</title>
+		<meta charset="UTF-8"/>
+		<link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="{% static 'csrf.js' %}" ></script>
+        {% block head_script %}{% endblock %}
+	</head>
+
+	<body>
+		<nav class="nav">
+			<ul>
+				<li id="logo"><a href="{% url 'photo:home' %}">Logo</a></li>
+                <li><a href="{% url 'photo:api_root' %}">API</a></li>
+                <li><a href="{% url 'photo:test' %}">Test</a></li>
+                <li><a href="#">EXPLORE</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="#">FEED</a></li>
+                <li><a href="#">{{ user.username }}</a></li>
+                <li><a href="{% url 'photo:upload' %}">UPLOAD</a></li>
+                <li><a href="{% url 'photo:logout' %}">LOGOUT</a></li>
+                {% else %}
+                <li><a href="{% url 'photo:signup' %}">SIGNUP</a></li>
+                <li><a href="{% url 'photo:login' %}">LOGIN</a></li>
+                {% endif %}
+			</ul>
+		</nav>
+		<br/><br/>
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+	</body>
+    {% block foot_script %}{% endblock %}
+</html>
+

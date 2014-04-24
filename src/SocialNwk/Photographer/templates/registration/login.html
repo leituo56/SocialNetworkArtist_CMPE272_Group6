@@ -1,14 +1,18 @@
-{% if error %}
-    <p class="error">Sorry, that's not a valid username or password:{{ error }}</p>
-{% endif %}
-
+{% extends "base.html" %}
+{% block title %}Log In{% endblock %}
+{% block content %}
 <form action="" method="post">
     {% csrf_token %}
-    <label for="username">User name:</label>
-    <input type="text" name="username" value="" id="username">
-    <label for="password">Password:</label>
-    <input type="password" name="password" value="" id="password">
-
-    <input type="submit" value="login" />
+    <h2>Please login</h2>
+    <input type="text" name="username" placeholder="Email" required="required">
+    <br/></br/>
+    <input type="password" name="password" placeholder="Password" required="required">
+    <br/></br/>
+    <input type="submit" name="submitbutton" value="Login">
     <input type="hidden" name="next" value="{{ next|escape }}" />
+    {% if error %}
+        <div id="error1">{{ error }}</div>
+    {% endif %}
+    <p>Not registered? Please signup <a href="{% url 'photo:signup' %}">here</a>.</p>
 </form>
+{% endblock %}

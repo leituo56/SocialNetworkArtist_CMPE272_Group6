@@ -15,6 +15,8 @@ urlpatterns = patterns('',
     url(r'^api/$', views.api_root, name='api_root'),
     url(r'^api/users/$', views.UserList.as_view(), name='user-list'),
     url(r'^api/users/(?P<pk>[0-9]+)/$', views.UserDetail.as_view(), name='user-detail'),
+    url(r'^api/users/(?P<pk>[0-9]+)/follow/$', views.follow, name='user-follow'),
+    url(r'^api/users/(?P<pk>[0-9]+)/unfollow/$', views.unfollow, name='user-unfollow'),
     url(r'^api/photos/$', views.PhotoList.as_view(), name='photo-list'),
     url(r'^api/photos/(?P<pk>[0-9]+)/$', views.PhotoDetail.as_view(), name='photo-detail'),
 
