@@ -59,7 +59,7 @@ Team Member
 * Tuo Lei <leituo56@gmail.com>
 * Xiumei Lu <sammiexiu@gmail.com>
 * Jennifer Wu <jenn.j.wu@gmail.com>
-* Wenjia Zhang <wenjiazhang519@gmail.com>
+* Wenjia ZHANG <wenjiazhang519@gmail.com>
 
 License
 ----
