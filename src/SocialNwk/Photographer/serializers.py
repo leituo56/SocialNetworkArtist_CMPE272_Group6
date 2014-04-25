@@ -9,10 +9,18 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     url = serializers.HyperlinkedIdentityField(view_name='photo:user-detail')
     follows = serializers.Field(source='profile.follows.all.values')
     followers = serializers.Field(source='profile.followers.all.values')
+    is_follow = serializers.SerializerMethodField('is_follow_already')
+
+    def is_follow_already(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated():
+            lists = [item['user'] for item in user.profile.follows.values('user')]
+            return obj.id in lists
+        return False
 
     class Meta:
         model = User
-        fields = ('url', 'id', 'username', 'works', 'follows', 'followers')
+        fields = ('url', 'id', 'username', 'works', 'follows', 'followers', 'is_follow')
         #depth = 1
 
 
