@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}FEED{% endblock %}
+{% block head_script %}
+    <link href="{% static 'tuolei.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block content %}
+    <div id="container"></div>
+    <div id="loadMore"><a>Load More</a></div>
+{% endblock %}
+
+{% block foot_script %}
+<script src="{% static 'tuolei.js' %}"></script>
+<script>
+    photo_list_url = "{% url 'photo:photo-list' %}" + "?feed";
+    photo_page_url = "{% url 'photo:photo_page' 1 %}";
+    user_url = "{% url 'photo:user_page' 1 %}";
+    user_url = user_url.substring(0, user_url.length - 2);
+    photo_page_url = photo_page_url.substring(0, photo_page_url.length - 2);
+    $(document).ready(function(){
+        loadPhotos();
+    })
+
+</script>
+{% endblock %}
