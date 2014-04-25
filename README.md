@@ -39,6 +39,10 @@ pip install django-filter  # Filtering support
  python manage.py syncdb
  ```
  - Set a super user for your db
+ - You can also run a init data script. This will add 3 sample users: tuolei, xiaolijiang and wenjiazhang, automaticly add 12 sample photos in media/upload/init/
+ ```
+ python init_data.py
+ ```
  - Run your server
  ```
  python manage.py runserver

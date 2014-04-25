@@ -25,12 +25,51 @@ def test(request):
 
 @ensure_csrf_cookie
 def home(request):
-    work_list = Work.objects.all().order_by('-upload_time')
+    # work_list = Work.objects.all().order_by('-upload_time')
     if request.user.is_authenticated():
-        user_list = User.objects.all()
-        return render(request, 'index.html', {'user_list': user_list, 'work_list': work_list})
+        return redirect(reverse('photo:feed'))
+        # user_list = User.objects.all()
+        # return render(request, 'index.html', {'user_list': user_list, 'work_list': work_list})
     else:
-        return render(request, 'index.html', {'work_list': work_list})
+        return redirect(reverse('photo:explore'))
+        # return render(request, 'index.html', {'work_list': work_list})
+
+
+@ensure_csrf_cookie
+def explore(request):
+    return render(request, 'explore.html')
+
+
+@ensure_csrf_cookie
+def feed(request):
+    if not request.user.is_authenticated():
+        return redirect(reverse('photo:login'))
+    return render(request, 'feed.html')
+
+
+@ensure_csrf_cookie
+def photo_page(request, pk):
+    work = get_object_or_404(Work, pk=pk)
+    author = work.author
+    user = request.user
+    followed = False
+    if user.is_authenticated():
+        lists = [item['user'] for item in user.profile.follows.values('user')]
+        followed = author.id in lists
+    me = int(author.id)==int(request.user.id)
+    return render(request, 'photo_page.html', {'pk': pk, 'followed': followed, 'author': author.id, 'me': me})
+
+
+@ensure_csrf_cookie
+def user_page(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    followed = False
+    if request.user.is_authenticated():
+        lists = [item['user'] for item in request.user.profile.follows.values('user')]
+        followed = int(pk) in lists
+        print pk, lists, followed
+    me = int(pk)==int(request.user.id)
+    return render(request, 'user_page.html', {'pk': pk, 'followed': followed, 'user_data': user, 'me': me})
 
 
 def signup(request):
@@ -155,7 +194,7 @@ class PhotoList(generics.ListCreateAPIView):
         # Return photos uploaded by followers
         feed = self.request.QUERY_PARAMS.get('feed', None)
         if feed is not None and self.request.user.is_authenticated():
-            lists = user.profile.follows.all()
+            lists = [item['user'] for item in user.profile.follows.values('user')]
             queryset = queryset.filter(author__in=lists)
         return queryset
 

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}{{ user_data.username }}{% endblock %}
+{% block head_script %}
+    <link href="{% static 'tuolei.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block content %}
+    <div id="head">
+        <h4 id="photo_author"><a>{{ user_data.username }}</a></h4>
+        {% if not me %}
+        <button id="unfollow">Unfollow</button>
+        <button id="follow">Follow</button>
+        {% endif %}
+    </div>
+    <div id="container"></div>
+    <div id="loadMore"><a>Load More</a></div>
+{% endblock %}
+
+{% block foot_script %}
+<script src="{% static 'tuolei.js' %}"></script>
+<script>
+    photo_list_url = "{% url 'photo:photo-list' %}?author="+{{ pk }}
+
+    $(document).ready(function(){
+        loadPhotos();
+        {% if followed %}
+            $('#follow').hide()
+        {% else %}
+            $('#unfollow').hide()
+        {% endif %}
+        $('#follow').click(function(){
+            $.get("{% url 'photo:user-follow' pk %}", {
+            }, function(data, status, xhr) {
+                $('#follow').hide()
+                $('#unfollow').show()
+            });
+        });
+        $('#unfollow').click(function(){
+            $.get("{% url 'photo:user-unfollow' pk %}", {
+            }, function(data, status, xhr) {
+                $('#follow').show()
+                $('#unfollow').hide()
+            });
+        });
+    })
+
+</script>
+{% endblock %}
