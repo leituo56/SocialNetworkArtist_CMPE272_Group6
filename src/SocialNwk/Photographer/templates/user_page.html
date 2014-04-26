@@ -2,7 +2,8 @@
 {% load staticfiles %}
 {% block title %}{{ user_data.username }}{% endblock %}
 {% block head_script %}
-    <link href="{% static 'tuolei.css' %}" rel="stylesheet" type="text/css">
+    <!--<link href="{% static 'tuolei.css' %}" rel="stylesheet" type="text/css">-->
+    <link href="{% static 'explore_main.css' %}" rel="stylesheet" type="text/css">
 {% endblock %}
 {% block content %}
     <div id="head">
@@ -12,7 +13,15 @@
         <button id="follow">Follow</button>
         {% endif %}
     </div>
-    <div id="container"></div>
+
+    <div id="container">
+        <div id="main" role="main">
+            <ul id="tiles">
+            <!-- Place content loaded photo from the photo API -->
+            </ul>
+        </div>
+    </div>
+
     <div id="loadMore"><a>Load More</a></div>
 {% endblock %}
 
@@ -22,7 +31,7 @@
     photo_list_url = "{% url 'photo:photo-list' %}?author="+{{ pk }}
 
     $(document).ready(function(){
-        loadPhotos();
+        loadData();
         {% if followed %}
             $('#follow').hide()
         {% else %}
@@ -45,4 +54,14 @@
     })
 
 </script>
+
+<!-- Include the imagesLoaded plug-in -->
+<script src="{% static 'jquery.imagesloaded.min.js' %}"></script>
+
+<!-- Include the plug-in -->
+<script src="{% static 'jquery.wookmark.min.js' %}"></script>
+
+<!-- Include the photo_load.js -->
+<script src="{% static 'photo_load.js' %}"></script>
+
 {% endblock %}

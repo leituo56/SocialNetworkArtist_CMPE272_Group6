@@ -3,6 +3,37 @@
  */
 
 
+//define load handler
+  var handler = null,
+      //page = 1,
+      isLoading = false,
+      finishLoad = false;
+
+  // Prepare layout options.
+  var options = {
+    autoResize: true, // This will auto-update the layout when the browser window is resized.
+    container: $('#tiles'), // Optional, used for some extra CSS styling
+    offset: 2, // Optional, the distance between grid items
+    itemWidth: 210 // Optional, the width of a grid item
+  };
+
+  $(document).bind('scroll', onScroll);
+
+  /**
+  * When scrolled all the way to the bottom, add more tiles.
+  */
+  function onScroll(event) {
+    // Only check when we're not still waiting for data.
+    if(!isLoading && !finishLoad) {
+      // Check if we're within 100 pixels of the bottom edge of the broser window.
+      var closeToBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 100);
+      if(closeToBottom) {
+        loadData();
+      }
+    }
+  };
+
+
 /**
 * Refreshes the layout.
 */
@@ -24,7 +55,7 @@ function loadData() {
 
     $.ajax({
       type: 'GET',
-      url: photo_list_url+'?page='+page, // Page parameter to make sure we load new data
+      url: photo_list_url, // Page parameter to make sure we load new data
       dataType: 'json',
       success: onLoadData //pass get data to onLoadData function
     });
@@ -38,7 +69,7 @@ function onLoadData(data) {
     isLoading = false;
     //$('#loaderCircle').hide();
 
-    console.log("page:"+ page);
+    //console.log("page:"+ page);
 
     $.each(data.results, function(i, item) {
         var html = '';
@@ -58,7 +89,8 @@ function onLoadData(data) {
     });
 
     if(data.next){
-        page++; // Increment page index for future calls.
+      photo_list_url = data.next;
+      //page++; // Increment page index for future calls.
     }else{
       finishLoad = true;
       //$('#loadMore a').off('click');
