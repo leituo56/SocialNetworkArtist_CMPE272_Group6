@@ -16,7 +16,7 @@ Directory
 Installation
 -----------
  - Check your Python Version, 2.7.* would be best
- ```
+```
 Python -V
 ```
  - Install Django 1.6.2, see [django]
@@ -30,23 +30,23 @@ pip install markdown       # Markdown support for the browsable API.
 pip install django-filter  # Filtering support
 ```
  - Check your Django version
- ```
- python -c "import django; print(django.get_version())"
- ```
+```
+python -c "import django; print(django.get_version())"
+```
  - Modify <your path>/src/SocialNwk/SocialNwk/setting.py if needed, you can use a custome setting. There's no need to commit setting.py unless it's needed.
  - Sync your database. Notice Django do not provide migration, alter table manually if table already exist
- ```
- python manage.py syncdb
- ```
+```
+python manage.py syncdb
+```
  - Set a super user for your db
  - You can also run a init data script. This will add 3 sample users: tuolei, xiaolijiang and wenjiazhang, automaticly add 12 sample photos in media/upload/init/
- ```
- python init_data.py
- ```
+```
+python init_data.py
+```
  - Run your server
- ```
- python manage.py runserver
- ```
+```
+python manage.py runserver
+```
  - Visit http://127.0.0.1:8000/
 
 Tech
