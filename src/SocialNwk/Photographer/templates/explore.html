@@ -50,7 +50,9 @@
           page = 1,
           isLoading = false,
           finishLoad = false,
-          apiURL = '/api/photos/';
+          apiURL = '/api/photos/',
+          photo_page_url = "/photo/",
+          user_url = "/user/" ;
 
       // Prepare layout options.
       var options = {
@@ -92,86 +94,52 @@
       function loadData() {
         isLoading = true;
 
+        console.log("in loadData");
+
         $.ajax({
           type: 'GET',
-          url: apiURL,
+          url: apiURL+'?page='+page, // Page parameter to make sure we load new data
           dataType: 'json',
-          //data: {page: page}, // Page parameter to make sure we load new data
-          //success: onLoadData
-        }).success(function(data, textStatus, jqXHR){
-        
-            isLoading = false;
-            $.each(data.results, function(i, item) {
-                var html = '';
-                html += '<li>';
-                html += '<img src="'+ item.file +'" width="200">';
-                html += '<p>'+item.title+'</p>';
-                html += '<p>'+item.authorName+'</p>';
-
-                html += '</li>';
-
-                console.log("html:" + html);
-
-                $("#tiles").append(html);
-                applyLayout();
-            });
-            if(data.next){
-                apiURL = data.next;
-                //$('#loadMore a').off('click');
-                //$('#loadMore a').click(loadData);
-            }else{
-                finishLoad = true;
-                //$('#loadMore a').off('click');
-                $('#loadMore').html('No more photos')
-            }
-        }).fail(function( jqXHR, textStatus ) {
-            alert('Request Failed');
+          success: onLoadData //pass get data to onLoadData function
         });
-
     }
 
       /**
        * Receives data from the API, creates HTML for images and updates the layout
        */
-      /*function onLoadData(data) {
+      function onLoadData(data) {
 
-        console.log("data:"+ data);
         isLoading = false;
         //$('#loaderCircle').hide();
 
-        // Increment page index for future calls.
-        page++;
         console.log("page:"+ page);
 
-        // Create HTML for the images.
-        var html = '';
-        var i=0, length=data.length, image;
+        $.each(data.results, function(i, item) {
+            var html = '';
+            html += '<li>';
+            html += '<a href='+ photo_page_url+item.id+ '><img src="'+ item.file +'" width="200"></a>';
+            html += '<p><a href='+ photo_page_url+item.id+ '> Title:'+item.title+'</a></p>';
+            html += '<p><a href='+ user_url+item.author+ '> Title:'+item.authorName+'</p>';
+            html += '</li>';
 
-        onsole.log("data length:"+ data.length);
+            console.log("html:" + html);
 
+            // Add image HTML to the page.
+            $("#tiles").append(html);
 
-        for(; i<length; i++) {
-          image = data[i];
+            //Apply layout.
+            applyLayout();
+        });
 
-console.log("image data:"+ image.url);
-
-          html += '<li> in it ';
-
-          // Image tag (preview in Wookmark are 200px wide, so we calculate the height based on that).
-          html += '<img src="'+image.url+'" width="200" height="'+Math.round(image.height/image.width*200)+'">';
-
-          // Image title.
-          html += '<p>'+image.title+'</p>';
-
-          html += '</li>';
+        if(data.next){
+            page++; // Increment page index for future calls.
+        }else{
+          finishLoad = true;
+          //$('#loadMore a').off('click');
+          $('#loadMore').html('No more photos')
         }
-
-        // Add image HTML to the page.
-        $('#tiles').append(html);
-
-        // Apply layout.
-        applyLayout();
-      };*/
+        
+      };
 
       // Capture scroll event.
       $(document).bind('scroll', onScroll);
