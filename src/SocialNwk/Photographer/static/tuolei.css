@@ -1,0 +1,59 @@
+#container div img, #container div a{
+    width: 300px;
+    display: block;
+}
+#container div img{
+    overflow: hidden;
+    height: 250px;
+}
+#container div{
+    float: left;
+    margin: 10px;
+}
+#container div a{
+    text-align: center;
+}
+#container, #api, #head{
+    clear: both;
+    margin: auto;
+    width: 100%;
+    display: block;
+}
+#loadMore{
+    clear: both;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-size: 18pt;
+    background-color: ivory;
+    border-radius: 5px;
+}
+#loadMore a:hover{
+    color: red;
+    cursor: hand;
+}
+#loadMore a{
+    cursor: hand;
+    cursor: pointer;
+    display: block;
+}
+#bigPhoto {
+    width: 70%;
+}
+#bigPhoto img{
+    width: 100%;
+    float: left;
+}
+#stat{
+    width: 28%;
+    float: left;
+    margin-left: 1%;
+}
+#stat li{
+    display: block;
+    word-wrap: break-word;
+    width: 90%;
+}
+#head button{
+    float: left;
+}

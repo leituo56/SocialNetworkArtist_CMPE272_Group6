@@ -1,12 +1,16 @@
 __author__ = 'leituo56'
 """
 Django settings for SocialNwk project aws deployment
+
+
+
+
+
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -32,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Photographer',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -76,6 +81,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 ADMIN_MEDIA_PREFIX = '/static/admin/'
-
-MEDIA_ROOT = '/var/www/SocialNwk/media/'    # Change To Your Directory
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')    # Affect only in local evionment.
 MEDIA_URL = '/media/'
+
+REST_FRAMEWORK = {
+    'PAGINATE_BY': 10,
+    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.XMLRenderer',
+        'rest_framework.renderers.HTMLFormRenderer',
+    )
+}
+
+AUTH_PROFILE_MODULE = "Photographer.UserProfile"
