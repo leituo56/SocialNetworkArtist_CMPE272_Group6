@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse
 from django.views.decorators.csrf import ensure_csrf_cookie
+from django.db.models import Q
 
 from datetime import datetime
 from Photographer.forms import DocumentForm
@@ -20,7 +21,7 @@ import rest_framework.reverse
 
 @ensure_csrf_cookie
 def test(request):
-    return render(request, 'test.html')
+    return render(request, 'templates/test.html')
 
 
 @ensure_csrf_cookie
@@ -46,6 +47,15 @@ def feed(request):
         return redirect(reverse('photo:login'))
     return render(request, 'feed.html')
 
+
+def find_friends(request):
+    if not request.user.is_authenticated():
+        return redirect(reverse('photo:login'))
+    return render(request, 'find_friends.html')
+
+
+def site_stat(request):
+    return render(request, 'site_stat.html')
 
 @ensure_csrf_cookie
 def photo_page(request, pk):
@@ -166,9 +176,31 @@ def api_root(request, format=None):
 class UserList(generics.ListAPIView):
     def get_queryset(self):
         queryset = User.objects.all()
+        find = self.request.QUERY_PARAMS.get('find', None)
+        fav_make = self.request.QUERY_PARAMS.get('fav_make', None)
+        fav_model = self.request.QUERY_PARAMS.get('fav_model', None)
+        fav_category = self.request.QUERY_PARAMS.get('fav_category', None)
+        if find is not None and self.request.user.is_authenticated():
+            my_make = self.request.user.profile.fav_make
+            my_model = self.request.user.profile.fav_model
+            my_category = self.request.user.profile.fav_category
+            lists = [item['user'] for item in self.request.user.profile.follows.values('user')]
+            queryset = queryset.filter(Q(profiles__fav_make=my_make) | Q(profiles__fav_model=my_model)
+                                       | Q(profiles__fav_category=my_category))
+            # Filter off followed user
+            queryset = queryset.filter(~Q(id__in=lists))
+            # Filter off self
+            queryset = queryset.filter(~Q(id=self.request.user.id))
+            if fav_make is not None:
+                queryset = queryset.filter(profiles__fav_make=my_make)
+            if fav_model is not None:
+                queryset = queryset.filter(profiles__fav_model=my_model)
+            if fav_category is not None:
+                queryset = queryset.filter(profiles__fav_category=my_category)
         return queryset
 
     serializer_class = UserSerializer
+    filter_fields = ('username',)
 
 
 class UserDetail(generics.RetrieveAPIView):
@@ -178,51 +210,10 @@ class UserDetail(generics.RetrieveAPIView):
 
 @api_view(('GET',))
 def user_stat(request, pk, format=None):
-    user = get_object_or_404(User, pk=pk)
-    queryset = user.works
-    total = queryset.count()
-    f = lambda x: x != '' and x != 'Undefined' and x is not None
-    p = lambda x: 0 if total == 0 else float(x) / total
-
-    camera_make = queryset.values('make').order_by().annotate(count=Count('make')).order_by('-count')
-    camera_model = queryset.values('model').order_by().annotate(count=Count('model')).order_by('-count')
-
-    make_stat = [{'make': item['make'], 'count': item['count'], 'pct': p(item['count'])} for item in camera_make
-                 if f(item["make"])][:100]
-    model_stat = [{'make': item['model'], 'count': item['count'], 'pct': p(item['count'])} for item in camera_model
-                  if f(item["model"])][:100]
-
-    return Response(
-        {
-            'total': total,
-            'make_stat': make_stat,
-            'model_stat': model_stat,
-        }
-    )
-
-
-@api_view(('GET',))
-def photo_stat(request, format=None):
-    queryset = Work.objects.all()
-    total = queryset.count()
-    f = lambda x: x != '' and x != 'Undefined' and x is not None
-    p = lambda x: 0 if total == 0 else float(x) / total
-
-    camera_make = queryset.values('make').order_by().annotate(count=Count('make')).order_by('-count')
-    camera_model = queryset.values('model').order_by().annotate(count=Count('model')).order_by('-count')
-
-    make_stat = [{'make': item['make'], 'count': item['count'], 'pct': p(item['count'])} for item in camera_make
-                 if f(item["make"])][:100]
-    model_stat = [{'make': item['model'], 'count': item['count'], 'pct': p(item['count'])} for item in camera_model
-                  if f(item["model"])][:100]
-
-    return Response(
-        {
-            'total': total,
-            'make_stat': make_stat,
-            'model_stat': model_stat,
-        }
-    )
+    target_user = get_object_or_404(User, pk=pk)
+    queryset = target_user.works
+    result = get_stat(queryset)
+    return Response(result)
 
 
 class PhotoList(generics.ListCreateAPIView):
@@ -232,7 +223,7 @@ class PhotoList(generics.ListCreateAPIView):
     serializer_class = PhotoSerializer
     filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter)
     ordering = ('-upload_time',)
-    filter_fields = ('id', 'author', 'title', 'make',
+    filter_fields = ('id', 'author', 'title', 'make', 'model',
                      'portrait', 'landscape', 'telephoto', 'low_light', 'high_speed', 'long_exposure')
 
     def get_queryset(self):
@@ -261,5 +252,12 @@ class PhotoDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Work.objects.all()
     serializer_class = PhotoSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,)
+
+
+@api_view(('GET',))
+def photo_stat(request, format=None):
+    queryset = Work.objects.all()
+    result = get_stat(queryset)
+    return Response(result)
 
 
