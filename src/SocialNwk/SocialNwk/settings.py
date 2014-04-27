@@ -61,6 +61,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'photographer',
+    #     'USER': 'root',
+    #     'PASSWORD': '',
+    #     'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+    #     'PORT': '3306',
+    # }
 }
 
 # Internationalization
@@ -85,7 +93,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')    # Affect only in local evionment
 MEDIA_URL = '/media/'
 
 REST_FRAMEWORK = {
-    'PAGINATE_BY': 10,
+    'PAGINATE_BY': 50,
     'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',),
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.BrowsableAPIRenderer',

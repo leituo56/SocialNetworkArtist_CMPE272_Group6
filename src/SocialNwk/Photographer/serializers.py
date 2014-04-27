@@ -10,6 +10,9 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     follows = serializers.Field(source='profile.follows.all.values')
     followers = serializers.Field(source='profile.followers.all.values')
     is_follow = serializers.SerializerMethodField('is_follow_already')
+    fav_make = serializers.Field(source='profile.fav_make')
+    fav_model = serializers.Field(source='profile.fav_model')
+    fav_category = serializers.Field(source='profile.fav_category')
 
     def is_follow_already(self, obj):
         user = self.context['request'].user
@@ -20,7 +23,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = User
-        fields = ('url', 'id', 'username', 'works', 'follows', 'followers', 'is_follow')
+        fields = ('url', 'id', 'username', 'works', 'follows', 'followers', 'is_follow',
+                  'fav_make', 'fav_model', 'fav_category')
         #depth = 1
 
 
