@@ -3,18 +3,38 @@
 {% block title %}EXPLORE{% endblock %}
 {% block head_script %}
     <link href="{% static 'explore_main.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'filter.css' %}" rel="stylesheet" type="text/css">
 {% endblock %}
 {% block content %}
-    
-    <div id="container">     
+   
+      <!--
+      These are our filter options. The "data-filter" classes are used to identify which
+      grid items to show.
+      -->
+   <br/>
+      <ol id="filters">
+        <li onclick="onClickFilter('portrait')">portrait</li>
+        <li onclick="onClickFilter('landscape')">landscape</li>
+        <li onclick="onClickFilter('telephoto')">telephoto</li>
+        <li onclick="onClickFilter('low_light')">low_light</li>
+        <li onclick="onClickFilter('high_speed')">high_speed</li>
+        <li onclick="onClickFilter('long_exposure')">long_exposure</li>
+      </ol>
+      <br/>   
+
+    <div id="container"> 
+
       <div id="main" role="main">
         <ul id="tiles">
           <!-- Place content loaded photo from the photo API -->
         </ul>
       </div>
+      
     </div>
 
     <div id="loadMore"><a>Load More</a></div>
+
+    
 {% endblock %}
 
 {% block foot_script %}
@@ -30,6 +50,38 @@
         loadData();
   });
 
+
+  // Capture filter click events
+  function onClickFilter(selector){
+    console.log("selector:"+selector);
+
+    switch(selector){
+      case 'portrait':
+        photo_list_url = "/api/photos/?portrait=True";
+        break;
+      case 'landscape':
+        photo_list_url = "/api/photos/?landscape=True";
+        break;
+      case 'telephoto':
+        photo_list_url = "/api/photos/?telephoto=True";
+        break;
+      case 'low_light':
+        photo_list_url = "/api/photos/?low_light=True";
+        break;
+      case 'high_speed':
+        photo_list_url = "/api/photos/?high_speed=True";
+        break;
+      case 'long_exposure':
+        photo_list_url = "/api/photos/?long_exposure=True";
+        break;               
+    }
+    clearPhotos();
+    loadData();
+
+  };
+
+
+
 </script>
 
 <!-- Include the imagesLoaded plug-in -->
@@ -40,5 +92,6 @@
 
 <!-- Include the photo_load.js -->
 <script src="{% static 'photo_load.js' %}"></script>
+
 
 {% endblock %}
