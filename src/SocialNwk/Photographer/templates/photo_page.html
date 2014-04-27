@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}EXPLORE{% endblock %}
+{% block head_script %}
+    <link href="{% static 'tuolei.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block content %}
+    <div id="head">
+        <h3 id="photo_title"></h3>
+        <h4 id="photo_author"><a></a></h4>
+        {% if not me %}
+        <button id="unfollow">Unfollow</button>
+        <button id="follow">Follow</button>
+        {% endif %}
+    </div>
+    <div id="bigPhoto">
+        <img src="" />
+    </div>
+    <div id="stat"></div>
+    <div id="comment"></div>
+{% endblock %}
+
+{% block foot_script %}
+<script src="{% static 'tuolei.js' %}"></script>
+<script>
+    photo_detail_url = "{% url 'photo:photo-detail' pk %}"
+    user_url = "{% url 'photo:user_page' 1 %}"
+    user_url = user_url.substring(0, user_url.length - 2)
+    $(document).ready(function(){
+        loadPhotoDetail();
+        {% if followed %}
+            $('#follow').hide()
+        {% else %}
+            $('#unfollow').hide()
+        {% endif %}
+        $('#follow').click(function(){
+            $.get("{% url 'photo:user-follow' author %}", {
+            }, function(data, status, xhr) {
+                $('#follow').hide()
+                $('#unfollow').show()
+            });
+        });
+        $('#unfollow').click(function(){
+            $.get("{% url 'photo:user-unfollow' author %}", {
+            }, function(data, status, xhr) {
+                $('#follow').show()
+                $('#unfollow').hide()
+            });
+        });
+    })
+    function loadPhotoDetail(){
+    $.ajax({
+        type: "GET",
+        url: photo_detail_url,
+        dataType: "json"
+    }).success(function(data, textStatus, jqXHR){
+        $("#photo_title").html('Title: '+data.title);
+        $("#photo_author").find('a').html('Author: '+data.authorName).attr('href', user_url + data.author);
+        $("#bigPhoto img").attr('src', data.file);
+        $.each(data, function(key, value) {
+            $('#stat').append("<li><b>" + key + "</b>:" + value + "</li>");
+        });
+        $.get
+    }).fail(function( jqXHR, textStatus ) {
+        alert('Request Failed');
+    });
+}
+
+</script>
+{% endblock %}

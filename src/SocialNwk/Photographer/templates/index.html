@@ -1,21 +1,7 @@
-{% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
-
-{% if user.is_authenticated %}
-    <p>Welcome, <b>{{ user.username }}</b>. Thanks for logging in.</p>
-{% else %}
-    <p>Welcome, <b>new user</b>. Please log in.</p>
-{% endif %}
-<ul>
-    {% if not user.is_authenticated %}
-    <li><a href="{% url 'photo:signup' %}">Sign up</a></li>
-    <li><a href="{% url 'photo:login' %}">Log In</a></li>
-    {% else %}
-    <li><a href="{% url 'photo:logout' %}">Log out</a></li>
-    <li><a href="{% url 'photo:upload' %}">Upload</a></li>
-    {% endif %}
-</ul>
-
+{% extends "base.html" %}
+{#This page is currently unused#}
+{% block title %}Explore{% endblock %}
+{% block content %}
 {% if work_list %}
     <hr/>
     <ul>
@@ -31,7 +17,8 @@
 <p>User List</p>
 {% if user_list %}
     {% for user in user_list %}
-        <li>{{ user.id }}, {{ user.username }}, {{ user.password }}</li>
+        <li>{{ user.id }}, {{ user.username }}</li>
     {% endfor %}
 {% endif %}
 <hr/>
+{% endblock %}
