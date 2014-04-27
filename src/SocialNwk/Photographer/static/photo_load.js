@@ -9,13 +9,7 @@ var handler = null,
     finishLoad = false;
 
 // Prepare layout options.
-var options = {
-  autoResize: true, // This will auto-update the layout when the browser window is resized.
-  container: $('#tiles'), // Optional, used for some extra CSS styling
-  offset: 2, // Optional, the distance between grid items
-  itemWidth: 210, // Optional, the width of a grid item
-  fillEmptySpace: true // Optional, fill the bottom of each column with widths of flexible height ?? not working
-};
+
 
 $(document).bind('scroll', onScroll);
 
@@ -69,12 +63,14 @@ function onLoadData(data) {
 
   isLoading = false;
 
+  console.log("data.count:" + data.count);
+
   if(data.count != 0){
 
     $.each(data.results, function(i, item) {
       var html = '';
       html += '<li>';
-      html += '<a href='+ photo_page_url+item.id+ '><img src="'+ item.file +'" width="200"></a>';
+      html += '<a href='+ photo_page_url+item.id+ '><img src="'+ item.file +'" width="190"></a>';
       html += '<p><a href='+ photo_page_url+item.id+ '> Title:'+item.title+'</a></p>';
       html += '<p><a href='+ user_url+item.author+ '> Title:'+item.authorName+'</p>';
       html += '</li>';
