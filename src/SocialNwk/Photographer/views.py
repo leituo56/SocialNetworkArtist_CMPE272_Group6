@@ -56,7 +56,7 @@ def photo_page(request, pk):
     if user.is_authenticated():
         lists = [item['user'] for item in user.profile.follows.values('user')]
         followed = author.id in lists
-    me = int(author.id)==int(request.user.id)
+    me = int(author.id) == int(request.user.id)
     return render(request, 'photo_page.html', {'pk': pk, 'followed': followed, 'author': author.id, 'me': me})
 
 
@@ -68,7 +68,7 @@ def user_page(request, pk):
         lists = [item['user'] for item in request.user.profile.follows.values('user')]
         followed = int(pk) in lists
         print pk, lists, followed
-    me = int(pk)==int(request.user.id)
+    me = int(pk) == int(request.user.id)
     return render(request, 'user_page.html', {'pk': pk, 'followed': followed, 'user_data': user, 'me': me})
 
 
@@ -136,6 +136,7 @@ def follow(request, pk, format=None):
     user.profile.follows.add(target.profile)
     return Response(data={'success': 1})
 
+
 # Unfollow a user
 @api_view(['GET', 'POST', ])
 def unfollow(request, pk, format=None):
@@ -146,6 +147,7 @@ def unfollow(request, pk, format=None):
     user.profile.follows.remove(target.profile)
     return Response(data={'success': 1})
 
+
 # API root
 @api_view(('GET',))
 def api_root(request, format=None):
@@ -153,6 +155,8 @@ def api_root(request, format=None):
         {
             'users': rest_framework.reverse.reverse('photo:user-list', request=request),
             'photos': rest_framework.reverse.reverse('photo:photo-list', request=request),
+            'Site Statistics': rest_framework.reverse.reverse('photo:photo-stat', request=request),
+            'User Statistics': 'example: /api/users/1/stat',
             'follow someone': 'example: /api/users/1/follow',
             'unfollow someone': 'example: /api/users/1/unfollow',
         }
@@ -170,6 +174,55 @@ class UserList(generics.ListAPIView):
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+@api_view(('GET',))
+def user_stat(request, pk, format=None):
+    user = get_object_or_404(User, pk=pk)
+    queryset = user.works
+    total = queryset.count()
+    f = lambda x: x != '' and x != 'Undefined' and x is not None
+    p = lambda x: 0 if total == 0 else float(x) / total
+
+    camera_make = queryset.values('make').order_by().annotate(count=Count('make')).order_by('-count')
+    camera_model = queryset.values('model').order_by().annotate(count=Count('model')).order_by('-count')
+
+    make_stat = [{'make': item['make'], 'count': item['count'], 'pct': p(item['count'])} for item in camera_make
+                 if f(item["make"])][:100]
+    model_stat = [{'make': item['model'], 'count': item['count'], 'pct': p(item['count'])} for item in camera_model
+                  if f(item["model"])][:100]
+
+    return Response(
+        {
+            'total': total,
+            'make_stat': make_stat,
+            'model_stat': model_stat,
+        }
+    )
+
+
+@api_view(('GET',))
+def photo_stat(request, format=None):
+    queryset = Work.objects.all()
+    total = queryset.count()
+    f = lambda x: x != '' and x != 'Undefined' and x is not None
+    p = lambda x: 0 if total == 0 else float(x) / total
+
+    camera_make = queryset.values('make').order_by().annotate(count=Count('make')).order_by('-count')
+    camera_model = queryset.values('model').order_by().annotate(count=Count('model')).order_by('-count')
+
+    make_stat = [{'make': item['make'], 'count': item['count'], 'pct': p(item['count'])} for item in camera_make
+                 if f(item["make"])][:100]
+    model_stat = [{'make': item['model'], 'count': item['count'], 'pct': p(item['count'])} for item in camera_model
+                  if f(item["model"])][:100]
+
+    return Response(
+        {
+            'total': total,
+            'make_stat': make_stat,
+            'model_stat': model_stat,
+        }
+    )
 
 
 class PhotoList(generics.ListCreateAPIView):
