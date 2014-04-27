@@ -1,0 +1,113 @@
+/* * Custom CSS 
+
+*/
+body {
+	padding-top:60px;
+	background:#fbc100;
+	color:#555;
+}
+
+.navbar .nav {
+	float:right;
+	margin-top:20px;
+	font-size:16px;
+}
+
+ .navbar-inner {
+	/*border-bottom:#fbc100 solid 10px;*/
+
+}
+
+.navbar-brand{
+	font-size:50px;
+	margin-top:10px;
+	text-transform:uppercase;
+	color:#fbc100;
+}
+
+/*drop down manu*/
+.dropdown-menu {
+	background-color:#353535;
+}
+.dropdown-menu .divider {
+	background-color:#222;
+	border-bottom:1px solid #444;
+}
+.dropdown-menu>li>a {
+	color:#999;
+	font-size:14px;
+}
+.dropdown-menu>li>a:hover {
+	background-color:#111;
+	background-image:none;
+}
+.navbar .nav>li>.dropdown-menu:after {
+	border-bottom:6px solid #353535;
+}
+
+
+#filter ul li {
+	list-style:none;
+	float:left;
+	margin-right:15px;
+	padding:6px 10px;
+	margin-bottom:20px;
+	background:#eee;
+	display:initial;
+}
+#filter ul li a {
+	color:#333;
+	margin-bottom:20px;
+}
+#filter ul li .selected {
+	color: #fbc100;
+}
+
+
+.introtitle {
+	background:#fbc100;
+	color:#fff;
+	padding:20px 30px 30px 30px;
+	margin-bottom:30px;
+}
+
+.introtitle p {
+	font-size:20px;
+	line-height:30px;
+}
+
+
+/* page wrap and footer*/
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -100px; 
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.footer, .page-wrap:after {
+  /* .push must be the same height as footer */
+  height: 100px; 
+}
+.footer {
+	background:#fbc100;
+
+}
+
+.smaller {
+	font-size:80%;
+}
+.copyright {
+	font-family:Arial;
+	color:#fff;
+}
+

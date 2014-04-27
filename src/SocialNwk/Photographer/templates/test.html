@@ -1,4 +1,7 @@
+{% extends "base.html" %}
 {% load staticfiles %}
+{% block title %}TEST{% endblock %}
+{% block content %}
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
 <script src="{% static 'csrf.js' %}" ></script>
 <style>
@@ -6,17 +9,20 @@
         width: 300px;
         display: block;
     }
+    #container div img{
+        overflow: hidden;
+        height: 250px;
+    }
     #container div{
         float: left;
         margin: 10px;
     }
-    #container, body{
+    #container, #api{
         margin: auto;
-        width: 960px;
     }
 </style>
-<body>
-    <h1>Test Page</h1>
+<div id="api">
+    <h2>Test Page:</h2>
     <input type="text" id="APIText" width="200" value="/api/" style="width: 300px" />
     <select id="APIMethod">
         <option value="GET">GET</option>
@@ -31,12 +37,13 @@
     <textarea id="requestData" style="width: 500px; height: 200px">{}</textarea>
 
     <div id="output" ></div>
-    <div id="container"></div>
-</body>
+</div>
+<div id="container"></div>
+
 <script>
     loadMore();
     $(document).ready(function(){
-        $("h1").append(csrftoken)
+        $("h2").append(csrftoken)
         $("#APIText").keydown(function(event) {
             if (event.keyCode == 13) {
                 getApi();
@@ -80,3 +87,4 @@
         });
     }
 </script>
+{% endblock %}

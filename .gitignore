@@ -4,5 +4,4 @@ src/SocialNwk/.idea/*
 
 *.sqlite3
 
-*.jpg
-*.png
+src/SocialNwk/media/uploads/*
