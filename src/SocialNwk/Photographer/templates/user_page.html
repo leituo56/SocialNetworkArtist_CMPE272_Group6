@@ -28,7 +28,7 @@
 {% block foot_script %}
 <script src="{% static 'tuolei.js' %}"></script>
 <script>
-    photo_list_url = "{% url 'photo:photo-list' %}?author="+{{ pk }}
+    photo_list_url = "{% url 'photo:photo-list' %}?author="+{{ pk }};
 
     $(document).ready(function(){
         loadData();
