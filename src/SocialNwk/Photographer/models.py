@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from time import strftime, gmtime
-
+from django.db.models import Count, Avg
 import uuid
 import os
 
@@ -27,6 +27,9 @@ class Work(models.Model):
     focal_length = models.FloatField(default=50.0)
     iso = models.PositiveIntegerField(default=100)
     processing_software = models.CharField(max_length=100, default='None', blank=True)
+
+    #lens_make = models.CharField(max_length=50, default='Undefined', blank=True)
+    #lens_model = models.CharField(max_length=100, default='Undefined', blank=True)
 
     #Photo Feature
     portrait = models.BooleanField(default=False, blank=True)
