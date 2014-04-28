@@ -27,7 +27,6 @@ function onScroll(event) {
   }
 };
 
-
 /**
 * Refreshes the layout.
 */

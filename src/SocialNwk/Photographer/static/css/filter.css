@@ -46,7 +46,7 @@
   color: #ffffff;
 }
 
-#filter ul li.active {
+#filter ul li:active {
   background: #fbc100;
   color: #ffffff;
 }
