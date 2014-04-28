@@ -1,6 +1,12 @@
-/* * Custom CSS 
+/* * 
+
+base.html css: header, footer;
+
+Created by Xiaoli 04/27/14
 
 */
+
+/*========= navbar  =============================*/
 body {
 	padding-top:60px;
 	background:#fbc100;
@@ -13,9 +19,9 @@ body {
 	font-size:16px;
 }
 
- .navbar-inner {
+/*leftover bar on navbar bottom. in test */
+.navbar-inner {
 	/*border-bottom:#fbc100 solid 10px;*/
-
 }
 
 .navbar-brand{
@@ -45,25 +51,7 @@ body {
 	border-bottom:6px solid #353535;
 }
 
-
-#filter ul li {
-	list-style:none;
-	float:left;
-	margin-right:15px;
-	padding:6px 10px;
-	margin-bottom:20px;
-	background:#eee;
-	display:initial;
-}
-#filter ul li a {
-	color:#333;
-	margin-bottom:20px;
-}
-#filter ul li .selected {
-	color: #fbc100;
-}
-
-
+/*========= intro bar  =============================*/
 .introtitle {
 	background:#fbc100;
 	color:#fff;
@@ -77,10 +65,11 @@ body {
 }
 
 
-/* page wrap and footer*/
+/* page wrap to keep the footer at bottom and footer*/
 * {
   margin: 0;
 }
+
 html, body {
   height: 100%;
 }
@@ -94,18 +83,19 @@ html, body {
   content: "";
   display: block;
 }
+
 .footer, .page-wrap:after {
   /* .push must be the same height as footer */
   height: 100px; 
 }
 .footer {
 	background:#fbc100;
-
 }
 
 .smaller {
 	font-size:80%;
 }
+
 .copyright {
 	font-family:Arial;
 	color:#fff;

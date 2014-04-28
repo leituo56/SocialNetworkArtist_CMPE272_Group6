@@ -90,15 +90,6 @@ font-weight: 200;
   margin: 7px 0 2px 7px;
 }
 
-footer {
-  text-align: center;
-
-}
-
-footer a {
-  color: #435DC5;
-  text-decoration: none;
-}
 
 /**
  * Progress bar for imagesLoaded
