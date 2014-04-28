@@ -11,7 +11,7 @@
             <h4 id="photo_author"><a>{{ user_data.username }}</a></h4>
 
             <!--find friends button  ######change url-->
-            <p><a class="btn btn-primary" href="{% url 'photo:feed' %}" role="button">Find Friends &raquo;</a></p>
+            <p><a class="btn btn-primary" href="{% url 'photo:find_friends' %}" role="button">Find Friends &raquo;</a></p>
 
             {% if not me %}
             <button id="unfollow">Unfollow</button>
