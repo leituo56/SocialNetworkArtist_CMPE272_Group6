@@ -2,8 +2,10 @@
 {% load staticfiles %}
 {% block title %}EXPLORE{% endblock %}
 {% block head_script %}
-    <link href="{% static 'css/explore_main.css' %}" rel="stylesheet" type="text/css">
+
     <link href="{% static 'css/filter.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/explore_main.css' %}" rel="stylesheet" type="text/css">
+
 {% endblock %}
 
   {% block header %}
@@ -27,12 +29,12 @@
   <div class="container"> 
     <div id="filter">
       <ul>
-        <li onclick="onClickFilter('All')">All</li>
-        <li onclick="onClickFilter('portrait')">portrait</li>
-        <li onclick="onClickFilter('landscape')">landscape</li>
-        <li onclick="onClickFilter('telephoto')">telephoto</li>
-        <li onclick="onClickFilter('low_light')">low_light</li>
-        <li onclick="onClickFilter('high_speed')">high_speed</li>
+        <li onclick="onClickFilter('All')"        >All</li>
+        <li onclick="onClickFilter('portrait')"   >portrait</li>
+        <li onclick="onClickFilter('landscape')"  >landscape</li>
+        <li onclick="onClickFilter('telephoto')"  >telephoto</li>
+        <li onclick="onClickFilter('low_light')"  >low_light</li>
+        <li onclick="onClickFilter('high_speed')" >high_speed</li>
         <li onclick="onClickFilter('long_exposure')">long_exposure</li>
 
       </ul>
@@ -105,8 +107,7 @@
       case 'long_exposure':
         photo_list_url = "/api/photos/?long_exposure=True";
         break;               
-    }
-    
+    }   
     clearPhotos();
     loadData();
   };

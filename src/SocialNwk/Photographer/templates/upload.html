@@ -1,63 +1,73 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% block title %}Upload{% endblock %}
+
 {% block content %}
     <!-- Upload form. Note enctype attribute! -->
     <form id="uploadForm" action="{% url 'photo:photo-list' %}" method="POST" enctype="multipart/form-data" class="form-horizontal">
         <fieldset>
             {% csrf_token %}
+            
+            <!-->file loading control</!-->
+            <div class="control-group ">
+                <label for="file" class="control-label">file:</label>
+                <div id="dropbox">  
+                <div class="controls">
+                       
+                      <input name="file" id="fileWidget" type="file">
+                      <img id="img" height="100" alt="Image preview" src="">
+                      <!--<div id="status"></div>-->
+                    </div>
+                </div>
+            </div>
+
             <div class="control-group ">
                 <label for="title" class="control-label">title:</label>
                 <div class="controls">
                     <input name="title" type="text">
                 </div>
             </div>
-            <div class="control-group ">
-                <label for="file" class="control-label">file:</label>
 
-                <div class="controls">
-                    <input name="file" type="file">
-                </div>
-            </div>
             <div class="control-group ">
                 <label for="make" class="control-label">make:</label>
                 <div class="controls">
-                    <input name="make" type="text">
+                    <input name="make" id="make" type="text" value=" ">
                 </div>
             </div>
             <div class="control-group ">
                 <label for="model" class="control-label">model:</label>
                 <div class="controls">
-                    <input name="model" type="text">
+                    <input name="model" id="model" type="text" value=" ">
                 </div>
             </div>
             <div class="control-group ">
                 <label for="exposure_time" class="control-label">exposure time:</label>
                 <div class="controls">
-                    <input name="exposure_time" type="text" value="0">
+                    <input name="exposure_time" id="exposure_time" type="text" value="0">
                 </div>
             </div>
             <div class="control-group ">
                 <label for="fnumber" class="control-label">fnumber:</label>
                 <div class="controls">
-                    <input name="fnumber" type="text" value="0">
+                    <input name="fnumber" id="fnumber" type="text" value="0">
                 </div>
             </div>
             <div class="control-group ">
                 <label for="focal_length" class="control-label">focal length:</label>
                 <div class="controls">
-                    <input name="focal_length" type="text" value="0">
+                    <input name="focal_length" id="focal_length" type="text" value="0">
                 </div>
             </div>
             <div class="control-group ">
                 <label for="iso" class="control-label">iso:</label>
                 <div class="controls">
-                    <input name="iso" type="text" value="0">
+                    <input name="iso" id="iso" type="text" value="0">
                 </div>
             </div>
             <div class="control-group ">
                 <label for="processing_software" class="control-label">processing software:</label>
                 <div class="controls">
-                    <input name="processing_software" type="text">
+                    <input name="processing_software" id="processing_software" type="text">
                 </div>
             </div>
             <div class="form-actions">
@@ -83,14 +93,26 @@
 {#        <input type="submit" value="Upload" />#}
 {#    </form>#}
 {% endblock %}
+
 {% block foot_script %}
+<!-- Include the photo_load.js -->
+<script src="{% static 'jpegmeta.js' %}"></script>
+<script src="{% static 'load_exif.js' %}"></script>
 <script>
     user_url = "{% url 'photo:user_page' 1 %}";
     user_url = user_url.substring(0, user_url.length - 2);
+    
     $(document).ready(function(){
         $('#uploadForm').ajaxForm(function() {
             window.location.replace(user_url+{{ user.id }});
         });
     });
+
+//$("input[name='make']").val("Canon");
+
+
+
+
 </script>
+
 {% endblock %}
