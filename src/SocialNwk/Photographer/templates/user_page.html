@@ -7,12 +7,17 @@
 {% endblock %}
 {% block content %}
     <div id="head">
-        <h4 id="photo_author"><a>{{ user_data.username }}</a></h4>
-        <button id="find">Find Friends</button>
-        {% if not me %}
-        <button id="unfollow">Unfollow</button>
-        <button id="follow">Follow</button>
-        {% endif %}
+        <div class="container">
+            <h4 id="photo_author"><a>{{ user_data.username }}</a></h4>
+
+            <!--find friends button  ######change url-->
+            <p><a class="btn btn-primary" href="{% url 'photo:feed' %}" role="button">Find Friends &raquo;</a></p>
+
+            {% if not me %}
+            <button id="unfollow">Unfollow</button>
+            <button id="follow">Follow</button>
+            {% endif %}
+        </div>
     </div>
 
     <div id="container">
@@ -59,11 +64,6 @@
                 $('#follow').show()
                 $('#unfollow').hide()
             });
-        });
-
-        $('#find').click(function(){
-            //header to find_friends page
-            //    "/api/users/?find"
         });
     })
 

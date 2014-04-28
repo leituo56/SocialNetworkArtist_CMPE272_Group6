@@ -19,3 +19,8 @@
   display: inline-block;
   border-radius: 50%;
 }
+
+.trends {
+	size:30px;
+	color:#fbc100;
+}
