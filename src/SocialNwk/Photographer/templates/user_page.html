@@ -49,16 +49,18 @@
         $('#follow').click(function(){
             $.get("{% url 'photo:user-follow' pk %}", {
             }, function(data, status, xhr) {
+                if(data.redirect) return window.location.href = data.redirect;
                 $('#follow').hide()
                 $('#unfollow').show()
-            });
+            }, 'json');
         });
         $('#unfollow').click(function(){
             $.get("{% url 'photo:user-unfollow' pk %}", {
             }, function(data, status, xhr) {
+                if(data.redirect) return window.location.href = data.redirect;
                 $('#follow').show()
                 $('#unfollow').hide()
-            });
+            }, 'json');
         });
 
         $('#find').click(function(){

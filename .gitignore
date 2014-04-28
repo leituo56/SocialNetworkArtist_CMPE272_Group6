@@ -1,7 +1,7 @@
 djangoSandbox/*
 src/SocialNwk/.idea/*
 *.pyc
-
+*.exe
 *.sqlite3
 
 src/SocialNwk/media/uploads/*
