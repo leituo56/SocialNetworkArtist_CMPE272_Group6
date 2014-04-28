@@ -1,9 +1,110 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-Site Statistics
-</body>
-</html>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block head_script %}
+    <link href="{% static 'css/site_stat.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
+{% block header %}
+  <!-- Intro
+  ================================================== -->
+  <div class="introtitle">
+      <div class="container">
+          <h2>PHOTO.ME  -  Photo Can Tell - The Trends</h2>
+      </div>
+
+  </div>
+  <!-- END Intro -->
+
+  {% endblock %}
+
+{% block content %}
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container">
+    <div class="row placeholders">
+      
+      <div class="col-xs-6 col-sm-3 placeholder">
+        <img data-src="holder.js/400x400/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+        <h4>Trending Camera Make</h4>
+        <span class="text-muted">Canon</span>
+        <p><a class="btn btn-default" href="#" role="button">View Photos &raquo;</a></p>
+      </div>
+
+      <div class="col-xs-6 col-sm-3 placeholder">
+        <img data-src="holder.js/400x400/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+        <h4>Trending Camera Model</h4>
+        <span class="text-muted">5 D III</span>
+        <p><a class="btn btn-default" href="#" role="button">View Photos &raquo;</a></p>
+      </div>
+
+      <div class="col-xs-6 col-sm-3 placeholder">
+        <img data-src="holder.js/400x400/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+        <h4>Trending Category</h4>
+        <span class="text-muted">Landscape</span>
+        <p><a class="btn btn-default" href="#" role="button">View Photos &raquo;</a></p>
+      </div>
+
+            <div class="col-xs-6 col-sm-3 placeholder">
+        <img data-src="holder.js/400x400/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+        <h4>Trending Camera Make</h4>
+        <span class="text-muted">Nikon</span>
+        <p><a class="btn btn-default" href="#" role="button">View Photos &raquo;</a></p>
+      </div>
+
+      <div class="col-xs-6 col-sm-3 placeholder">
+        <img data-src="holder.js/400x400/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+        <h4>Trending Camera Model</h4>
+        <span class="text-muted">D800</span>
+        <p><a class="btn btn-default" href="#" role="button">View Photos &raquo;</a></p>
+      </div>
+
+      <div class="col-xs-6 col-sm-3 placeholder">
+        <img data-src="holder.js/400x400/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+        <h4>Trending Category</h4>
+        <span class="text-muted">Potrait</span>
+        <p><a class="btn btn-warning" href="#" role="button">View Photos &raquo;</a></p>
+      </div>
+
+
+
+    </div>
+  </div>
+	   
+
+  <div id="container"> 
+  </div>
+
+
+    
+{% endblock %}
+
+{% block foot_script %}
+
+<script>
+  //
+  photo_list_url = "{% url 'photo:photo-list' %}";
+  photo_page_url = "{% url 'photo:photo_page' 1 %}";
+  user_url = "{% url 'photo:user_page' 1 %}";
+  user_url = user_url.substring(0, user_url.length - 2);
+  photo_page_url = photo_page_url.substring(0, photo_page_url.length - 2);
+
+
+  $(document).ready(function(){
+        //loadData();
+  });
+
+</script>
+
+<!-- Include the imagesLoaded plug-in -->
+<script src="{% static 'jquery.imagesloaded.min.js' %}"></script>
+
+<!-- Include the plug-in -->
+<script src="{% static 'jquery.wookmark.min.js' %}"></script>
+
+
+
+{% endblock %}
