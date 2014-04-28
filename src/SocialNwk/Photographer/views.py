@@ -21,7 +21,7 @@ import rest_framework.reverse
 
 @ensure_csrf_cookie
 def test(request):
-    return render(request, 'templates/test.html')
+    return render(request, 'test.html')
 
 
 @ensure_csrf_cookie
@@ -66,7 +66,7 @@ def photo_page(request, pk):
     if user.is_authenticated():
         lists = [item['user'] for item in user.profile.follows.values('user')]
         followed = author.id in lists
-    me = int(author.id) == int(request.user.id)
+    me = int(author.id) == int(request.user.id) if request.user.is_authenticated() else 0
     return render(request, 'photo_page.html', {'pk': pk, 'followed': followed, 'author': author.id, 'me': me})
 
 
@@ -78,7 +78,7 @@ def user_page(request, pk):
         lists = [item['user'] for item in request.user.profile.follows.values('user')]
         followed = int(pk) in lists
         print pk, lists, followed
-    me = int(pk) == int(request.user.id)
+    me = int(pk) == int(request.user.id) if request.user.is_authenticated() else 0
     return render(request, 'user_page.html', {'pk': pk, 'followed': followed, 'user_data': user, 'me': me})
 
 
@@ -142,7 +142,7 @@ def follow(request, pk, format=None):
     user = request.user
     target = get_object_or_404(User, pk=pk)
     if not user.is_authenticated() and target:
-        return redirect(reverse('photo:login'))
+        return Response(data={'redirect': reverse('photo:login')})
     user.profile.follows.add(target.profile)
     return Response(data={'success': 1})
 
@@ -153,7 +153,7 @@ def unfollow(request, pk, format=None):
     user = request.user
     target = get_object_or_404(User, pk=pk)
     if not user.is_authenticated() and target:
-        return redirect(reverse('photo:login'))
+        return Response(data={'redirect': reverse('photo:login')})
     user.profile.follows.remove(target.profile)
     return Response(data={'success': 1})
 
