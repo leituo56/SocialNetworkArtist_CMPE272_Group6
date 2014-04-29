@@ -27,8 +27,10 @@ urlpatterns = patterns('',
     url(r'^api/photos/$', views.PhotoList.as_view(), name='photo-list'),
     url(r'^api/photos/(?P<pk>[0-9]+)/$', views.PhotoDetail.as_view(), name='photo-detail'),
     url(r'^api/photos/stat/$', views.photo_stat, name='photo-stat'),
+
+
     # Wenjia 04/28/14 Comment
-    # url(r'^api/photos/(?P<pk>[0-9]+)/comment/$', views.comment.as_view(), name = 'comment'),
+    url(r'^api/photos/(?P<pk>[0-9]+)/comment/$', views.comment_list, name = 'comment'),
 
     url(r'^test/$', views.test, name = 'test')
 )
