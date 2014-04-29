@@ -129,3 +129,9 @@ def get_stat(queryset):
         'fav_model': fav_model,
         'fav_category': fav_category,
     }
+
+class Comment(models.Model):
+    #Basic Info
+    author = models.ForeignKey(User, related_name='comments')
+    work = models.ForeignKey(Work, related_name='comments')
+    content = models.CharField(max_length=50, default='Undefined', blank=True)

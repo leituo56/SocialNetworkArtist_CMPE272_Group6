@@ -260,4 +260,15 @@ def photo_stat(request, format=None):
     result = get_stat(queryset)
     return Response(result)
 
+# class Comment(generics.ListAPIView):
+#     def comment_list(request, formal = None):
+#     return Response(
+#         {
+#             "author": comment.author.userid,
+#             "submit_date": str(comment.submit_date),
+#             "content": comment.content
+#         }
+#     )
+
+
 
