@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{#This page is currently unused#}
+{% block title %}Explore{% endblock %}
+{% block content %}
+{% if work_list %}
+    <hr/>
+    <ul>
+    {% for item in work_list %}
+        <img src="{{ item.file.url }}" alt="{{ item.title }}:{{ item.file.name }}" />
+        <li><a href="{{ item.file.url }}">{{ item.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No documents.</p>
+{% endif %}
+<hr/>
+<p>User List</p>
+{% if user_list %}
+    {% for user in user_list %}
+        <li>{{ user.id }}, {{ user.username }}</li>
+    {% endfor %}
+{% endif %}
+<hr/>
+{% endblock %}

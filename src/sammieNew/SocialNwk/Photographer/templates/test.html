@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}TEST{% endblock %}
+{% block content %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+<script src="{% static 'csrf.js' %}" ></script>
+<style>
+    #container div img, #container div a{
+        width: 300px;
+        display: block;
+    }
+    #container div img{
+        overflow: hidden;
+        height: 250px;
+    }
+    #container div{
+        float: left;
+        margin: 10px;
+    }
+    #container, #api{
+        margin: auto;
+    }
+</style>
+<div id="api">
+    <h2>Test Page:</h2>
+    <input type="text" id="APIText" width="200" value="/api/" style="width: 300px" />
+    <select id="APIMethod">
+        <option value="GET">GET</option>
+        <option value="POST">POST</option>
+        <option value="PUT">PUT</option>
+        <option value="PATCH">PATCH</option>
+        <option value="DELETE">DELETE</option>
+    </select>
+    <button id="testAjax" value="Test AJAX GET" >Test AJAX</button>
+    <button id="loadAjax" value="Load Photos" >Load Photos</button>
+    <br/>
+    <textarea id="requestData" style="width: 500px; height: 200px">{}</textarea>
+
+    <div id="output" ></div>
+</div>
+<div id="container"></div>
+
+<script>
+    loadMore();
+    $(document).ready(function(){
+        $("h2").append(csrftoken)
+        $("#APIText").keydown(function(event) {
+            if (event.keyCode == 13) {
+                getApi();
+            }
+        }).focus();
+    });
+    $("#testAjax").click(function(){getApi()});
+    var getApi = function(){
+        var str = $("#requestData").val();
+        var obj = jQuery.parseJSON($("#requestData").val());
+        $.ajax({
+            type: $("#APIMethod").val(),
+            url: $("#APIText").val(),
+            data: obj,
+            dataType: "json"
+        }).success(function(data, textStatus, jqXHR){
+            //alert(data.count)
+            $("#output").html(JSON.stringify(data))
+        }).fail(function( jqXHR, textStatus ) {
+            $("#output").html( "Request failed: " + textStatus );
+        });
+    }
+    $("#loadAjax").click(function(){
+        loadMore()
+    });
+    function loadMore(){
+        $.ajax({
+            type: "GET",
+            url: "/api/photos/.json",
+            dataType: "json"
+        }).success(function(data, textStatus, jqXHR){
+            $.each(data.results, function(i, item) {
+                $("#container").append(
+                        "<div><img src='" + item.file + "' ></img>" +
+                        "<a href='" + item.file + "' >" + item.title + "</a></div>"
+                );
+            });
+
+        }).fail(function( jqXHR, textStatus ) {
+            $("#output").html( "Request failed: " + textStatus );
+        });
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html id='login_signup'>
+	<head>
+		<title>Sigup | [Name of Website]</title>
+		<meta charset="UTF-8"/>
+		<link href="pagestyle.css" rel="stylesheet" type="text/css" />
+
+		<script>
+		function checkEmail()
+		{
+			var email = document.signup.username.value;
+			var atpos = email.indexOf("@");
+			var dotpos = email.lastIndexOf(".");
+			if (atpos<1 || dotpos<atpos+2 || dotpos+2>=str1.length) {
+				document.getElementById("error1").innerHTML="Not a valid email address. Please use an email of the form: abc@something.xyz";
+				//alert ("Not a valid email address. Please use an email of the form: abc@something.xyz");
+				//document.signup.username.focus();
+			}//end if
+		}//end checkEmail
+
+		function checkPass() {
+			//password must be between 5-30 characters
+			var str2 = document.signup.password.value;
+			if (str2.length < 5 || str2.length > 30) {
+				document.getElementById("error2").innerHTML="Password must be between 5-30 characters";
+
+				//alert ("Your password must be between 5-30 characters");
+				//document.signup.password.focus();
+			}
+		}//end checkPass
+		</script>
+	</head>
+
+	<body>
+		<nav class="nav">
+			<ul>
+				<li id="logo">Logo</li>
+				<li><a href="login2.html">Login</a></li>
+			</ul>
+		</nav>
+		<br/><br/>
+
+		<form name="signup" action="" method="post">
+			<h2>Register for an Account</h2>
+			<input type="text" name="fname" placeholder="First Name" required="required">
+			<br/><br/>
+
+			<input type="text" name="lname" placeholder="Last Name" required="required">
+			<br/><br/>
+
+			<input type="text" name="username" placeholder="Email" 
+					onblur="checkEmail()" required="required">
+			<div id="error1"></div>
+			<!--pattern not used for email bc current one are not perfect-->
+			<br/>
+			
+			<input type="password" name="password" placeholder="Password (5-30 char)" 
+					onblur="checkPass()" required="required" pattern=".{5,30}">
+			<div id="error2"></div>
+			<br/>
+
+			<input type="submit" name="submitbutton" value="Signup">
+			<p>Already registered? Please login <a href="login2.html">here</a>.</p>
+		</form>
+
+		
+
+	</body>
+</html>
+

@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}{{ user_data.username }}{% endblock %}
+{% block head_script %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
+{% block header %}
+  <!-- Intro
+  ================================================== -->
+  <div class="introtitle">
+      <div class="container">
+          <h2>PHOTO.ME  -  Find Photographor Just Like YOU</h2>
+      </div>
+
+  </div>
+  <!-- END Intro -->
+
+  {% endblock %}
+
+{% block content %}
+
+
+  <div class="container"> 
+  	<form role="form">
+
+	  <div class="checkbox">
+	    <label>
+	      <input type="checkbox" id="make"> Same favorate camera make as me:
+	      	<p id="my_make">show my fav_make</p>
+	    </label>
+	  </div>
+
+	  <div class="checkbox">
+	    <label>
+	      <input type="checkbox" id="model"> Same favorate camera model as me:
+	      	<p id="my_model">show my fav_model</p>
+	    </label>
+	  </div>
+
+	  <div class="checkbox">
+	    <label>
+	      <input type="checkbox" id="category"> Same favorate category as me:
+	      <p id="my_category">show my fav_category</p>
+	    </label>
+	  </div>
+
+	  <button type="submit" id="find" class="btn btn-default">Submit</button>
+	</form>
+
+  </div>
+
+
+  <div class="container"> 
+  	<form role="form">
+  		<h4>User List</h4>
+	  	<ul id = "firends">
+
+	  	</ul>
+    </form>
+  </div>
+
+
+    
+{% endblock %}
+
+{% block foot_script %}
+
+<script>
+  //
+  //photo_list_url = "{% url 'photo:photo-list' %}";
+  //photo_page_url = "{% url 'photo:photo_page' 1 %}";
+  //user_url = "{% url 'photo:user_page' 1 %}";
+  //user_url = user_url.substring(0, user_url.length - 2);
+  //photo_page_url = photo_page_url.substring(0, photo_page_url.length - 2);
+
+  //search all users   http://localhost:8000/api/users/
+
+	  //for each user  http://localhost:8000/api/users/5
+	  //compare fav_make, fav_model. fav_category
+	  //if hit, add to user list #friends
+
+
+  $(document).ready(function(){
+        $('#find').click(function(){
+            //header to find_friends page
+            //    "/api/users/?find"
+        });
+  });
+
+</script>
+
+<!-- Include the find API file -->
+<script src="{% static '.js' %}"></script>
+
+
+
+
+
+{% endblock %}

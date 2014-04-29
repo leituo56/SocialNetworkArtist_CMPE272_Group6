@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block head_script %}
+    <link href="{% static 'css/site_stat.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'holder.js' %}"></script>
+{% endblock %}
+
+
+{% block header %}
+  <!-- Intro
+  ================================================== -->
+  <div class="introtitle">
+      <div class="container">
+          <h2>PHOTO.ME  -  Photo Can Tell - The Trends</h2>
+      </div>
+
+  </div>
+  <!-- END Intro -->
+
+  {% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <!-- Top 1 made model category-->
+    <div class="col-md-4">
+        <h4>Trending Camera Make Top 1</h4>
+        <span class="trends" id="fav_make_1">Canon </span> 
+        <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail"> <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>    
+    </div>
+
+    <div class="col-md-4">
+      <h4>Trending Camera Make Top 2</h4>
+      <span class="trends" id="fav_make_2">Nikon </span>
+      <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+      <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+    </div>
+
+    <div class="col-md-4">
+      <h4>Trending Camera Make Top 3</h4>
+      <span class="trends" id="fav_make_3">Sony </span>
+      <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+      <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+    </div>
+  </div>
+
+  </br>
+
+  <div class="container">
+    <!-- Top 3 model-->
+    <div class="col-md-4">       
+      <h4>Trending Camera Model Top 1</h4>
+        <span class="trends" id="fav_model_1">5DIII </span>
+        <img data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+        <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+    </div>
+
+    <div class="col-md-4">       
+      <h4>Trending Camera Model Top 2</h4>
+        <span class="trends" id="fav_model_2">50D </span>
+        <img data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+        <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+    </div>
+
+    <div class="col-md-4">       
+      <h4>Trending Camera Model Top 3</h4>
+        <span class="trends" id="fav_model_3">D800 </span>
+        <img data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+        <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+    </div>
+  </div>
+    
+    </br>
+
+   <div class="container">
+    <!-- Top 3 category-->
+    <div class="col-md-4">
+      <h4>Trending Category Top 1</h4>
+      <span class="trends" id="fav_category_1">Landscape </span>
+      <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+      <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+    </div>
+
+    <div class="col-md-4">
+      <h4>Trending Category Top 2</h4>
+      <span class="trends" id="fav_category_2">Potrait </span>
+      <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+      <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+    </div>
+
+    <div class="col-md-4">
+      <h4>Trending Category Top 3</h4>
+      <span class="trends" id="fav_category_3">Low Light </span>
+      <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+      <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+    </div>
+  </div>
+
+</br>
+
+
+
+  <div id="container"> 
+  </div>
+
+
+    
+{% endblock %}
+
+{% block foot_script %}
+
+<script>
+  //
+  //photo_list_url = "{% url 'photo:photo-list' %}";
+  //photo_page_url = "{% url 'photo:photo_page' 1 %}";
+  //user_url = "{% url 'photo:user_page' 1 %}";
+  //user_url = user_url.substring(0, user_url.length - 2);
+  //photo_page_url = photo_page_url.substring(0, photo_page_url.length - 2);
+
+  site_stat_url = "/api/photos/stat";
+
+
+  $(document).ready(function(){
+        //get site stat api /api/photos/stat 
+        loadStat();
+        //category_stat, make_stat, model_stat
+          // for each parameter
+              //list top 3 results and %
+              //thumnail photolist 4-5 photos from /api/photos/?make=Canon
+              //button link to the whole list in new page
+
+  });
+
+</script>
+
+<!-- Include the    -->
+<script src="{% static 'site_stat.js' %}"></script>
+
+{% endblock %}
