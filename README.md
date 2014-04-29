@@ -6,6 +6,7 @@ SocialNetworkArtist_CMPE272_Group6
  - Team 6 project
  - Field: Web Development - Social Network
  - Title: Social Network for Professional Photographers
+ - Name: Photo.Me
 
 Directory
 -----------
