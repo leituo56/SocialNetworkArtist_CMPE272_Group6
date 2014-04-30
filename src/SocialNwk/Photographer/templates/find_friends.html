@@ -27,7 +27,7 @@
 
 	  <div class="checkbox">
 	    <label>
-	      <input type="checkbox" id="make" value="&fav_make"> Same favorate camera make as me:
+	      <input type="checkbox" id="make" value="fav_make"> Same favorate camera make as me:
 	      	<p id="my_make">show my fav_make</p>
 	    </label>
 	  </div>
@@ -82,10 +82,14 @@
             //header to find_friends page
             //    "/api/users/?find"
 
+
+            var x = document.getElementById("make").value;
+            console.log("x:"+x);
+
             // same make url:  api/users/?find&fav_make， api/users/?find&fav_model, api/users/?find&fav_category
 
             //if first box clicked
-            userlist_url += ;
+            //userlist_url += ;
 
             //if second box clicked
             userlist_url += "&fav_model";
