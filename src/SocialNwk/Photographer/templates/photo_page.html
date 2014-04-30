@@ -13,8 +13,12 @@
         <button id="follow">Follow</button>
         {% endif %}
     </div>
+    <div id='features'><h3>Categories</h3>
+    </div>
     <div id="stat">
         <h3>Photo Details</h3>
+    </div>
+
     </div>
     <div id="bigPhoto">
         <img src="" />
@@ -53,7 +57,7 @@
         //for photo detail stat to scroll with page
         $(window).scroll(function(){
             footertotop = ($('.footer').position().top);
-            scrolltop = $(document).scrollTop()+590;
+            scrolltop = $(document).scrollTop()+450;
             difference = scrolltop-footertotop;
             // if user has scrolled further than footer,
             // pull sidebar up using a negative margin
@@ -68,7 +72,14 @@
 
         });
 
+        //to show li if true
+        //$('#portrait').hide();
+
     })
+    function checkPhotoDetail(selector){
+        console.log("selector: "+selector);
+        console.log("value: " + selector.value);
+    };
     function loadPhotoDetail(){
     $.ajax({
         type: "GET",
@@ -79,16 +90,32 @@
         $("#photo_author").find('a').html('Author: '+data.authorName).attr('href', user_url + data.author);
         $("#bigPhoto img").attr('src', data.file);
         $.each(data, function(key, value) {
-            $('#stat').append("<li><b>" + key + "</b>:" + value + "</li>");
+            switch(key){
+                case 'portrait':
+                case 'landscape':
+                case 'telephoto':
+                case 'low_light':
+                case 'high_speed':
+                case 'long_exposure':
+                    key = key.replace('_', ' ');
+                    if(value==true){
+                        $('#features').append("<li id='features'><b>" + key + "</b></li>");
+                    }
+                    else {
+                        $('#features').append("<li id='off'>" + key + "</li>");
+                    }
+                    break;
+                default:
+                    key = key.replace('_', ' ');
+                    $('#stat').append("<li><b>" + key + "</b>: " + value + "</li>");    
+                    break;
+            }
         });
         $.get
     }).fail(function( jqXHR, textStatus ) {
         alert('Request Failed');
     });
 }
-
-
-
 
 </script>
 {% endblock %}
