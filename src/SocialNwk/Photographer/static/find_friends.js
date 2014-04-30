@@ -24,7 +24,7 @@ function loadStat() {
 */
 function onLoadStat(data) {
 
-  console.log("data.category_stat:" + data.category_stat);
+  console.log("data.results:" + data.results);
 
   $.each(data.results, function(i, item) {
     

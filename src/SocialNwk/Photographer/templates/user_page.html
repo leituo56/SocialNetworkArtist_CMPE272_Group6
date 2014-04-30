@@ -10,13 +10,22 @@
         <div class="container">
             <h4 id="photo_author"><a>{{ user_data.username }}</a></h4>
 
-            <!--find friends button  ######change url-->
-            <p><a class="btn btn-primary" href="{% url 'photo:find_friends' %}" role="button">Find Friends &raquo;</a></p>
+
 
             {% if not me %}
             <button id="unfollow">Unfollow</button>
             <button id="follow">Follow</button>
             {% endif %}
+
+            {% if me %}
+            <!--find friends button-->
+            <p><a class="btn btn-primary" href="{% url 'photo:find_friends' %}" role="button">Find Friends &raquo;</a></p>
+            {% endif %}
+
+            <h4 class="fav" id="fav_make">Favorite Make: </h4>
+            <h4 class="fav" id="fav_model">Favorite Model: </h4>
+            <h4 class="fav" id="fav_category">Favorite Category: </h4>
+
         </div>
     </div>
 
@@ -35,6 +44,12 @@
 <script src="{% static 'tuolei.js' %}"></script>
 <script>
     photo_list_url = "{% url 'photo:photo-list' %}?author="+{{ pk }};
+    
+    //find current user
+    current_user_url = "/api/users/"+ {{ pk }};
+    //current_user_url = current_user_url.substring(0, current_user_url.length - 2) + {{ pk }};
+    console.log("url:"+current_user_url);
+    //loadUser();
 
     var options = {
         autoResize: true, // This will auto-update the layout when the browser window is resized.
@@ -45,7 +60,11 @@
     };
 
     $(document).ready(function(){
+
         loadData();
+
+        loadUser();
+
         {% if followed %}
             $('#follow').hide()
         {% else %}
@@ -69,6 +88,8 @@
         });
     })
 
+
+
 </script>
 
 <!-- Include the imagesLoaded plug-in -->
@@ -79,5 +100,6 @@
 
 <!-- Include the photo_load.js -->
 <script src="{% static 'photo_load.js' %}"></script>
+<script src="{% static 'load_user.js' %}"></script>
 
 {% endblock %}
