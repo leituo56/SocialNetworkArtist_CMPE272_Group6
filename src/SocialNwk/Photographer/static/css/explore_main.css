@@ -52,6 +52,7 @@ header p {
   position: relative; /** Needed to ensure items are laid out relative to this container **/
   margin: 0;
   padding: 0;
+    clear: both;
 }
 
 /**

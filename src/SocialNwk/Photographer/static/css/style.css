@@ -3,7 +3,7 @@
 
 
 
-/*from style*/
+/*form style*/
 form {
 	background-color: white;
 	width: 50%;
@@ -73,6 +73,7 @@ div#error1, div#error2 {
 }
 #head {
     margin-left: 30px;
+    margin-bottom: 10px;
     width: 65%;
     float: left;
     background: #eee;
