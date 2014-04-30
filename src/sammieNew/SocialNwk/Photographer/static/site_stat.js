@@ -24,44 +24,55 @@ function loadStat() {
 */
 function onLoadStat(data) {
 
-  console.log("data.results:" + data.results);
+  console.log("data.category_stat:" + data.category_stat);
 
-  $.each(data.results, function(i, item) {
-    
+  //data.category_stat - first layer of JSON key i, value item
+  $.each(data.category_stat, function(i, item) {
+
     console.log("key i:" + i);
-    console.log("value item:" + item);
 
+    //second layer of JSON key key, value val 
     $.each(item, function(key, val) {
+
+      console.log("key in i:" + i);
+
       console.log("key key:" + key);
       console.log("value val:" + val);
+      
+      switch(i){
+
+        //console.log("in switch:" + i);
+        case 1:
+          $("#fav_category_1").text = val;
+          break;
+        case 2:
+          $("#fav_category_2").text = val;
+          break;
+        case 3:
+          $("#fav_category_3").text = val;
+          break;
+      }
+
 
     });
 
 
-    var html = '';
+    /*var html = '';
     html += '<li>';
     html += '<a href='+ photo_page_url+item.id+ '><img src="'+ item.file +'" width="190"></a>';
     html += '<p><a href='+ photo_page_url+item.id+ '> Title:'+item.title+'</a></p>';
     html += '<p><a href='+ user_url+item.author+ '> Title:'+item.authorName+'</p>';
     html += '</li>';
 
-    console.log("html:" + html);
+    console.log("html:" + html);*/
 
-    // Add user HTML to the page.
-    $("#firends").append(html);
+    // Add image HTML to the page.
+    //$("#container").append(html);
 
     //Apply layout.
-    applyLayout();
+    //applyLayout();
   });
 
-  if(data.next){
-    photo_list_url = data.next;
-    //page++; // Increment page index for future calls.
-  }else{
-    //finishLoad = true;
-    //$('#loadMore a').off('click');
-    //$('#loadMore').html('No more photos')
-  }
 
     
 };
@@ -70,7 +81,7 @@ function onLoadStat(data) {
 function applyLayout() {
   options.container.imagesLoaded(function() {
     // Create a new layout handler when images have loaded.
-    handler = $('#firends li');
+    handler = $('#container li');
     handler.wookmark(options);
   });
 };

@@ -13,9 +13,8 @@
   ================================================== -->
   <div class="introtitle">
       <div class="container">
-          <h2>PHOTO.ME</h2>
-          <p>Professional Photographer Social Network</p>
-          <!--<p><b></b></p>-->
+          <h2>PHOTO.ME  -  Photo Can Tell</h2>
+          <p><b>Professional Photographor Social Network.</b></p>
       </div>
 
   </div>
@@ -30,13 +29,13 @@
   <div class="container"> 
     <div id="filter">
       <ul>
-        <li class='button' onclick="onClickFilter('All')"        >All</li>
-        <li class='button' onclick="onClickFilter('portrait')"   >Portrait</li>
-        <li class='button' onclick="onClickFilter('landscape')"  >Landscape</li>
-        <li class='button' onclick="onClickFilter('telephoto')"  >Telephoto</li>
-        <li class='button' onclick="onClickFilter('low_light')"  >Low Light</li>
-        <li class='button' onclick="onClickFilter('high_speed')" >High Speed</li>
-        <li class='button' onclick="onClickFilter('long_exposure')">Long Exposure</li>
+        <li onclick="onClickFilter('All')"        >All</li>
+        <li onclick="onClickFilter('portrait')"   >portrait</li>
+        <li onclick="onClickFilter('landscape')"  >landscape</li>
+        <li onclick="onClickFilter('telephoto')"  >telephoto</li>
+        <li onclick="onClickFilter('low_light')"  >low_light</li>
+        <li onclick="onClickFilter('high_speed')" >high_speed</li>
+        <li onclick="onClickFilter('long_exposure')">long_exposure</li>
 
       </ul>
     </div>
@@ -74,19 +73,11 @@
     container: $('#tiles'), // Optional, used for some extra CSS styling
     offset: 2, // Optional, the distance between grid items
     itemWidth: 210, // Optional, the width of a grid item
-    //fillEmptySpace: true // Optional, fill the bottom of each column with widths of flexible height 
+    //fillEmptySpace: true // Optional, fill the bottom of each column with widths of flexible height ?? not working
   };
   
   $(document).ready(function(){
         loadData();
-        $('.button').hover(function(){
-          $(this).toggleClass('hover');
-        });
-
-        $('.button').click(function(){
-          $(this).toggleClass('active');
-          $(this).siblings().removeClass('hover active');
-        });
   });
 
 
@@ -116,8 +107,7 @@
       case 'long_exposure':
         photo_list_url = "/api/photos/?long_exposure=True";
         break;               
-    }
-
+    }   
     clearPhotos();
     loadData();
   };
