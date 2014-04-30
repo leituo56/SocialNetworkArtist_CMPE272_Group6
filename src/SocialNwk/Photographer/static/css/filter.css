@@ -37,16 +37,17 @@
   color:#333;
   margin-bottom:20px;
 }
-#filter ul li .selected {
-  color: #fbc100;
-}
 
-#filter ul li:hover {
+/*#filter ul li .selected {
+  color: #fbc100;
+}*/
+
+#filter ul li.hover {
   background: #fbc100;
   color: #ffffff;
 }
 
-#filter ul li:active {
-  background: #fbc100;
+#filter ul li.active {
+  background-color: #fbc100;
   color: #ffffff;
 }

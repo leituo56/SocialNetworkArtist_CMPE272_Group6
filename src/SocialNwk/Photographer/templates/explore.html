@@ -30,13 +30,13 @@
   <div class="container"> 
     <div id="filter">
       <ul>
-        <li onclick="onClickFilter('All')"        >All</li>
-        <li onclick="onClickFilter('portrait')"   >portrait</li>
-        <li onclick="onClickFilter('landscape')"  >landscape</li>
-        <li onclick="onClickFilter('telephoto')"  >telephoto</li>
-        <li onclick="onClickFilter('low_light')"  >low_light</li>
-        <li onclick="onClickFilter('high_speed')" >high_speed</li>
-        <li onclick="onClickFilter('long_exposure')">long_exposure</li>
+        <li class='button' onclick="onClickFilter('All')"        >All</li>
+        <li class='button' onclick="onClickFilter('portrait')"   >portrait</li>
+        <li class='button' onclick="onClickFilter('landscape')"  >landscape</li>
+        <li class='button' onclick="onClickFilter('telephoto')"  >telephoto</li>
+        <li class='button' onclick="onClickFilter('low_light')"  >low_light</li>
+        <li class='button' onclick="onClickFilter('high_speed')" >high_speed</li>
+        <li class='button' onclick="onClickFilter('long_exposure')">long_exposure</li>
 
       </ul>
     </div>
@@ -79,6 +79,14 @@
   
   $(document).ready(function(){
         loadData();
+        $('.button').hover(function(){
+          $(this).toggleClass('hover');
+        });
+
+        $('.button').click(function(){
+          $(this).toggleClass('active');
+          $(this).siblings().removeClass('hover active');
+        });
   });
 
 
@@ -108,7 +116,8 @@
       case 'long_exposure':
         photo_list_url = "/api/photos/?long_exposure=True";
         break;               
-    }   
+    }
+
     clearPhotos();
     loadData();
   };
