@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html id='{% block html_id %}login_signup{% endblock %}'>
 	<head>
-		<title>272G6:{% block title %}Photographer Social Network{% endblock %}</title>
+		<title>PHOTO.ME: {% block title %}Photographer Social Network{% endblock %}</title>
 		<meta charset="UTF-8"/>
 		<!--<link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />-->
         <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css" />
@@ -36,7 +36,7 @@
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
                                 <li><a href="{% url 'photo:explore' %}">EXPLORE</a></li>
-                                <li><a href="{% url 'photo:site_stat' %}">STATIC</a></li>
+                                <li><a href="{% url 'photo:site_stat' %}">STATS</a></li>
                                 {% if user.is_authenticated %}
                                 <li><a href="{% url 'photo:feed' %}">FEED</a></li>
                                 <li><a id="myHome" href="#">{{ user.username }}</a></li>
@@ -79,9 +79,9 @@
         <div class="container">
             <!-- 1st row -->
                 <div class="span12 text-center">
-                    <h1 class="title">CMPE 272 - Team 6</h1>
+                    <h1 class="title">&copy; CMPE 272 - Team 6</h1>
                     <p class="smaller">
-                        <span class="copyright">&copy;  Copyright 2014 CMPE 272 Team 6</span>
+                        <span class="copyright">Spring 2014, SJSU</span>
                     </p>
                 </div>
         </div>

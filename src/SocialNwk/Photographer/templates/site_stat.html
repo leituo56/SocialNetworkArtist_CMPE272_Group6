@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% block title %}TRENDS{% endblock %}
 {% block head_script %}
     <link href="{% static 'css/site_stat.css' %}" rel="stylesheet" type="text/css">
     <script src="{% static 'holder.js' %}"></script>
@@ -11,7 +12,8 @@
   ================================================== -->
   <div class="introtitle">
       <div class="container">
-          <h2>PHOTO.ME  -  Photo Can Tell - The Trends</h2>
+          <h2>PHOTO.ME</h2>
+          <p>Current Trends on PHOTO.ME</p>
       </div>
 
   </div>
@@ -22,83 +24,85 @@
 {% block content %}
 
   <div class="container">
-    <!-- Top 1 made model category-->
+    <!-- Top 1 made  model category-->
     <div class="col-md-4">
         <h4>Trending Camera Make Top 1</h4>
-        <span class="trends" id="fav_make_1">Canon </span> 
-        <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail"> <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>    
+        <h4 class="trends" id="fav_make_1"> </h4>
+        <span class="trends" id="fav_make_1_pct"> </span>
+        <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail"> 
+        <a class="btn btn-default" id="fav_make_1_btn" href="#" role="button">View Photos &raquo;</a>    
     </div>
 
-    <div class="col-md-4">
-      <h4>Trending Camera Make Top 2</h4>
-      <span class="trends" id="fav_make_2">Nikon </span>
-      <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-      <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
-    </div>
-
-    <div class="col-md-4">
-      <h4>Trending Camera Make Top 3</h4>
-      <span class="trends" id="fav_make_3">Sony </span>
-      <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-      <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
-    </div>
-  </div>
-
-  </br>
-
-  <div class="container">
-    <!-- Top 3 model-->
     <div class="col-md-4">       
       <h4>Trending Camera Model Top 1</h4>
-        <span class="trends" id="fav_model_1">5DIII </span>
-        <img data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-        <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+      <h4 class="trends" id="fav_model_1"> </h4>
+      <span class="trends" id="fav_model_1_pct"> </span>
+      <img data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+      <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
     </div>
 
-    <div class="col-md-4">       
-      <h4>Trending Camera Model Top 2</h4>
-        <span class="trends" id="fav_model_2">50D </span>
-        <img data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-        <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
-    </div>
-
-    <div class="col-md-4">       
-      <h4>Trending Camera Model Top 3</h4>
-        <span class="trends" id="fav_model_3">D800 </span>
-        <img data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-        <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
-    </div>
-  </div>
-    
-    </br>
-
-   <div class="container">
-    <!-- Top 3 category-->
     <div class="col-md-4">
       <h4>Trending Category Top 1</h4>
-      <span class="trends" id="fav_category_1">Landscape </span>
+      <h4 class="trends" id="fav_category_1"> </h4>
+      <span class="trends" id="fav_category_1_pct"> </span>
       <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
       <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
     </div>
+ </div>
 
+  <div class="container">
+    <!-- Top 2 made  model category-->
     <div class="col-md-4">
-      <h4>Trending Category Top 2</h4>
-      <span class="trends" id="fav_category_2">Potrait </span>
+      <h4>Camera Make Top 2</h4>
+      <h4 class="trends" id="fav_make_2"> </h4>
+      <span class="trends" id="fav_make_2_pct"> </span>
       <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-      <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+      <a class="btn btn-default" id="fav_make_2_btn" href="#" role="button">View Photos &raquo;</a>
+    </div>
+
+    <div class="col-md-4">       
+      <h4>Camera Model Top 2</h4>
+        <h4 class="trends" id="fav_model_2"> </h4>
+        <span class="trends" id="fav_model_2_pct"> </span>
+        <img data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+        <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
     </div>
 
     <div class="col-md-4">
-      <h4>Trending Category Top 3</h4>
-      <span class="trends" id="fav_category_3">Low Light </span>
+      <h4>Category Top 2</h4>
+      <h4 class="trends" id="fav_category_2"> </h4>
+      <span class="trends" id="fav_category_2_pct"> </span>
       <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
       <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
     </div>
   </div>
 
-</br>
+  <div class="container">
+    <!-- Top 3 made  model category-->
+    <div class="col-md-4">
+      <h4>Make Top 3</h4>
+      <h4 class="trends" id="fav_make_3"> </h4>
+      <span class="trends" id="fav_make_3_pct"> </span>
+      <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+      <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+    </div>
 
+    <div class="col-md-4">       
+      <h4>Camera Model Top 3</h4>
+        <h4 class="trends" id="fav_model_3"> </h4>
+        <span class="trends" id="fav_model_3_pct"> </span>
+        <img data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+        <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+    </div>
 
+    <div class="col-md-4">
+      <h4>Category Top 3</h4>
+      <h4 class="trends" id="fav_category_3"> </h4>
+      <span class="trends" id="fav_category_3_pct"> </span>
+      <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+      <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+    </div>
+  </div>
 
   <div id="container"> 
   </div>
@@ -130,6 +134,10 @@
               //button link to the whole list in new page
 
   });
+
+  //$("#fav_make_1_btn").click(){
+    //tranfer url t
+  //};
 
 </script>
 

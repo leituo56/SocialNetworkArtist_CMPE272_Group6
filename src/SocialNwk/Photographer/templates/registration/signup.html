@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Sign Up{% endblock %}
+{% block title %}SIGNUP{% endblock %}
 {% block head_script %}
 <script>
     function checkEmail()
@@ -40,7 +40,7 @@
             onblur="checkPass()" required="required" pattern=".{5,30}">
     <div id="error2">{{ form.password1.errors }}</div>
     <br/>
-    <input type="password" name="password2" placeholder="Repeat Password"
+    <input type="password" name="password2" placeholder="Retype Password"
             onblur="checkPass()" required="required" pattern=".{5,30}">
     <div id="error2">{{ form.password2.errors }}</div>
     <br/>
