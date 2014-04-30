@@ -38,20 +38,20 @@ function onLoadStat(data) {
     });
 
 
-    //var html = '';
-    //html += '<li>';
-    //html += '<a href='+ photo_page_url+item.id+ '><img src="'+ item.file +'" width="190"></a>';
-    //html += '<p><a href='+ photo_page_url+item.id+ '> Title:'+item.title+'</a></p>';
-    //html += '<p><a href='+ user_url+item.author+ '> Title:'+item.authorName+'</p>';
-    //html += '</li>';
+    var html = '';
+    html += '<li>';
+    html += '<a href='+ photo_page_url+item.id+ '><img src="'+ item.file +'" width="190"></a>';
+    html += '<p><a href='+ photo_page_url+item.id+ '> Title:'+item.title+'</a></p>';
+    html += '<p><a href='+ user_url+item.author+ '> Title:'+item.authorName+'</p>';
+    html += '</li>';
 
-    //console.log("html:" + html);
+    console.log("html:" + html);
 
-    // Add image HTML to the page.
-    //$("#container").append(html);
+    // Add user HTML to the page.
+    $("#firends").append(html);
 
     //Apply layout.
-    //applyLayout();
+    applyLayout();
   });
 
   if(data.next){
@@ -70,7 +70,7 @@ function onLoadStat(data) {
 function applyLayout() {
   options.container.imagesLoaded(function() {
     // Create a new layout handler when images have loaded.
-    handler = $('#container li');
+    handler = $('#firends li');
     handler.wookmark(options);
   });
 };
