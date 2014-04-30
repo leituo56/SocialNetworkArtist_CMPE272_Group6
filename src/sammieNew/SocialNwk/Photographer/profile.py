@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.template import RequestContext, Template, loader
-import MySQLdbaaa
+import MySQLdb
 
 def GetDict(user_id):  
   db = MySQLdb.connect(host="127.0.0.1", # your host, usually localhost
