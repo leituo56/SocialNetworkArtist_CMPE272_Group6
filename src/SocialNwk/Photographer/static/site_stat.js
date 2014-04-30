@@ -26,56 +26,96 @@ function onLoadStat(data) {
 
   console.log("data.category_stat:" + data.category_stat);
 
-  //data.category_stat - first layer of JSON key i, value item
-  $.each(data.category_stat, function(i, item) {
-
-    console.log("key i:" + i);
-
+  //data.make_stat - first layer of JSON key i, value item
+  $.each(data.make_stat, function(i, item) {
     //second layer of JSON key key, value val 
-    $.each(item, function(key, val) {
-
-      console.log("key in i:" + i);
-
-      console.log("key key:" + key);
-      console.log("value val:" + val);
-      
-      switch(i){
-
-        //console.log("in switch:" + i);
+    $.each(item, function(key, val) {      
+      switch(i){     
+        case 0:
+          if(key =="make"){
+            $("#fav_make_1").append(val);
+          } else if(key =="pct") {
+            $("#fav_make_1_pct").append(val);
+          }
+          break;
         case 1:
-          $("#fav_category_1").text = val;
+          if(key =="make"){
+            $("#fav_make_2").append(val);
+          } else if(key =="pct"){
+            $("#fav_make_2_pct").append(val);
+          }
           break;
         case 2:
-          $("#fav_category_2").text = val;
-          break;
-        case 3:
-          $("#fav_category_3").text = val;
+          if(key =="make"){
+            $("#fav_make_3").append(val);
+          } else if(key =="pct"){
+            $("#fav_make_3_pct").append(val);
+          }
           break;
       }
-
-
     });
-
-
-    /*var html = '';
-    html += '<li>';
-    html += '<a href='+ photo_page_url+item.id+ '><img src="'+ item.file +'" width="190"></a>';
-    html += '<p><a href='+ photo_page_url+item.id+ '> Title:'+item.title+'</a></p>';
-    html += '<p><a href='+ user_url+item.author+ '> Title:'+item.authorName+'</p>';
-    html += '</li>';
-
-    console.log("html:" + html);*/
-
-    // Add image HTML to the page.
-    //$("#container").append(html);
-
-    //Apply layout.
-    //applyLayout();
   });
 
+  //data.model_stat - first layer of JSON key i, value item
+  $.each(data.model_stat, function(i, item) {
+    //second layer of JSON key key, value val 
+    $.each(item, function(key, val) {      
+      switch(i){     
+        case 0:
+          if(key =="model"){
+            $("#fav_model_1").append(val);
+          } else if(key =="pct"){
+            $("#fav_model_1_pct").append(val);
+          }
+          break;
+        case 1:
+          if(key =="model"){
+            $("#fav_model_2").append(val);
+          } else if(key =="pct"){
+            $("#fav_model_2_pct").append(val);
+          }
+          break;
+        case 2:
+          if(key =="model"){
+            $("#fav_model_3").append(val);
+          } else if(key =="pct"){
+            $("#fav_model_3_pct").append(val);
+          }
+          break;
+      }
+    });
+  });
 
-    
-};
+  //data.category_stat - first layer of JSON key i, value item
+  $.each(data.category_stat, function(i, item) {
+    //second layer of JSON key key, value val 
+    $.each(item, function(key, val) {      
+      switch(i){     
+        case 0:
+          if(key =="name"){
+            $("#fav_category_1").append(val);
+          } else {
+            $("#fav_category_1_pct").append(val);
+          }
+          break;
+        case 1:
+          if(key =="name"){
+            $("#fav_category_2").append(val);
+          } else {
+            $("#fav_category_2_pct").append(val);
+          }
+          break;
+        case 2:
+          if(key =="name"){
+            $("#fav_category_3").append(val);
+          } else {
+            $("#fav_category_3_pct").append(val);
+          }
+          break;
+      }
+    });
+  }); 
+}
 
 
 function applyLayout() {
