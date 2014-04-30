@@ -271,5 +271,39 @@ def comment_list(request, pk, formal = None):
         }
     )
 
+# def add_comment(request):
+#     # Add a new comment
+#     if request.method == 'POST':
+#         form = DocumentForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             newcomment = Comment(author=request.user, work=request.work, content=request.FILES['file'])
+#             #upload_time=datetime.now())
+#             newcomment.save()
+#             # Redirect to the home after POST
+#             return redirect(reverse('photo:home'))
+#     else:
+#         form = DocumentForm()  # A empty, unbound form
+#     return render(request, 'upload.html', {'form': form})
 
+# class CommentForm(ModelForm):
+#     class Meta:
+#         model = Comment
+#         exclude = ["post"]
+
+# def add_comment(request, pk):
+#     """Add a new comment."""
+#     p = request.POST
+
+#     if p.has_key("body") and p["body"]:
+#         author = "Anonymous"
+#         if p["author"]: author = p["author"]
+
+#         comment = Comment(post=Post.objects.get(pk=pk))
+#         cf = CommentForm(p, instance=comment)
+#         cf.fields["author"].required = False
+
+#         comment = cf.save(commit=False)
+#         comment.author = author
+#         comment.save()
+#     return HttpResponseRedirect(reverse("dbe.blog.views.post", args=[pk]))
 

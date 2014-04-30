@@ -2,6 +2,7 @@
 created by xiaoli 04/26/14
 */
 
+
 #loadMore{
     clear: both;
     width: 100%;
@@ -27,6 +28,7 @@ cascading elements
 #main {
   margin: 30px 0;
   position: relative;
+  clear: both;
 }
 
 header h1 {
