@@ -57,6 +57,7 @@ This work uses a number of open source projects to work properly:
 * [django] - The Web framework for perfectionists with deadlines.
 * [jQuery] - The Write Less, Do More, JavaScript Library. 
 * [django rest framework] -  A powerful and flexible toolkit that makes it easy to build Web APIs.
+* [bootstrap] - The most popular front-end framework for developing responsive, mobile first projects on the web.
 
 Team Member
 --------------
@@ -74,3 +75,4 @@ MIT
 [django]:https://www.djangoproject.com
 [jQuery]:http://jquery.com
 [django rest framework]:http://www.django-rest-framework.org/
+[bootstrap]:http://getbootstrap.com/
