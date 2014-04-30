@@ -50,6 +50,24 @@
                 $('#unfollow').hide()
             });
         });
+        //for photo detail stat to scroll with page
+        $(window).scroll(function(){
+            footertotop = ($('.footer').position().top);
+            scrolltop = $(document).scrollTop()+590;
+            difference = scrolltop-footertotop;
+            // if user has scrolled further than footer,
+            // pull sidebar up using a negative margin
+
+            if (scrolltop > footertotop) {
+                $('#stat').css('margin-top',  0-difference);
+            }
+
+            else  {
+                $('#stat').css('margin-top', 0);
+            }
+
+        });
+
     })
     function loadPhotoDetail(){
     $.ajax({
@@ -68,6 +86,8 @@
         alert('Request Failed');
     });
 }
+
+
 
 
 </script>
