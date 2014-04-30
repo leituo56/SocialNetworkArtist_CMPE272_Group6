@@ -80,6 +80,8 @@ div#error1, div#error2 {
 }
 
 #stat{
+	position: fixed;
+	left: 68%;
     background: #eee;
     padding: 10px;
     float: right;
