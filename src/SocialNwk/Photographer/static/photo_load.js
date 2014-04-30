@@ -70,8 +70,8 @@ function onLoadData(data) {
       var html = '';
       html += '<li>';
       html += '<a href='+ photo_page_url+item.id+ '><img src="'+ item.file +'" width="190"></a>';
-      html += '<p><a href='+ photo_page_url+item.id+ '> Title:'+item.title+'</a></p>';
-      html += '<p><a href='+ user_url+item.author+ '> Title:'+item.authorName+'</p>';
+      html += '<p><a href='+ photo_page_url+item.id+ '> Title: '+item.title+'</a></p>';
+      html += '<p><a href='+ user_url+item.author+ '> Author: '+item.authorName+'</p>';
       html += '</li>';
 
       console.log("html:" + html);

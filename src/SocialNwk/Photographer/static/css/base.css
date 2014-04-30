@@ -89,6 +89,7 @@ html, body {
   height: 100px; 
 }
 .footer {
+	clear: both;
 	background:#fbc100;
 }
 

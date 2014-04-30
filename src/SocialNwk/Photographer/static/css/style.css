@@ -62,16 +62,29 @@ div#error1, div#error2 {
 
 /*photo detail page*/
 #bigPhoto {
-    width: 70%;
+    width: 65%;
 }
 #bigPhoto img{
     width: 100%;
     float: left;
-    margin-left: 30px;
+    clear: left;
+    margin: 5px 0px 15px 30px;
+    margin-top: 1%;
 }
+#head {
+    margin-left: 30px;
+    width: 65%;
+    float: left;
+    background: #eee;
+    padding: 0px 15px 5px;
+}
+
 #stat{
-    width: 28%;
-    margin-left: 1%;
+    background: #eee;
+    padding: 10px;
+    float: right;
+    width: 30%;
+    margin: 0% 1% 2%;
 }
 #stat li{
     display: block;
