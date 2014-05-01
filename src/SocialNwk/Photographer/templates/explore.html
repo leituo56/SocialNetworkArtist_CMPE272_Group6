@@ -44,7 +44,6 @@
   <!-- END filtering menu -->
 
   <div id="container"> 
-
     <div id="main" role="main">
       <ul id="tiles">
         <!-- Place content loaded photo from the photo API -->
@@ -87,6 +86,19 @@
           $(this).toggleClass('active');
           $(this).siblings().removeClass('hover active');
         });
+
+        //div follow scroll function
+        $(window).scroll(function(e){
+          $element = $('#filter');
+          if ($(this).scrollTop() > 150 && $element.css('position') != 'fixed'){
+              $('#filter').css({'position': 'fixed', 'top': '17%'});
+          }
+          if ($(this).scrollTop() < 150 && $element.css('position') == 'fixed'){
+              $('#filter').css({'position': 'static',
+                                 'top': '10%'
+                               });
+          }
+        });
   });
 
 
@@ -121,6 +133,7 @@
     clearPhotos();
     loadData();
   };
+
 
 
 

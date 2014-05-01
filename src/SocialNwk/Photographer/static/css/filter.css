@@ -20,16 +20,30 @@
           transition: all 0.3s ease-out;
 }
 
+/*for scrolling function*/
+div#filter {
+  margin: -40px 45px 0;
+  background: #c2c2c2;
+  z-index: 100;
+  position: static;
+  width: 80%; 
+  height:40px;
+}
+
+#filter ul {
+    margin: 0 auto;
+}
+
 /**
  * Filters
  */
-
 #filter ul li {
   list-style:none;
   float:left;
-  margin-right:15px;
+  margin-top: 4px;
+  margin-right:10px;
+  margin-left:10px;
   padding:6px 10px;
-  margin-bottom:20px;
   background:#eee;
   display:initial;
 }
