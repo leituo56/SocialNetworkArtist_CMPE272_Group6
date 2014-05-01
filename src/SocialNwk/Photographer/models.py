@@ -19,6 +19,7 @@ class Work(models.Model):
     title = models.CharField(max_length=50)
     file = models.FileField(upload_to=get_file_path)
     upload_time = models.DateTimeField(auto_now_add=True)
+    description = models.CharField(max_length=200, default="There's no description for this photo!")
 
     #EXIF data
     make = models.CharField(max_length=50, default='Undefined', blank=True)
@@ -64,8 +65,18 @@ def create_photo(sender, instance, created, **kwargs):
 
 
 class UserProfile(models.Model):
+    GENDER_CHOICES = (
+        ('M', 'Male'),
+        ('F', 'Female'),
+    )
     user = models.OneToOneField(User, related_name='profiles')
+    name = models.CharField(max_length=100, default='Mr/Ms. No Name')
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default='F')
+    head = models.FileField(upload_to=get_file_path, default='init/head.jpg', null=True)
+    career = models.CharField(max_length=100, default='Photographer')
     about = models.CharField(max_length=200, default='This guy is to lazy to introduce him/her self')
+    home_page = models.CharField(max_length=200, blank=True, default='')
+
     follows = models.ManyToManyField('UserProfile', related_name='followers', symmetrical=False)
 
     fav_make = models.CharField(max_length=100, default='', blank=True)
@@ -129,6 +140,7 @@ def get_stat(queryset):
         'fav_model': fav_model,
         'fav_category': fav_category,
     }
+
 
 class Comment(models.Model):
     #Basic Info

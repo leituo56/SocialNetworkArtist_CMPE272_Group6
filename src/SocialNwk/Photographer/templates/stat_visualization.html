@@ -22,7 +22,9 @@
 
   {% block content %}
   <!-- insert Histogram coding here-->
-  <!-- reference: http://bl.ocks.org/Caged/6476579-->
+  <!-- Bar chart reference: http://bl.ocks.org/Caged/6476579-->
+  <!-- Donut chart reference: http://bl.ocks.org/dbuezas/9306799 -->
+  
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 
@@ -108,4 +110,26 @@
   <!-- Need to finalized -->
   {% block foot_script %}
   <!-- Insert footer script here-->
-  {% endblock %}
+  <script>
+  //photo_list_url = "{% url 'photo:photo-list' %}";
+  //photo_page_url = "{% url 'photo:photo_page' 1 %}";
+  //user_url = "{% url 'photo:user_page' 1 %}";
+  //user_url = user_url.substring(0, user_url.length - 2);
+  //photo_page_url = photo_page_url.substring(0, photo_page_url.length - 2);
+
+  site_stat_url = "/api/photos/stat";
+
+
+  $(document).ready(function(){
+        //get site stat api /api/photos/stat 
+        loadStat();
+       
+
+  });
+</script>
+
+<!-- Include the    -->
+<script src="{% static 'site_stat.js' %}"></script>
+
+{% endblock %}
+

@@ -3,5 +3,5 @@ src/SocialNwk/.idea/*
 *.pyc
 *.exe
 *.sqlite3
-
+*.db
 src/SocialNwk/media/uploads/*
