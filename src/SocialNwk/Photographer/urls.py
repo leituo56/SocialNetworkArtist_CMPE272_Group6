@@ -35,7 +35,7 @@ urlpatterns = patterns('',
 
     # Wenjia 04/28/14 Comment
     url(r'^api/photos/(?P<pk>[0-9]+)/comment/$', views.comment_list, name = 'comment'),
-    #url(r'^api/photos/(?P<pk>[0-9]+)/post_comment/$', views.add_comment, name = 'comment'),
+    #url(r'^api/photos/(?P<pk>[0-9]+)/post_comment/$', views.add_comment, name = 'add_comment'),
     url(r'^test/$', views.test, name = 'test')
 )
 urlpatterns = format_suffix_patterns(urlpatterns)

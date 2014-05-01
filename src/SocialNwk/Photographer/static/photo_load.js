@@ -75,6 +75,25 @@ function onLoadData(data) {
       html += '<a href='+ photo_page_url+item.id+ '><img src="'+ item.file +'" width="190"></a>';
       html += '<p><a href='+ photo_page_url+item.id+ '> Title: '+item.title+'</a></p>';
       html += '<p><a href='+ user_url+item.author+ '> Author: '+item.authorName+'</p>';
+      if (item.portrait) {
+        html+='<button id="categories" disabled>P</button>';
+      }
+      if (item.landscape) {
+        html+='<button id="categories" disabled>L</button>'; 
+      }
+      if (item.telephoto) {
+        html+='<button id="categories" disabled>T</button>'; 
+      }
+      if (item.low_light) {
+        html+='<button id="categories" disabled>LL</button>'; 
+      }
+      if (item.high_speed) {
+        html+='<button id="categories" disabled>HS</button>'; 
+      }
+      if (item.long_exposure) {
+        html+='<button id="categories" disabled>LE</button>'; 
+      }
+
       html += '</li>';
 
       console.log("html:" + html);

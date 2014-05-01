@@ -93,6 +93,12 @@ font-weight: 200;
   margin: 7px 0 2px 7px;
 }
 
+button#categories {
+    background: #fbc100;
+    color: white;
+    border: none;
+    margin: 2px;
+}
 
 /**
  * Progress bar for imagesLoaded

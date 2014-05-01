@@ -1,8 +1,3 @@
-
-
-
-
-
 /*form style*/
 form {
 	background-color: white;
@@ -68,10 +63,10 @@ div#error1, div#error2 {
     width: 100%;
     float: left;
     clear: left;
-    margin: 5px 0px 15px 30px;
-    margin-top: 1%;
+    margin: 0px 0px 15px 30px;
+    margin-top: 0%;
 }
-#head {
+#head,#features {
     margin-left: 30px;
     margin-bottom: 10px;
     width: 65%;
@@ -94,4 +89,26 @@ div#error1, div#error2 {
     word-wrap: break-word;
     width: 90%;
 }
+
+li#features, li#off {
+    font-size: 12px;
+	list-style: none;
+    width: 14%;
+    padding: 0.5% 0.5%;
+    margin: 1%;
+    text-align: center;
+    float: left;
+
+}
+
+li#features {
+    background: #fbc100;
+    color: #ffffff;
+}
+
+li#off {
+	background: #e0e0e0;
+	color: #999;
+}
+
 
