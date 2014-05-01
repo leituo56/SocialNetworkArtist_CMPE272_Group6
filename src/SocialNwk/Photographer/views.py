@@ -274,8 +274,6 @@ def comment_list(request, pk, formal = None):
 # def add_comment(request):
 #     # Add a new comment
 #     if request.method == 'POST':
-#         form = DocumentForm(request.POST, request.FILES)
-#         if form.is_valid():
 #             newcomment = Comment(author=request.user, work=request.work, content=request.FILES['file'])
 #             #upload_time=datetime.now())
 #             newcomment.save()
