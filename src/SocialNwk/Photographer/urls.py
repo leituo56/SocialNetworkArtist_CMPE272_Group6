@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^feed/$', views.feed, name='feed'),
     url(r'^find/$', views.find_friends, name='find_friends'),
     url(r'^stat/$', views.site_stat, name='site_stat'),
+    url(r'^profile/edit/$', views.edit_profile, name='edit_profile'),
 
     url(r'^api/$', views.api_root, name='api_root'),
     url(r'^api/users/$', views.UserList.as_view(), name='user-list'),
@@ -27,6 +28,9 @@ urlpatterns = patterns('',
     url(r'^api/photos/$', views.PhotoList.as_view(), name='photo-list'),
     url(r'^api/photos/(?P<pk>[0-9]+)/$', views.PhotoDetail.as_view(), name='photo-detail'),
     url(r'^api/photos/stat/$', views.photo_stat, name='photo-stat'),
+
+    url(r'^api/profiles/$', views.ProfileList.as_view(), name='profile-list'),
+    url(r'^api/profiles/(?P<pk>[0-9]+)/$', views.ProfileDetail.as_view(), name='profile-detail'),
 
 
     # Wenjia 04/28/14 Comment

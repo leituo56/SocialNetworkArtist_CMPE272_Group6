@@ -15,15 +15,16 @@ from rest_framework import generics
 from rest_framework import filters
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework import renderers
 import rest_framework.reverse
 
 
+# View for test AJAX request and response
 @ensure_csrf_cookie
 def test(request):
     return render(request, 'test.html')
 
 
+# View for home page. Explore when logout, Feed when login
 @ensure_csrf_cookie
 def home(request):
     # work_list = Work.objects.all().order_by('-upload_time')
@@ -36,11 +37,13 @@ def home(request):
         # return render(request, 'index.html', {'work_list': work_list})
 
 
+# View for Explore Page
 @ensure_csrf_cookie
 def explore(request):
     return render(request, 'explore.html')
 
 
+# View for Feed Page
 @ensure_csrf_cookie
 def feed(request):
     if not request.user.is_authenticated():
@@ -48,15 +51,19 @@ def feed(request):
     return render(request, 'feed.html')
 
 
+# View for Find Friends Page
 def find_friends(request):
     if not request.user.is_authenticated():
         return redirect(reverse('photo:login'))
     return render(request, 'find_friends.html')
 
 
+# View for site stats page
+@ensure_csrf_cookie
 def site_stat(request):
     return render(request, 'site_stat.html')
 
+# View for Photo Detail Page
 @ensure_csrf_cookie
 def photo_page(request, pk):
     work = get_object_or_404(Work, pk=pk)
@@ -70,6 +77,7 @@ def photo_page(request, pk):
     return render(request, 'photo_page.html', {'pk': pk, 'followed': followed, 'author': author.id, 'me': me})
 
 
+# View for User Detail Page
 @ensure_csrf_cookie
 def user_page(request, pk):
     user = get_object_or_404(User, pk=pk)
@@ -82,6 +90,7 @@ def user_page(request, pk):
     return render(request, 'user_page.html', {'pk': pk, 'followed': followed, 'user_data': user, 'me': me})
 
 
+# View for Signup Page
 def signup(request):
     if request.method == 'POST':  # POST
         form = UserCreationForm(request.POST)
@@ -99,6 +108,7 @@ def signup(request):
         return render(request, "registration/signup.html", {'form': form})  # Signup Page
 
 
+# View for Login Page
 def login_view(request):
     if request.method == 'POST':  # POST
         username = request.POST['username']
@@ -114,11 +124,13 @@ def login_view(request):
         return render(request, 'registration/login.html')  # Login Page
 
 
+# API for logout
 def logout_view(request):
     logout(request)
     return redirect(reverse('photo:home'))
 
 
+# View for Upload Page
 def upload(request):
     if not request.user.is_authenticated():
         return redirect(reverse('photo:login'))
@@ -136,7 +148,17 @@ def upload(request):
     return render(request, 'upload.html', {'form': form})
 
 
-# Follow a user
+# View for Edit Profile Page
+@ensure_csrf_cookie
+def edit_profile(request):
+    if not request.user.is_authenticated():
+        return redirect(reverse('photo:login'))
+    pk = request.user.profile.id
+    user_profile = request.user.profile
+    return render(request, 'profile.html', {'pk': pk, 'profile': user_profile})
+
+
+# API, Follow a user
 @api_view(['GET', 'POST', ])
 def follow(request, pk, format=None):
     user = request.user
@@ -147,7 +169,7 @@ def follow(request, pk, format=None):
     return Response(data={'success': 1})
 
 
-# Unfollow a user
+# API, Unfollow a user
 @api_view(['GET', 'POST', ])
 def unfollow(request, pk, format=None):
     user = request.user
@@ -169,10 +191,12 @@ def api_root(request, format=None):
             'User Statistics': 'example: /api/users/1/stat',
             'follow someone': 'example: /api/users/1/follow',
             'unfollow someone': 'example: /api/users/1/unfollow',
+            'profiles': rest_framework.reverse.reverse('photo:profile-list', request=request),
         }
     )
 
 
+# RESTful API, User List
 class UserList(generics.ListAPIView):
     def get_queryset(self):
         queryset = User.objects.all()
@@ -203,11 +227,13 @@ class UserList(generics.ListAPIView):
     filter_fields = ('username',)
 
 
+# RESTful API, User Detail
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
+# API, user stats
 @api_view(('GET',))
 def user_stat(request, pk, format=None):
     target_user = get_object_or_404(User, pk=pk)
@@ -216,6 +242,7 @@ def user_stat(request, pk, format=None):
     return Response(result)
 
 
+# RESTful API, Photo List
 class PhotoList(generics.ListCreateAPIView):
     def pre_save(self, obj):
         obj.author = self.request.user
@@ -245,6 +272,7 @@ class PhotoList(generics.ListCreateAPIView):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
+# RESTful API, Photo Detail
 class PhotoDetail(generics.RetrieveUpdateDestroyAPIView):
     def pre_save(self, obj):
         obj.author = self.request.user
@@ -254,11 +282,31 @@ class PhotoDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,)
 
 
+# API, Photo Stat for all site
 @api_view(('GET',))
 def photo_stat(request, format=None):
     queryset = Work.objects.all()
     result = get_stat(queryset)
     return Response(result)
+
+
+class ProfileList(generics.ListAPIView):
+    def pre_save(self, obj):
+        obj.user = self.request.user
+
+    queryset = UserProfile.objects.all()
+    serializer_class = ProfileSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+
+class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
+    def pre_save(self, obj):
+        obj.user = self.request.user
+
+    queryset = UserProfile.objects.all()
+    serializer_class = ProfileSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsSelfOrReadOnly,)
+
 
 @api_view(('GET',))
 def comment_list(request, pk, formal = None):
