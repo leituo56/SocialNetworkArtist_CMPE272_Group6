@@ -68,6 +68,7 @@ function onLoadData(data) {
   console.log("data.count:" + data.count);
 
   if(data.count != 0){
+    finishLoad = false;
 
     $.each(data.results, function(i, item) {
       var html = '';
