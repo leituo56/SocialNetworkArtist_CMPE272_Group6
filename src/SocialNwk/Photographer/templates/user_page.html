@@ -16,13 +16,7 @@
             <button id="unfollow">Unfollow</button>
             <button id="follow">Follow</button>
             {% endif %}
-
-            {% if me %}
-            <!--find friends button-->
-            <p><a class="btn btn-primary" href="{% url 'photo:find_friends' %}" role="button">Find Friends &raquo;</a></p>
-
-            {% endif %}
-
+            
             <h4 class="fav" id="fav_make">Favorite Make: </h4>
             <h4 class="fav" id="fav_model">Favorite Model: </h4>
             <h4 class="fav" id="fav_category">Favorite Category: </h4>
