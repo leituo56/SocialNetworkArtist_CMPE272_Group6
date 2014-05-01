@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}TRENDS HISTOGRAM{% endblock %}
+{% block head_script %}
+    <link href="{% static 'css/site_stat.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'holder.js' %}"></script>
+{% endblock %}
+
+{% block header %}
+  <!-- Intro
+  ================================================== -->
+  <div class="introtitle">
+      <div class="container">
+          <h2>PHOTO.ME</h2>
+          <p>Current Trends on PHOTO.ME</p>
+      </div>
+
+  </div>
+  <!-- END Intro -->
+  {% endblock %}
+
+
+  {% block content %}
+  <!-- insert Histogram coding here-->
+  {% endblock %}
+
+  <!-- Need to finalized -->
+  {% block foot_script %}
+  <!-- Insert footer script here-->
+  {% endblock %}
