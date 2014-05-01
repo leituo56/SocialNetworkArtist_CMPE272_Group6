@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from Photographer.models import Work, UserProfile
-import rest_framework
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):

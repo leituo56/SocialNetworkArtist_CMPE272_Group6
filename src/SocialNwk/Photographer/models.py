@@ -75,7 +75,7 @@ class UserProfile(models.Model):
     head = models.FileField(upload_to=get_file_path, default='init/head.jpg', null=True)
     career = models.CharField(max_length=100, default='Photographer')
     about = models.CharField(max_length=200, default='This guy is to lazy to introduce him/her self')
-    home_page = models.URLField(blank=True)
+    home_page = models.CharField(max_length=200, blank=True, default='')
 
     follows = models.ManyToManyField('UserProfile', related_name='followers', symmetrical=False)
 
@@ -140,6 +140,7 @@ def get_stat(queryset):
         'fav_model': fav_model,
         'fav_category': fav_category,
     }
+
 
 class Comment(models.Model):
     #Basic Info
