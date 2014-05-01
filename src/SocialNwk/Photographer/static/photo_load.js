@@ -77,25 +77,25 @@ function onLoadData(data) {
 
       html += '<p><a href='+ user_url+item.author+ '> Author: '+item.authorName+'</p>';
       if (item.portrait) {
-        html+='<button id="categories" disabled>P</button>';
+        html+='<img id="categories" src="../static/images/portrait_yellow.png"/>';
       }
       if (item.landscape) {
-        html+='<button id="categories" disabled>L</button>'; 
+        html+='<img id="categories" src="../static/images/landscape_yellow.png"/>'; 
       }
       if (item.telephoto) {
-        html+='<button id="categories" disabled>T</button>'; 
+        html+='<img id="categories" src="../static/images/telephoto_yellow.png"/>'; 
       }
       if (item.low_light) {
-        html+='<button id="categories" disabled>LL</button>'; 
+        html+='<img id="categories" src="../static/images/lowlight_yellow.png"/>'; 
       }
       if (item.high_speed) {
-        html+='<button id="categories" disabled>HS</button>'; 
+        html+='<img id="categories" src="../static/images/highspeed_yellow.png"/>'; 
       }
       if (item.long_exposure) {
-        html+='<button id="categories" disabled>LE</button>'; 
+        html+='<img id="categories" src="../static/images/longexposure_yellow.png"/>'; 
       }
 
-      html += '</li>';
+      html += '<br/></li>';
 
       console.log("html:" + html);
 
