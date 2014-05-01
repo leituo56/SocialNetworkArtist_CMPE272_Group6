@@ -91,11 +91,11 @@
         $(window).scroll(function(e){
           $element = $('#filter');
           if ($(this).scrollTop() > 150 && $element.css('position') != 'fixed'){
-              $('#filter').css({'position': 'fixed', 'top': '17%'});
+              $('#filter').css({'position': 'fixed', 'top': '17%', 'width':'70%'});
           }
           if ($(this).scrollTop() < 150 && $element.css('position') == 'fixed'){
               $('#filter').css({'position': 'static',
-                                 'top': '10%'
+                                 'top': '10%', 'width': '80%'
                                });
           }
         });
