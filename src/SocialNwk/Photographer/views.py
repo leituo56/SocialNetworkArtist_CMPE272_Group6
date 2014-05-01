@@ -136,6 +136,15 @@ def upload(request):
     return render(request, 'upload.html', {'form': form})
 
 
+@ensure_csrf_cookie
+def edit_profile(request):
+    if not request.user.is_authenticated():
+        return redirect(reverse('photo:login'))
+    pk = request.user.profile.id
+    user_profile = request.user.profile
+    return render(request, 'profile.html', {'pk': pk, 'profile': user_profile})
+
+
 # Follow a user
 @api_view(['GET', 'POST', ])
 def follow(request, pk, format=None):
@@ -259,6 +268,25 @@ def photo_stat(request, format=None):
     queryset = Work.objects.all()
     result = get_stat(queryset)
     return Response(result)
+
+
+class ProfileList(generics.ListAPIView):
+    def pre_save(self, obj):
+        obj.user = self.request.user
+
+    queryset = UserProfile.objects.all()
+    serializer_class = ProfileSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+
+class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
+    def pre_save(self, obj):
+        obj.user = self.request.user
+
+    queryset = UserProfile.objects.all()
+    serializer_class = ProfileSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsSelfOrReadOnly,)
+
 
 @api_view(('GET',))
 def comment_list(request, pk, formal = None):

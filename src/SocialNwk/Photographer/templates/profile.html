@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+    <!-- Upload form. Note enctype attribute! -->
+    <form id="updateProfile" action="{% url 'photo:profile-detail' pk %}" method="POST" enctype="multipart/form-data"
+          class="form-horizontal">
+        <fieldset>
+            {% csrf_token %}
+            <div class="control-group ">
+                <label for="name" class="control-label">name:</label>
+                <div class="controls">
+                    <input name="name" type="text" required="required" value="{{ profile.name }}">
+                </div>
+            </div>
+            <div class="control-group ">
+                <label for="gender" class="control-label">gender:</label>
+                <div class="controls">
+                    <select name="gender">
+                        <option value="M">Male</option>
+                        <option value="F" selected="selected">Female</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group ">
+                <label for="head" class="control-label">head:</label>
+                <div class="controls">
+                    <input name="head" type="file" required="required">
+                </div>
+            </div>
+            <div class="control-group ">
+                <label for="career" class="control-label">career:</label>
+                <div class="controls">
+                    <input name="career" type="text" value="{{ profile.career }}">
+                </div>
+            </div>
+
+
+            <div class="control-group ">
+                <label for="about" class="control-label">about:</label>
+                <div class="controls">
+                    <input name="about" type="text" value="{{ profile.about }}">
+                </div>
+            </div>
+            <div class="control-group ">
+                <label for="home_page" class="control-label">home page:</label>
+                <div class="controls">
+                    <input name="home_page" type="text" value="{{ profile.home_page }}">
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary js-tooltip" name="_method" value="PUT"
+                        data-original-title="Make a PUT request on the Profile Detail resource">PUT
+                </button>
+            </div>
+            <input type="hidden" name="_method" value="PUT" />
+        </fieldset>
+    </form>
+{% endblock %}
+
+{% block foot_script %}
+<script>
+    $(document).ready(function(){
+        user_url = "{% url 'photo:user_page' 1 %}";
+        user_url = user_url.substring(0, user_url.length - 2);
+        $('#updateProfile').ajaxForm(function() {
+            window.location.replace(user_url+{{ user.id }});
+        });
+    });
+</script>
+{% endblock %}

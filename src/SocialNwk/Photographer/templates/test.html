@@ -32,7 +32,7 @@
         <option value="DELETE">DELETE</option>
     </select>
     <button id="testAjax" value="Test AJAX GET" >Test AJAX</button>
-    <button id="loadAjax" value="Load Photos" >Load Photos</button>
+{#    <button id="loadAjax" value="Load Photos" >Load Photos</button>#}
     <br/>
     <textarea id="requestData" style="width: 500px; height: 200px">{}</textarea>
 
@@ -41,7 +41,7 @@
 <div id="container"></div>
 
 <script>
-    loadMore();
+{#    loadMore();#}
     $(document).ready(function(){
         $("h2").append(csrftoken)
         $("#APIText").keydown(function(event) {

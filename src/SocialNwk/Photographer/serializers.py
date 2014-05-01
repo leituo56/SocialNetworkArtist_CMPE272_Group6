@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from Photographer.models import Work
+from Photographer.models import Work, UserProfile
 import rest_framework
 
 
@@ -14,6 +14,13 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     fav_model = serializers.Field(source='profile.fav_model')
     fav_category = serializers.Field(source='profile.fav_category')
 
+    name = serializers.Field(source='profile.name')
+    gender = serializers.Field(source='profile.gender')
+    head = serializers.Field(source='profile.head.url')
+    career = serializers.Field(source='profile.career')
+    about = serializers.Field(source='profile.about')
+    home_page = serializers.Field(source='profile.home_page')
+
     def is_follow_already(self, obj):
         user = self.context['request'].user
         if user.is_authenticated():
@@ -24,7 +31,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ('url', 'id', 'username', 'works', 'follows', 'followers', 'is_follow',
-                  'fav_make', 'fav_model', 'fav_category')
+                  'fav_make', 'fav_model', 'fav_category',
+                  'name', 'gender', 'head', 'career', 'about', 'home_page')
         #depth = 1
 
 
@@ -53,3 +61,12 @@ class PhotoSerializer(serializers.HyperlinkedModelSerializer):
                   'fnumber', 'focal_length', 'iso', 'processing_software',
                   'portrait', 'landscape', 'telephoto', 'low_light', 'high_speed', 'long_exposure')
         #depth = 1
+
+
+class ProfileSerializer(serializers.HyperlinkedModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(read_only=True)
+    url = serializers.HyperlinkedIdentityField(view_name='photo:user-detail')
+
+    class Meta:
+        model = UserProfile
+        fields = ('user', 'name', 'gender', 'head', 'career', 'about', 'home_page', 'url')
