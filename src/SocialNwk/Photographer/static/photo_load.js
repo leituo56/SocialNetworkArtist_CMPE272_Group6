@@ -77,22 +77,22 @@ function onLoadData(data) {
 
       html += '<p><a href='+ user_url+item.author+ '> Author: '+item.authorName+'</p>';
       if (item.portrait) {
-        html+='<img id="categories" src="../static/images/portrait_yellow.png"/>';
+        html+='<img id="categories" src="/static/images/portrait_yellow.png"/>';
       }
       if (item.landscape) {
-        html+='<img id="categories" src="../static/images/landscape_yellow.png"/>'; 
+        html+='<img id="categories" src="/static/images/landscape_yellow.png"/>'; 
       }
       if (item.telephoto) {
-        html+='<img id="categories" src="../static/images/telephoto_yellow.png"/>'; 
+        html+='<img id="categories" src="/static/images/telephoto_yellow.png"/>'; 
       }
       if (item.low_light) {
-        html+='<img id="categories" src="../static/images/lowlight_yellow.png"/>'; 
+        html+='<img id="categories" src="/static/images/lowlight_yellow.png"/>'; 
       }
       if (item.high_speed) {
-        html+='<img id="categories" src="../static/images/highspeed_yellow.png"/>'; 
+        html+='<img id="categories" src="/static/images/highspeed_yellow.png"/>'; 
       }
       if (item.long_exposure) {
-        html+='<img id="categories" src="../static/images/longexposure_yellow.png"/>'; 
+        html+='<img id="categories" src="/static/images/longexposure_yellow.png"/>'; 
       }
 
       html += '<br/></li>';

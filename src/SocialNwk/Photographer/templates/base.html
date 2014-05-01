@@ -4,12 +4,13 @@
 	<head>
 		<title>PHOTO.ME: {% block title %}Photographer Social Network{% endblock %}</title>
 		<meta charset="UTF-8"/>
-		<!--<link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />-->
-        <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css" />
-        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
 
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+
+		<!--<link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />-->
+        <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="{% static 'jquery.form.min.js' %}"></script>
@@ -39,9 +40,16 @@
                                 <li><a href="{% url 'photo:site_stat' %}">STATS</a></li>
                                 {% if user.is_authenticated %}
                                 <li><a href="{% url 'photo:feed' %}">FEED</a></li>
-                                <li><a id="myHome" href="#">{{ user.username }}</a></li>
-                                <li><a href="{% url 'photo:upload' %}">UPLOAD</a></li>
-                                <li><a href="{% url 'photo:logout' %}">LOGOUT</a></li>
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">{{ user.username }} <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">  
+                                        <li><a id="myHome" href="#">{{ user.username }} HOME</a></li>
+                                        <li><a href="{% url 'photo:find_friends' %}">FIND FRIENDS</a></li>
+                                        <li><a href="{% url 'photo:upload' %}">UPLOAD</a></li>
+                                        <li><a href="{% url 'photo:logout' %}">LOGOUT</a></li>
+                                    </ul>
+                                </li>
                                 {% else %}
                                 <li><a href="{% url 'photo:signup' %}">SIGNUP</a></li>
                                 <li><a href="{% url 'photo:login' %}">LOGIN</a></li>
@@ -49,12 +57,7 @@
                                 <li><a href="{% url 'photo:api_root' %}">API</a></li>
                                 <li><a href="{% url 'photo:test' %}">Test</a></li>
 
-                                <!--<li class="dropdown">
-                                    <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Features <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="columns.html">Columns</a></li>
-                                    </ul>
-                                </li>-->
+
                             </ul>
                         </div>
                         <!--/.nav-collapse -->
