@@ -34,11 +34,7 @@
   </div>
 
 
-
-
   <div class="container"> 
-  	<form role="form">
-
 	  <div class="checkbox">
 	    <label>
 	      <input type="checkbox" id="make" > Same favorate camera make as me
@@ -56,26 +52,19 @@
 	      <input type="checkbox" id="category"> Same favorate category as me
 	    </label>
 	  </div>
-
-	  <button type="submit" id="find" onClick= "load_userlist()" class="btn btn-default">Submit</button>
-	</form>
-
+	  <button id="find" onClick= "load_userlist()" class="btn btn-default">Submit</button>
   </div>
 
-
   <div class="container"> 
-  	<form role="form">
-  		<h4>User List</h4>
+  		<h4>User List: <span id ="list_title"></span></h4>
 	  	<ul id = "firends">
 
 	  		<!-- result user list -->
 
 	  	</ul>
-    </form>
   </div>
 
   <div id="loadMore"><a>Load More</a></div>
-
 
     
 {% endblock %}
@@ -88,17 +77,20 @@
 	  //if hit, add to user list #friends
 
   	current_user_url = "/api/users/"+ {{ user.id }};
-  	userlist_url = "/api/users/?find";
 
+    
+    user_url = "{% url 'photo:user_page' 1 %}";
+    user_url = user_url.substring(0, user_url.length - 2);
+  	
 	 $(document).ready(function(){
 	  	loadUser();
 	 });
 
 
-     function load_userlist(){
-		console.log("in load button");
-            
+  function load_userlist(){
 
+        userlist_url = "/api/users/?find";
+            
         if ($('#make').is(':checked') && $('#model').is(':checked') && $('#category').is(':checked')){  	
         	userlist_url += '&fav_make' + '&fav_model'+'&fav_category';
 
@@ -121,40 +113,10 @@
         	userlist_url += '&fav_category';
         };
 
-        console.log("clicked"+userlist_url);
+        clearUsers();
+        LoadUserList();
+  };
 
-        //userlist_url = "/api/users/?find&fav_model";
-        user_url = "{% url 'photo:user_page' 1 %}";
-		user_url = user_url.substring(0, user_url.length - 2);
-        loadUserList();
-
-
-        //$(document).bind('scroll', onScroll);
-
-		/**
-		* When scrolled all the way to the bottom, add more tiles.
-		*/
-
-		/*
-
-		//define load handler
-		var handler = null,
-		    //page = 1,
-		    isLoading = false,
-		    finishLoad = false;
-
-
-		function onScroll(event) {
-		  // Only check when we're not still waiting for data.
-		  if(!isLoading && !finishLoad) {
-		    // Check if we're within 100 pixels of the bottom edge of the broser window.
-		    var closeToBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 100);
-		    if(closeToBottom) {
-		      LoadUserList();
-		    }
-		  }
-		};*/
-     };
 
 </script>
 

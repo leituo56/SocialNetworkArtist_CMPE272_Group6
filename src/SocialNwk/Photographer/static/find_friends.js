@@ -1,19 +1,31 @@
 /**
  * Created by Xiaoli on 4/26/14.
  */
+//define load handler
+var handler = null,
+    //page = 1,
+    isLoading = false,
+    finishLoad = false;
+    countshow = false;
 
+$(document).bind('scroll', onScroll);
 
-
+function onScroll(event) {
+  // Only check when we're not still waiting for data.
+  if(!isLoading && !finishLoad) {
+    // Check if we're within 100 pixels of the bottom edge of the broser window.
+    var closeToBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 100);
+    if(closeToBottom) {
+      LoadUserList();
+    }
+  }
+};
 
 /**
 * Loads data from the API.
 */
 function LoadUserList() {
   isLoading = true;
-
-  console.log("in LoadUserList");
-  console.log("url:"+userlist_url);
-
   $.ajax({
     type: 'GET',
     url: userlist_url, // Page parameter to make sure we load new data
@@ -26,12 +38,16 @@ function LoadUserList() {
 * Receives data from the API, creates HTML for images and updates the layout
 */
 function onLoadUserList(data) {
-
   isLoading = false;
 
-  console.log("data.count:" + data.count);
-
   if(data.count != 0){
+    
+    finishLoad = false;
+
+    if(countshow ==false){
+      $("#list_title").append("( Count: " + data.count+ ")");
+      countshow=true;
+    };
 
     $.each(data.results, function(i, item) {
 
@@ -49,23 +65,25 @@ function onLoadUserList(data) {
     });
 
     if(data.next){
+      console.log("in next");
       userlist_url = data.next;
-      //page++; // Increment page index for future calls.
     }else{
+      console.log("in no more else");
       finishLoad = true;
-      //$('#loadMore a').off('click');
-      $('#loadMore').html('No more users')
-    }
-  } else {
-    console.log("in else");
-    finishLoad = true;
-    $('#loadMore').html('No Match User')
-  }
+      countshow = false;
+      $('#loadMore').html('No more users');
+    };
 
-    
+  } else {
+    console.log("in no data else");
+    finishLoad = true;
+    countshow = false;
+    $('#loadMore').html('No Match User');
+  }
 };
 
 function clearUsers(){
-    $('#friends').empty()
+    $('#friends').empty();
+    $('#list_title').empty();
 };
 
