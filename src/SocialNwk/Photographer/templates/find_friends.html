@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block title %}{{ user_data.username }}{% endblock %}
+{% block title %}{{ user.username }}{% endblock %}
 {% block head_script %}
     <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
 {% endblock %}
@@ -20,6 +20,20 @@
   {% endblock %}
 
 {% block content %}
+<div class="container"> 
+	<div id="head">
+        <div class="container">
+            <h4 id="photo_author"><a>{{ user.username }}</a></h4>
+
+            <h4 class="fav" id="fav_make">Favorite Make: </h4>
+            <h4 class="fav" id="fav_model">Favorite Model: </h4>
+            <h4 class="fav" id="fav_category">Favorite Category: </h4>
+
+        </div>
+    </div>
+  </div>
+
+
 
 
   <div class="container"> 
@@ -27,26 +41,23 @@
 
 	  <div class="checkbox">
 	    <label>
-	      <input type="checkbox" id="make" value="fav_make"> Same favorate camera make as me:
-	      	<p id="my_make">show my fav_make</p>
+	      <input type="checkbox" id="make" > Same favorate camera make as me
 	    </label>
 	  </div>
 
 	  <div class="checkbox">
 	    <label>
-	      <input type="checkbox" id="model" value="&fav_model"> Same favorate camera model as me:
-	      	<p id="my_model">show my fav_model</p>
+	      <input type="checkbox" id="model"> Same favorate camera model as me
 	    </label>
 	  </div>
 
 	  <div class="checkbox">
 	    <label>
-	      <input type="checkbox" id="category" value="&fav_category"> Same favorate category as me:
-	      <p id="my_category">show my fav_category</p>
+	      <input type="checkbox" id="category"> Same favorate category as me
 	    </label>
 	  </div>
 
-	  <button type="submit" id="find" class="btn btn-default">Submit</button>
+	  <button type="submit" id="find" onClick= "load_userlist()" class="btn btn-default">Submit</button>
 	</form>
 
   </div>
@@ -63,6 +74,8 @@
     </form>
   </div>
 
+  <div id="loadMore"><a>Load More</a></div>
+
 
     
 {% endblock %}
@@ -74,48 +87,81 @@
 	  //compare fav_make, fav_model. fav_category
 	  //if hit, add to user list #friends
 
-	  var parentText = window.opener.document.all.fav_make.value;
-		alert(parentText);
+  	current_user_url = "/api/users/"+ {{ user.id }};
+  	userlist_url = "/api/users/?find";
 
-	  userlist_url = "api/users/?find";
-
-
-  $(document).ready(function(){
-        $('#find').click(function(){
-            //header to find_friends page
-            //    "/api/users/?find"
+	 $(document).ready(function(){
+	  	loadUser();
+	 });
 
 
-            var x = document.getElementById("make").value;
-            console.log("x:"+x);
+     function load_userlist(){
+		console.log("in load button");
+            
 
-            // same make url:  api/users/?find&fav_make， api/users/?find&fav_model, api/users/?find&fav_category
+        if ($('#make').is(':checked') && $('#model').is(':checked') && $('#category').is(':checked')){  	
+        	userlist_url += '&fav_make' + '&fav_model'+'&fav_category';
 
-            //if first box clicked
-            //userlist_url += ;
+        } else if ($('#make').is(':checked') && $('#model').is(':checked')){
+        	userlist_url += '&fav_make' + '&fav_model';
 
-            //if second box clicked
-            userlist_url += "&fav_model";
+        } else if ($('#make').is(':checked') && $('#category').is(':checked')) {
+			userlist_url += '&fav_make'+'&fav_category';
 
-            //if second box clicked
-            userlist_url += "&fav_category";
+        } else if ($('#model').is(':checked') && $('#category').is(':checked')) {
+        	userlist_url += '&fav_model'+'&fav_category';
 
-            //if 1+2
+        } else if ($('#make').is(':checked')) {
+        	userlist_url += '&fav_make';
 
-            //if 1+3
+        } else if ($('#model').is(':checked')) {
+        	userlist_url += '&fav_model';
 
-            //if 2+3
+        } else if ($('#category').is(':checked')) {
+        	userlist_url += '&fav_category';
+        };
 
-            //if 1+2+3
+        console.log("clicked"+userlist_url);
+
+        //userlist_url = "/api/users/?find&fav_model";
+        user_url = "{% url 'photo:user_page' 1 %}";
+		user_url = user_url.substring(0, user_url.length - 2);
+        loadUserList();
 
 
-        });
-  });
+        //$(document).bind('scroll', onScroll);
+
+		/**
+		* When scrolled all the way to the bottom, add more tiles.
+		*/
+
+		/*
+
+		//define load handler
+		var handler = null,
+		    //page = 1,
+		    isLoading = false,
+		    finishLoad = false;
+
+
+		function onScroll(event) {
+		  // Only check when we're not still waiting for data.
+		  if(!isLoading && !finishLoad) {
+		    // Check if we're within 100 pixels of the bottom edge of the broser window.
+		    var closeToBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 100);
+		    if(closeToBottom) {
+		      LoadUserList();
+		    }
+		  }
+		};*/
+     };
 
 </script>
 
 <!-- Include the find API file -->
 <script src="{% static 'find_friends.js' %}"></script>
+
+<script src="{% static 'load_user.js' %}"></script>
 
 
 

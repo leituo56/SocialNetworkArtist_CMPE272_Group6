@@ -21,8 +21,6 @@
             <!--find friends button-->
             <p><a class="btn btn-primary" href="{% url 'photo:find_friends' %}" role="button">Find Friends &raquo;</a></p>
 
-            <button id="find_friends">Find Friends</button>
-
             {% endif %}
 
             <h4 class="fav" id="fav_make">Favorite Make: </h4>
@@ -89,11 +87,6 @@
                 $('#follow').show()
                 $('#unfollow').hide()
             }, 'json');
-        });
-
-        $('#find_friends').click(function(){
-            var myWindow = window.open("{% url 'photo:find_friends' %}","_self");
-
         });
 
     })

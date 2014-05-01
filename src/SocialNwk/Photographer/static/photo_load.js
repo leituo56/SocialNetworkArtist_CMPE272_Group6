@@ -74,6 +74,7 @@ function onLoadData(data) {
       html += '<li>';
       html += '<a href='+ photo_page_url+item.id+ '><img src="'+ item.file +'" width="190"></a>';
       html += '<p><a href='+ photo_page_url+item.id+ '> Title: '+item.title+'</a></p>';
+
       html += '<p><a href='+ user_url+item.author+ '> Author: '+item.authorName+'</p>';
       if (item.portrait) {
         html+='<button id="categories" disabled>P</button>';
