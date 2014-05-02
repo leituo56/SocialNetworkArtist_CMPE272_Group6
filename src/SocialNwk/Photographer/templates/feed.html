@@ -5,12 +5,13 @@
     <link href="{% static 'tuolei.css' %}" rel="stylesheet" type="text/css">
 {% endblock %}
 {% block content %}
-    <div id="container"></div>
+    <div id="container"><h2>FEED</h2></div>
     <div id="loadMore"><a>Load More</a></div>
 {% endblock %}
 
 {% block foot_script %}
 <script src="{% static 'tuolei.js' %}"></script>
+<script src="{% static 'jquery.timeago.js' %}"></script>
 <script>
     photo_list_url = "{% url 'photo:photo-list' %}" + "?feed";
     photo_page_url = "{% url 'photo:photo_page' 1 %}";
