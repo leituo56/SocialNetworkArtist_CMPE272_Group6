@@ -72,11 +72,11 @@ function onLoadData(data) {
     $.each(data.results, function(i, item) {
       var html = '';
       html += '<li>';
-      html += '<a href='+ photo_page_url+item.id+ '><img src="'+ item.file +'" width="190"></a>';
-      html += '<p><a href='+ photo_page_url+item.id+ '> Title: '+item.title+'</a></p>';
+      html += '<div class="item"><a href='+ photo_page_url+item.id+ '><img src="'+ item.file +'" width="190"></a></div>';
+      //html += '<p><a href='+ photo_page_url+item.id+ '> Title: '+item.title+'</a></p>';
 
-      html += '<p><a href='+ user_url+item.author+ '> Author: '+item.authorName+'</p>';
-      if (item.portrait) {
+     // html += '<p><a href='+ user_url+item.author+ '> Author: '+item.authorName+'</p>';
+      /*if (item.portrait) {
         html+='<img id="categories" src="/static/images/portrait_yellow.png"/>';
       }
       if (item.landscape) {
@@ -93,9 +93,9 @@ function onLoadData(data) {
       }
       if (item.long_exposure) {
         html+='<img id="categories" src="/static/images/longexposure_yellow.png"/>'; 
-      }
+      }*/
 
-      html += '<br/></li>';
+      html += '</li>';
 
       console.log("html:" + html);
 
