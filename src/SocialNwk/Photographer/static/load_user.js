@@ -24,9 +24,11 @@ function onLoadUser(data) {
 
   $("#fav_make").append("<span id='fav_tag' >" + data.fav_make+"</span>");
   $("#fav_model").append("<span id='fav_tag' >" +data.fav_model+"</span>");
-  $("#fav_category").append("<span id='fav_tag' >" +data.fav_category+"</span>");
+  var fav = data.fav_category;
+  fav = fav.replace('_',' ');
+  $("#fav_category").append("<span id='fav_tag' >" +fav+"</span>");
   $("img#userhead").attr("src",data.head);
-  $("#name").append("<span id='fav_tag' >" +data.name+"</span>");
+  $("#name").append("<span id='user_info_text' >" +data.name+"</span>");
   $("#gender").append("<span id='user_info_text' >" +data.gender+"</span>");
   $("#career").append("<span id='user_info_text' >" +data.career+"</span>");
   $("#about").append("<span id='user_info_text' >" +data.about+"</span>");

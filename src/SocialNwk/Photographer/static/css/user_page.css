@@ -3,23 +3,22 @@
  * Grid container
  */
 #tiles {
+    background: #fbc100;
   list-style-type: none;
   position: relative; /** Needed to ensure items are laid out relative to this container **/
-  margin: 0;
+  margin: 0 20px 0 28px;
   padding: 0;
   clear: both;
 }
 
+#tiles h2 {
+    margin: 30px 15px;
+}
 /**
  * Grid items
  */
 #tiles li {
   width: 200px;
-  background-color: #fff;
-  border: 2px solid #e3e3e3;
-          border-radius: 2px;
-     -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
   display: none; /** Hide items initially to avoid a flicker effect **/
   cursor: pointer;
   padding: 4px;
@@ -72,32 +71,39 @@ img#userhead {
   height:100%;
 }
 
+#container h2 {
+    margin: 5px 35px;
+}
+
 .userinfo {
   float:left;
   width: 500px;
   height: 100%;
   margin-top: 8px;
+    padding: 1px 2px 5px;
 }
 
 .userfav{
   float:right;
-  width: 320px;
+  width: 300px;
   height: 100%;
-  background-color: #e8e8e8;
-  margin-top: 8px;
-  margin-right: 5px;
+  background-color: #fbc100;
+  margin: 8px 5px;
+    padding: 2px 9px 15px;
+    border-radius: 10px;
 }
 
 .userfav_left{
   float:left;
   width: 320px;
   height: 100%;
-  background-color: #e8e8e8;
-  margin-top: 8px;
-  margin-left: 5px;
+  background-color: #fbc100;
+  margin: 8px 5px;
+    padding: 2px 0px 15px;
+    border-radius: 10px;
 }
 
-.userinfo h4{
+.userinfo h4,h5{
     margin-left: 5px;
 }
 
@@ -108,15 +114,13 @@ img#userhead {
     margin-left: 5px;
 }
 
-.userinfo h6{
-    margin-left: 5px;
-}
 
 span#fav_tag{
-  color:#fbc100;
+  color:white;
   font-weight: 400;
-  font-size:30px;
+  font-size:25px;
 }
+
 .nameimg{
   width: 120px;
   float:left;
@@ -166,5 +170,5 @@ span#find_fav{
 }
 
 #edit_profile{
-  float:right;
+
 }

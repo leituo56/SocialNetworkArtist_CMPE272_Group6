@@ -27,10 +27,10 @@
 
         <div class="userinfo">
             <h4 class="fav" id="name">Name: </h4>
-            <h6 class="fav" id="gender">Gender: </h6>
-            <h6 class="fav" id="career">Career: </h6>
-            <h6 class="fav" id="about">About: </h6>
-            <h6 class="fav" id="home_page">Home page: </h6>
+            <h5 class="fav" id="gender">Gender: </h5>
+            <h5 class="fav" id="career">Career: </h5>
+            <h5 class="fav" id="about">About: </h5>
+            <h5 class="fav" id="home_page">URL: </h5>
 
 
             {% if me %}
@@ -40,6 +40,7 @@
         </div>
 
         <div class="userfav">
+            <h2>ME.Favs</h2>
             <h4 class="fav" id="fav_make">Favorite Make: </h4>
             <h4 class="fav" id="fav_model">Favorite Model: </h4>
             <h4 class="fav" id="fav_category">Favorite Category: </h4>
@@ -49,7 +50,9 @@
 
     <div id="container">
         <div id="main" role="main">
+            <h2>ME.photos</h2>
             <ul id="tiles">
+
             <!-- Place content loaded photo from the photo API -->
             </ul>
         </div>
@@ -105,6 +108,7 @@
                 $('#unfollow').hide()
             }, 'json');
         });
+  
 
     })
 
@@ -117,6 +121,8 @@
 
 <!-- Include the plug-in -->
 <script src="{% static 'jquery.wookmark.min.js' %}"></script>
+
+<!--<script src="{% static 'jquery.row-grid.min.js' %}"></script>-->
 
 <!-- Include the photo_load.js -->
 <script src="{% static 'photo_load_grid.js' %}"></script>

@@ -91,6 +91,7 @@
   
   $(document).ready(function(){
         loadData();
+
         $('.button').hover(function(){
           $(this).toggleClass('hover');
           //$('img').toggleClass('hover');
@@ -132,9 +133,11 @@
           $(this).toggleClass('active');
           $('img',this).toggleClass('active');
           $(this).siblings().removeClass('hover active');
-          $('img',this).parent().siblings().find('img').removeClass('active');
-          
+          $('img',this).parent().siblings().find('img').removeClass('active').trigger('imgChanged');
         });
+
+        //event to change unclicked icon back to yellow
+        $('.button').on('imgChanged',switchToYellow);
 
 
         /*$(function(){
