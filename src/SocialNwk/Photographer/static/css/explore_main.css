@@ -61,9 +61,10 @@ header p {
  * Grid items
  */
 #tiles li {
-  width: 200px;
+
+  width: 300px;
   background-color: #f7f7f7;
-  border: 1px solid #dedede;
+  border: 2px solid #dedede;
           border-radius: 2px;
      -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
