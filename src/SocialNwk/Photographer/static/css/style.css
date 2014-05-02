@@ -93,7 +93,8 @@ div#error1, div#error2 {
 li#features, li#off {
     font-size: 12px;
 	list-style: none;
-    width: 14%;
+    width: 15%;
+    height: 33px;
     padding: 0.5% 0.5%;
     margin: 1%;
     text-align: center;
@@ -104,6 +105,11 @@ li#features, li#off {
 li#features {
     background: #fbc100;
     color: #ffffff;
+}
+
+li#features img#categories {
+    width: 25px;
+    height: 25px;
 }
 
 li#off {
