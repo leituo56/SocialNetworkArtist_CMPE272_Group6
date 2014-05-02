@@ -134,3 +134,7 @@ div#loadMore {
 div.container h4 {
     margin-top: 450px;
 }
+
+select.form-control{
+    width:100px;
+}

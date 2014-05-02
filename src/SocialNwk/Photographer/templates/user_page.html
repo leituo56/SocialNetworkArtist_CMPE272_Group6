@@ -4,11 +4,45 @@
 {% block head_script %}
     <!--<link href="{% static 'tuolei.css' %}" rel="stylesheet">-->
     <link href="{% static 'css/user_page.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/headshot_modal.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/follow_list.css' %}" rel="stylesheet" type="text/css">
+
 {% endblock %}
 {% block content %}
     <div id="head">
 
         <div class="nameimg">
+
+            {% if me %}
+            <!--headshot edit-->
+            <a href="#openModal" class="btn btn-default" id="changehead_btn">Change Head</a>
+            <div id="openModal" class="modalDialog">
+                <div class="container">
+                    <a href="#close" title="Close" class="close">X</a>
+                    <h2>Choose a new headshot</h2>
+                    <form id="updateHead" action="{% url 'photo:profile-detail' pk %}" method="POST" enctype="multipart/form-data"
+      class="form-horizontal">
+                        {% csrf_token %}
+               
+                        <label for="head" class="control-label">head:</label>
+                        <div class="controls">
+                            <input name="head" type="file" required="required" >
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn btn-primary js-tooltip" name="_method" value="PATCH"
+                                    data-original-title="Make a PATCH request on the Profile Detail resource">UPDATE
+                            </button>
+                        </div>
+
+                        <input type="hidden" name="_method" value="PATCH" />
+                    </form>
+
+                </div>                    
+            </div>  
+            {% endif %}
+            
+
             <a><img id="userhead"/>
             <h4 id="photo_author"> {{ user_data.username }}</a></h4>
 
@@ -18,9 +52,27 @@
             {% endif %}
 
             {% if me %}
-            <a class="btn btn-primary" id="chech_follow" href="" role="button">Check Follow</a>    
-            {% endif %}
+            <!--check follow-->
+            <a href="#openFollow" class="btn btn-primary" id="chech_follow">Check Follow</a>
+            <div id="openFollow" class="followlistModal">
+                <div class="container">
+                    <a href="#close" title="Close" class="close">X</a>
+                    <div class="container"> 
+                        <h2>Following</h2>
+                        <ul id="fowllowing">
+                            <!--following list-->
+                        </ul>
+                    </div>
 
+                    <div class="container"> 
+                        <h2>Followers</h2>
+                        <ul id="followers">
+                            <!--following list-->
+                        </ul>
+                    </div>               
+                </div>                    
+            </div>  
+            {% endif %}
 
 
         </div>
@@ -109,6 +161,15 @@
             }, 'json');
         });
   
+
+        //UPDATE Headshot
+        user_url = "{% url 'photo:user_page' 1 %}";
+        user_url = user_url.substring(0, user_url.length - 2);
+        $('#updateHead').ajaxForm(function() {
+            window.location.replace(user_url+{{ user.id }});
+        });
+
+
 
     })
 
