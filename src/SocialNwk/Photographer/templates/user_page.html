@@ -34,7 +34,7 @@
 
 
             {% if me %}
-            <a class="btn btn-default" id="edit_profile" href="#" role="button">Edit Profile</a>
+            <a class="btn btn-default" id="edit_profile" href="{% url 'photo:edit_profile' %}" role="button">Edit Profile</a>
             {% endif %}
 
         </div>
