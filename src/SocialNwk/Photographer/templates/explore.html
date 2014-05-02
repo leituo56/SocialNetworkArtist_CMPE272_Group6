@@ -32,29 +32,23 @@
       <ul>
         <li class='button' onclick="onClickFilter('All')"        >ALL</li>
         <li class='button' onclick="onClickFilter('portrait')"   >
-            <img class='icon1' id="categories" src="/static/images/portrait_yellow.png"
-            data-alt-src="/static/images/portrait_white.png"/>
+            <img class='icon1' id="categories" src="/static/images/portrait_yellow.png"/>
             &nbsp;portrait 
         </li>
         <li class='button' onclick="onClickFilter('landscape')"  >
-            <img class='icon2' id="categories" src="/static/images/landscape_yellow.png"
-            data-alt-src="/static/images/landscape_white.png"/>
+            <img class='icon2' id="categories" src="/static/images/landscape_yellow.png"/>
             &nbsp;landscape</li>
         <li class='button' onclick="onClickFilter('telephoto')"  >
-            <img class='icon3' id="categories" src="/static/images/telephoto_yellow.png"
-            data-alt-src="/static/images/telephoto_white.png"/>
+            <img class='icon3' id="categories" src="/static/images/telephoto_yellow.png"/>
             &nbsp;telephoto</li>
         <li class='button' onclick="onClickFilter('low_light')"  >
-            <img class='icon4' id="categories" src="/static/images/lowlight_yellow.png"
-            data-alt-src="/static/images/lowlight_white.png"/>
+            <img class='icon4' id="categories" src="/static/images/lowlight_yellow.png"/>
             &nbsp;low light</li>
         <li class='button' onclick="onClickFilter('high_speed')" >
-            <img class='icon5' id="categories" src="/static/images/highspeed_yellow.png"
-            data-alt-src="/static/images/highspeed_white.png"/>
+            <img class='icon5' id="categories" src="/static/images/highspeed_yellow.png"/>
             &nbsp;high speed</li>
         <li class='button' onclick="onClickFilter('long_exposure')">
-            <img class='icon6' id="categories" src="/static/images/longexposure_yellow.png"
-            data-alt-src="/static/images/longexposure_white.png"/>
+            <img class='icon6' id="categories" src="/static/images/longexposure_yellow.png"/>
             &nbsp;long exposure</li>
 
       </ul>
@@ -99,10 +93,13 @@
         loadData();
         $('.button').hover(function(){
           $(this).toggleClass('hover');
+          //$('img').toggleClass('hover');
+          //$('img',this).toggleClass('hover');
         });
 
         //switch color of icons on hover
         var switchToWhite = function() {
+          if ($('img',this).is('.active')) return;
           $('img.icon1',this).attr('src','/static/images/portrait_white.png');
           $('img.icon2',this).attr('src','/static/images/landscape_white.png');
           $('img.icon3',this).attr('src','/static/images/telephoto_white.png');
@@ -113,6 +110,7 @@
 
         //switch color of icons on unhover
         var switchToYellow = function() {
+          if ($('img',this).is('.active')) return;
           $('img.icon1',this).attr('src','/static/images/portrait_yellow.png');
           $('img.icon2',this).attr('src','/static/images/landscape_yellow.png');
           $('img.icon3',this).attr('src','/static/images/telephoto_yellow.png');
@@ -121,12 +119,19 @@
           $('img.icon6',this).attr('src','/static/images/longexposure_yellow.png');
         }
 
-        $('.button').mouseenter(switchToWhite);
-        $('.button').mouseleave(switchToYellow);
+        $('.button').mouseover(switchToWhite).mouseout(switchToYellow);
+        
+        /*$('img').mouseover(switchToWhite).mouseout(switchToYellow).click(function(){
+          $('.active').not(this).removeClass('active').trigger('mouseout');
+          $('img').addClass('active');
+          return false;
+        });*/
+        //$('.button').click(switchToWhite).mouseleave(switchToWhite);
           
         $('.button').click(function(){
           $(this).toggleClass('active');
-          $(this).siblings().removeClass('hover active');
+          $('img',this).toggleClass('active');
+          $(this).siblings().removeClass('hover active');          
         });
 
 
