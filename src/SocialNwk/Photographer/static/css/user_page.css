@@ -71,6 +71,12 @@ img#userhead {
   height:100%;
 }
 
+#head2 {
+    width: 50%;
+    height: 100%;
+    background: #eee;
+}
+
 #container h2 {
     margin: 5px 35px;
 }
@@ -85,7 +91,7 @@ img#userhead {
 
 .userfav{
   float:right;
-  width: 300px;
+  width: 350px;
   height: 100%;
   background-color: #fbc100;
   margin: 8px 5px;
@@ -95,11 +101,11 @@ img#userhead {
 
 .userfav_left{
   float:left;
-  width: 320px;
+  width: 350px;
   height: 100%;
   background-color: #fbc100;
   margin: 8px 5px;
-    padding: 2px 0px 15px;
+    padding: 2px 9px 15px;
     border-radius: 10px;
 }
 
@@ -139,22 +145,31 @@ span#user_info_text{
   margin-right: 10px;
 }
 
+.checkbox1 label {
+    padding: 15px 5px;
+}
+
 .checkboxes {
   float:left;
   width: 95%;
   height: 100%;
   padding: 10px;
-  background-color: #fbc100;
+  background-color: #eee;
   margin-left: 30px;
 }
 
+
+
 li#find_friend{
+    list-style: none;
   float:left;
-  width: 200px;
-  height: 150px;
+  width: 220px;
+  height: 180px;
   background-color: #e8e8e8;
   margin-top: 8px;
   margin-left: 5px;
+  padding: 10px;
+    border-radius: 10px;
 }
 
 img#find_head {
