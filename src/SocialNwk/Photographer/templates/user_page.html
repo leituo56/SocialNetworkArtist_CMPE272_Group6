@@ -16,6 +16,13 @@
             <button id="unfollow">Unfollow</button>
             <button id="follow">Follow</button>
             {% endif %}
+
+            {% if me %}
+            <a class="btn btn-primary" id="chech_follow" href="" role="button">Check Follow</a>    
+            {% endif %}
+
+
+
         </div>
 
         <div class="userinfo">
@@ -24,6 +31,11 @@
             <h6 class="fav" id="career">Career: </h6>
             <h6 class="fav" id="about">About: </h6>
             <h6 class="fav" id="home_page">Home page: </h6>
+
+
+            {% if me %}
+            <a class="btn btn-default" id="edit_profile" href="#" role="button">Edit Profile</a>
+            {% endif %}
 
         </div>
 

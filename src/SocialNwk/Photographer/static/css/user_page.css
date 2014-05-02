@@ -1,3 +1,4 @@
+
 /**
  * Grid container
  */
@@ -162,4 +163,8 @@ span#find_fav{
   color:#fbc100;
   font-weight: 500;
   font-size:15px;
+}
+
+#edit_profile{
+  float:right;
 }
