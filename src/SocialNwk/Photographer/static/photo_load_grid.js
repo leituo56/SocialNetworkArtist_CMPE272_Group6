@@ -68,15 +68,14 @@ function onLoadData(data) {
   console.log("data.count:" + data.count);
 
   if(data.count != 0){
-    finishLoad = false;
 
     $.each(data.results, function(i, item) {
       var html = '';
       html += '<li>';
-      html += '<a href='+ photo_page_url+item.id+ '><img src="'+ item.file +'" width="286"></a>';
+      html += '<a href='+ photo_page_url+item.id+ '><img src="'+ item.file +'" width="190"></a>';
       html += '<p><a href='+ photo_page_url+item.id+ '> Title: '+item.title+'</a></p>';
 
-      html += '<p><a href='+ user_url+item.author+ '> Author: '+item.authorName+'</a></p>';
+      html += '<p><a href='+ user_url+item.author+ '> Author: '+item.authorName+'</p>';
       if (item.portrait) {
         html+='<img id="categories" src="/static/images/portrait_yellow.png"/>';
       }

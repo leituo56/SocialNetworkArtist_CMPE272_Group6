@@ -1,0 +1,165 @@
+/**
+ * Grid container
+ */
+#tiles {
+  list-style-type: none;
+  position: relative; /** Needed to ensure items are laid out relative to this container **/
+  margin: 0;
+  padding: 0;
+  clear: both;
+}
+
+/**
+ * Grid items
+ */
+#tiles li {
+  width: 200px;
+  background-color: #fff;
+  border: 2px solid #e3e3e3;
+          border-radius: 2px;
+     -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  display: none; /** Hide items initially to avoid a flicker effect **/
+  cursor: pointer;
+  padding: 4px;
+}
+
+#tiles li.inactive {
+  visibility: hidden;
+  opacity: 0;
+}
+
+#tiles li img {
+  display: block;
+}
+
+#tiles img#categories{
+    height: 25px;
+    width: 25px;
+    float: left;
+    margin: 1px 1px;
+    padding-bottom: 2px;
+}
+
+/**
+ * Grid item text
+ */
+#tiles li p {
+  color: #fbc100;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: left;
+  font-weight: 200;
+  margin: 2px 0 2px 2px;
+}
+
+button#categories {
+    background: #fbc100;
+    color: white;
+    border: none;
+    margin: 2px;
+}
+
+img#userhead {
+    height: 100px;
+    width: 100px;
+    margin-top: 10px;
+}
+
+#head {
+  width:95%;
+  height:100%;
+}
+
+.userinfo {
+  float:left;
+  width: 500px;
+  height: 100%;
+  margin-top: 8px;
+}
+
+.userfav{
+  float:right;
+  width: 320px;
+  height: 100%;
+  background-color: #e8e8e8;
+  margin-top: 8px;
+  margin-right: 5px;
+}
+
+.userfav_left{
+  float:left;
+  width: 320px;
+  height: 100%;
+  background-color: #e8e8e8;
+  margin-top: 8px;
+  margin-left: 5px;
+}
+
+.userinfo h4{
+    margin-left: 5px;
+}
+
+.userfav h4{
+    margin-left: 5px;
+}
+.userfav_left h4{
+    margin-left: 5px;
+}
+
+.userinfo h6{
+    margin-left: 5px;
+}
+
+span#fav_tag{
+  color:#fbc100;
+  font-weight: 400;
+  font-size:30px;
+}
+.nameimg{
+  width: 120px;
+  float:left;
+}
+
+span#user_info_text{
+  color:#fbc100;
+  font-weight: 400;
+  font-size:20px;
+}
+
+/*******friend list page*******/
+.checkbox1 {
+  float:left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.checkboxes {
+  float:left;
+  width: 95%;
+  height: 100%;
+  padding: 10px;
+  background-color: #fbc100;
+  margin-left: 30px;
+}
+
+li#find_friend{
+  float:left;
+  width: 200px;
+  height: 150px;
+  background-color: #e8e8e8;
+  margin-top: 8px;
+  margin-left: 5px;
+}
+
+img#find_head {
+    height: 50px;
+    width: 50px;
+    margin: 5px;
+}
+
+span#find_fav{
+  color:#fbc100;
+  font-weight: 500;
+  font-size:15px;
+}
