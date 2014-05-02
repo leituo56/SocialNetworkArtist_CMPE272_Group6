@@ -28,10 +28,28 @@ function loadPhotos(){
             var min = timestamp.getMinutes();
             //var s = timestamp.getSeconds();
             var m_names = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
-            timestamp = y+' '+m_names[m]+' '+d+', '+h+':'+min;
+            timestamp = m_names[m]+' '+d+', '+y+' @ '+h+':'+min;
 
-            var html3 = '<br/><p>Uploaded: '+timestamp+'</p>';
-            elem.append(html3);
+            var html = '<br/><p>Uploaded: '+timestamp+'</p>';
+            if (item.portrait) {
+                html+='<img id="categories" src="/static/images/portrait_yellow.png"/>';
+              }
+              if (item.landscape) {
+                html+='<img id="categories" src="/static/images/landscape_yellow.png"/>'; 
+              }
+              if (item.telephoto) {
+                html+='<img id="categories" src="/static/images/telephoto_yellow.png"/>'; 
+              }
+              if (item.low_light) {
+                html+='<img id="categories" src="/static/images/lowlight_yellow.png"/>'; 
+              }
+              if (item.high_speed) {
+                html+='<img id="categories" src="/static/images/highspeed_yellow.png"/>'; 
+              }
+              if (item.long_exposure) {
+                html+='<img id="categories" src="/static/images/longexposure_yellow.png"/>'; 
+              }
+            elem.append(html);
             //elem = elem.replace('</div>',html3);
             $("#container").append(elem);
             

@@ -22,6 +22,12 @@ div#feed_photo p {
     overflow: hidden;
     height: 250px;
 }
+div#feed_photo img#categories {
+    width: 35px;
+    height: 35px;
+    float: left;
+    margin: 1px 2px;
+}
 #container div{
     float: left;
     margin: 10px;
