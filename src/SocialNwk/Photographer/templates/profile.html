@@ -2,6 +2,10 @@
 {% load staticfiles %}
 {% block title %}Profile{% endblock %}
 
+{% block head_script %}
+    <!--<link href="{% static 'css/profile.css' %}" rel="stylesheet" type="text/css">-->
+{% endblock %}
+
 {% block content %}
     <!-- Upload form. Note enctype attribute! -->
     <form id="updateProfile" action="{% url 'photo:profile-detail' pk %}" method="POST" enctype="multipart/form-data"
@@ -17,18 +21,34 @@
             <div class="control-group ">
                 <label for="gender" class="control-label">gender:</label>
                 <div class="controls">
-                    <select name="gender">
+                    <select class="form-control" name="gender">
                         <option value="M">Male</option>
                         <option value="F" selected="selected">Female</option>
                     </select>
                 </div>
             </div>
+
+            <!--
             <div class="control-group ">
                 <label for="head" class="control-label">head:</label>
-                <div class="controls">
-                    <input name="head" type="file" required="required">
-                </div>
+            </br>
+                <a><img id="userhead" src=" ../../media/{{ profile.head }}" width="100px" height="100px"/>
+
+                <a href="#openModal" class="btn btn-primary">Change Head</a>
+
+                <div id="openModal" class="modalDialog">
+                    <div>
+                        <a href="#close" title="Close" class="close">X</a>
+                        <h2>Choose a new headshot</h2>
+                        <div>
+                            <input name="head" type="file" required="required" value="../../media/{{ profile.head }}">
+                        </div>
+                    </div>                    
+                </div>  
             </div>
+        -->
+
+
             <div class="control-group ">
                 <label for="career" class="control-label">career:</label>
                 <div class="controls">
@@ -49,12 +69,14 @@
                     <input name="home_page" type="text" value="{{ profile.home_page }}">
                 </div>
             </div>
+            </br>
             <div class="form-actions">
-                <button class="btn btn-primary js-tooltip" name="_method" value="PUT"
-                        data-original-title="Make a PUT request on the Profile Detail resource">PUT
+                <button class="btn btn-primary js-tooltip" name="_method" value="PATCH"
+                        data-original-title="Make a PATCH request on the Profile Detail resource">UPDATE
                 </button>
             </div>
-            <input type="hidden" name="_method" value="PUT" />
+
+            <input type="hidden" name="_method" value="PATCH" />
         </fieldset>
     </form>
 {% endblock %}
