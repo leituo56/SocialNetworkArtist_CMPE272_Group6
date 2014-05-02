@@ -18,8 +18,8 @@ function loadPhotos(){
             var elem = photo_lite.clone();
             elem.find('img').attr('src', item.file);
             elem.children('a').eq(0).attr('href', photo_page_url+item.id);
-            elem.children('a').eq(1).attr('href', photo_page_url+item.id).html('Title: '+item.title);
-            elem.children('a').eq(2).attr('href', user_url+item.author).html('Author: '+item.authorName);
+            elem.children('a').eq(1).attr('href', photo_page_url+item.id).html(item.title);
+            elem.children('a').eq(2).attr('href', user_url+item.author).html('By: '+item.authorName);
             var timestamp = new Date(item.upload_time);
             var d = timestamp.getDate();
             var m = timestamp.getMonth();

@@ -74,9 +74,9 @@ function onLoadData(data) {
       var html = '';
       html += '<li>';
       html += '<a href='+ photo_page_url+item.id+ '><img src="'+ item.file +'" width="286"></a>';
-      html += '<p><a href='+ photo_page_url+item.id+ '> Title: '+item.title+'</a></p>';
+      html += '<p><a href='+ photo_page_url+item.id+ '>'+item.title+'</a></p>';
 
-      html += '<p><a href='+ user_url+item.author+ '> Author: '+item.authorName+'</a></p>';
+      html += '<p><a href='+ user_url+item.author+ '> By: '+item.authorName+'</a></p>';
       if (item.portrait) {
         html+='<img id="categories" src="/static/images/portrait_yellow.png"/>';
       }
