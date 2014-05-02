@@ -31,12 +31,31 @@
     <div id="filter">
       <ul>
         <li class='button' onclick="onClickFilter('All')"        >ALL</li>
-        <li class='button' onclick="onClickFilter('portrait')"   >portrait</li>
-        <li class='button' onclick="onClickFilter('landscape')"  >landscape</li>
-        <li class='button' onclick="onClickFilter('telephoto')"  >telephoto</li>
-        <li class='button' onclick="onClickFilter('low_light')"  >low light</li>
-        <li class='button' onclick="onClickFilter('high_speed')" >high speed</li>
-        <li class='button' onclick="onClickFilter('long_exposure')">long exposure</li>
+        <li class='button' onclick="onClickFilter('portrait')"   >
+            <img class='icon1' id="categories" src="/static/images/portrait_yellow.png"
+            data-alt-src="/static/images/portrait_white.png"/>
+            &nbsp;portrait 
+        </li>
+        <li class='button' onclick="onClickFilter('landscape')"  >
+            <img class='icon2' id="categories" src="/static/images/landscape_yellow.png"
+            data-alt-src="/static/images/landscape_white.png"/>
+            &nbsp;landscape</li>
+        <li class='button' onclick="onClickFilter('telephoto')"  >
+            <img class='icon3' id="categories" src="/static/images/telephoto_yellow.png"
+            data-alt-src="/static/images/telephoto_white.png"/>
+            &nbsp;telephoto</li>
+        <li class='button' onclick="onClickFilter('low_light')"  >
+            <img class='icon4' id="categories" src="/static/images/lowlight_yellow.png"
+            data-alt-src="/static/images/lowlight_white.png"/>
+            &nbsp;low light</li>
+        <li class='button' onclick="onClickFilter('high_speed')" >
+            <img class='icon5' id="categories" src="/static/images/highspeed_yellow.png"
+            data-alt-src="/static/images/highspeed_white.png"/>
+            &nbsp;high speed</li>
+        <li class='button' onclick="onClickFilter('long_exposure')">
+            <img class='icon6' id="categories" src="/static/images/longexposure_yellow.png"
+            data-alt-src="/static/images/longexposure_white.png"/>
+            &nbsp;long exposure</li>
 
       </ul>
     </div>
@@ -82,20 +101,49 @@
           $(this).toggleClass('hover');
         });
 
+        //switch color of icons on hover
+        var switchToWhite = function() {
+          $('img.icon1',this).attr('src','/static/images/portrait_white.png');
+          $('img.icon2',this).attr('src','/static/images/landscape_white.png');
+          $('img.icon3',this).attr('src','/static/images/telephoto_white.png');
+          $('img.icon4',this).attr('src','/static/images/lowlight_white.png');
+          $('img.icon5',this).attr('src','/static/images/highspeed_white.png');
+          $('img.icon6',this).attr('src','/static/images/longexposure_white.png');
+        }
+
+        //switch color of icons on unhover
+        var switchToYellow = function() {
+          $('img.icon1',this).attr('src','/static/images/portrait_yellow.png');
+          $('img.icon2',this).attr('src','/static/images/landscape_yellow.png');
+          $('img.icon3',this).attr('src','/static/images/telephoto_yellow.png');
+          $('img.icon4',this).attr('src','/static/images/lowlight_yellow.png');
+          $('img.icon5',this).attr('src','/static/images/highspeed_yellow.png');
+          $('img.icon6',this).attr('src','/static/images/longexposure_yellow.png');
+        }
+
+        $('.button').mouseenter(switchToWhite);
+        $('.button').mouseleave(switchToYellow);
+          
         $('.button').click(function(){
           $(this).toggleClass('active');
           $(this).siblings().removeClass('hover active');
         });
 
+
+        /*$(function(){
+            $('img.icons').hover(sourceSwap, sourceSwap);
+            $('img.icons').active(sourceSwap, sourceSwap);
+        });*/
+
         //div follow scroll function
         $(window).scroll(function(e){
           $element = $('#filter');
-          if ($(this).scrollTop() > 150 && $element.css('position') != 'fixed'){
-              $('#filter').css({'position': 'fixed', 'top': '17%', 'width':'70%'});
+          if ($(this).scrollTop() > 138 && $element.css('position') != 'fixed'){
+              $('#filter').css({'position': 'fixed', 'top': '17.5%', 'width':'88.5%'});
           }
-          if ($(this).scrollTop() < 150 && $element.css('position') == 'fixed'){
+          if ($(this).scrollTop() < 138 && $element.css('position') == 'fixed'){
               $('#filter').css({'position': 'static',
-                                 'top': '10%', 'width': '80%'
+                                 'top': '10%', 'width': '100%'
                                });
           }
         });

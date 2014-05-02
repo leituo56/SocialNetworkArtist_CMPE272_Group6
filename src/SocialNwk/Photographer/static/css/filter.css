@@ -22,12 +22,12 @@
 
 /*for scrolling function*/
 div#filter {
-  margin: -40px 45px 0;
+  margin-top: -45px;
   background: #c2c2c2;
   z-index: 100;
   position: static;
-  width: 80%; 
-  height:40px;
+  width: 100%; 
+  height:55px;
 }
 
 #filter ul {
@@ -40,12 +40,13 @@ div#filter {
 #filter ul li {
   list-style:none;
   float:left;
-  margin-top: 4px;
+  margin-top: 9px;
   margin-right:10px;
   margin-left:10px;
   padding:6px 10px;
   background:#eee;
   display:initial;
+  height: 35px;
 }
 #filter ul li a {
   color:#333;
@@ -64,4 +65,9 @@ div#filter {
 #filter ul li.active {
   background-color: #fbc100;
   color: #ffffff;
+}
+
+#filter img {
+  height: 25px;
+  width: 25px;
 }
