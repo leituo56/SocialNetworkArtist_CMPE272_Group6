@@ -15,8 +15,18 @@ function loadStat() {
     type: 'GET',
     url: site_stat_url, // Page parameter to make sure we load new data
     dataType: 'json',
-    success: onLoadStat //pass get data to onLoadData function
+    success: onLoadStat, //pass get data to onLoadData function
+    error: errorFn,
+    complete: function (xhr, status){
+      console.log("The request is complete");
+    }
   });
+};
+/**
+* Xiumei add errorFn
+*/
+function errorFn(xhr, status, strErr){
+  console.log("There was an error!");
 };
 
 /**
