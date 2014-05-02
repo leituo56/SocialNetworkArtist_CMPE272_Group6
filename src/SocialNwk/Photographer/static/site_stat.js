@@ -25,8 +25,8 @@ function loadStat() {
 /**
 * Xiumei add errorFn
 */
-function errorFn(xhr, status, strErr){
-  console.log("There was an error!");
+function errorFn(xhr){
+  console.log("There was an error!" + str(xhr));
 };
 
 /**
@@ -35,31 +35,39 @@ function errorFn(xhr, status, strErr){
 function onLoadStat(data) {
 
   console.log("data.category_stat:" + data.category_stat);
+  function changeToPercent(val){
+    var num = parseFloat(val);
+    var percent = num*100;
+    var showPct = percent.toFixed(1) + "%";
+    return showPct;
+  }
 
   //data.make_stat - first layer of JSON key i, value item
   $.each(data.make_stat, function(i, item) {
     //second layer of JSON key key, value val 
-    $.each(item, function(key, val) {      
+    $.each(item, function(key, val) {
+    //by sammie:convert the "val" string into percentage number 
+          
       switch(i){     
         case 0:
           if(key =="make"){
             $("#fav_make_1").append(val);
           } else if(key =="pct") {
-            $("#fav_make_1_pct").append(val);
+            $("#fav_make_1_pct").append(changeToPercent(val));
           }
           break;
         case 1:
           if(key =="make"){
             $("#fav_make_2").append(val);
           } else if(key =="pct"){
-            $("#fav_make_2_pct").append(val);
+            $("#fav_make_2_pct").append(changeToPercent(val));
           }
           break;
         case 2:
           if(key =="make"){
             $("#fav_make_3").append(val);
           } else if(key =="pct"){
-            $("#fav_make_3_pct").append(val);
+            $("#fav_make_3_pct").append(changeToPercent(val));
           }
           break;
       }
@@ -75,21 +83,21 @@ function onLoadStat(data) {
           if(key =="model"){
             $("#fav_model_1").append(val);
           } else if(key =="pct"){
-            $("#fav_model_1_pct").append(val);
+            $("#fav_model_1_pct").append(changeToPercent(val));
           }
           break;
         case 1:
           if(key =="model"){
             $("#fav_model_2").append(val);
           } else if(key =="pct"){
-            $("#fav_model_2_pct").append(val);
+            $("#fav_model_2_pct").append(changeToPercent(val));
           }
           break;
         case 2:
           if(key =="model"){
             $("#fav_model_3").append(val);
           } else if(key =="pct"){
-            $("#fav_model_3_pct").append(val);
+            $("#fav_model_3_pct").append(changeToPercent(val));
           }
           break;
       }
@@ -105,21 +113,21 @@ function onLoadStat(data) {
           if(key =="name"){
             $("#fav_category_1").append(val);
           } else {
-            $("#fav_category_1_pct").append(val);
+            $("#fav_category_1_pct").append(changeToPercent(val));
           }
           break;
         case 1:
           if(key =="name"){
             $("#fav_category_2").append(val);
           } else {
-            $("#fav_category_2_pct").append(val);
+            $("#fav_category_2_pct").append(changeToPercent(val));
           }
           break;
         case 2:
           if(key =="name"){
             $("#fav_category_3").append(val);
           } else {
-            $("#fav_category_3_pct").append(val);
+            $("#fav_category_3_pct").append(changeToPercent(val));
           }
           break;
       }
