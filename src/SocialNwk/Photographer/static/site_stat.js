@@ -5,11 +5,18 @@
 /**
 * Loads data from the API.
 */
+/**
+* Xiumei: add errorFn
+*/
+function errorFn(xhr){
+  console.log("There was an error!" + str(xhr));
+};
+
 function loadStat() {
   //isLoading = true;
 
   console.log("in loadStat");
-  console.log("url:"+site_stat_url);
+  console.log("url:" + site_stat_url);
 
   $.ajax({
     type: 'GET',
@@ -17,17 +24,21 @@ function loadStat() {
     dataType: 'json',
     success: onLoadStat, //pass get data to onLoadData function
     error: errorFn,
-    complete: function (xhr, status){
+    complete: function () {
       console.log("The request is complete");
     }
   });
-};
+} ;
+
 /**
-* Xiumei add errorFn
+* convert the "val" string into percentage 
 */
-function errorFn(xhr){
-  console.log("There was an error!" + str(xhr));
-};
+function changeToPercent(val){
+    var num = parseFloat(val);
+    var percent = num*100;
+    var showPct = percent.toFixed(1) + "%";
+    return showPct;
+  }
 
 /**
 * Receives data from the API, creates HTML for images and updates the layout
@@ -35,19 +46,11 @@ function errorFn(xhr){
 function onLoadStat(data) {
 
   console.log("data.category_stat:" + data.category_stat);
-  function changeToPercent(val){
-    var num = parseFloat(val);
-    var percent = num*100;
-    var showPct = percent.toFixed(1) + "%";
-    return showPct;
-  }
 
   //data.make_stat - first layer of JSON key i, value item
   $.each(data.make_stat, function(i, item) {
     //second layer of JSON key key, value val 
     $.each(item, function(key, val) {
-    //by sammie:convert the "val" string into percentage number 
-          
       switch(i){     
         case 0:
           if(key =="make"){
