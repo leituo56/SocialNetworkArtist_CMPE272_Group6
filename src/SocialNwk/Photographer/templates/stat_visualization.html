@@ -4,7 +4,14 @@
 {% block head_script %}
     <link href="{% static 'css/site_stat.css' %}" rel="stylesheet" type="text/css">
     <script src="{% static 'holder.js' %}"></script>
-
+    <script>
+      site_stat_url = "/api/photos/stat";
+      $(document).ready(function(){
+        //get site stat api /api/photos/stat 
+        loadStat();
+      });
+    </script>
+    <script src="{% static 'site_stat.js' %}"></script>
 {% endblock %}
 
 {% block header %}
@@ -51,6 +58,34 @@
       <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
     </div>
  </div>
+  
+    <div class="container">
+    <!-- Top 1 made  model category-->
+    <div class="col-md-4">
+        <h4>Trending Camera Make Top 1</h4>
+        <h4 class="trends" id="fav_make_1"> </h4>
+        <span class="trends" id="fav_make_1_pct"> </span>
+        <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail"> 
+        <a class="btn btn-default" id="fav_make_1_btn" href="#" role="button">View Photos &raquo;</a>    
+    </div>
+
+    <div class="col-md-4">       
+      <h4>Trending Camera Model Top 1</h4>
+      <h4 class="trends" id="fav_model_1"> </h4>
+      <span class="trends" id="fav_model_1_pct"> </span>
+      <img data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+      <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+    </div>
+
+    <div class="col-md-4">
+      <h4>Trending Category Top 1</h4>
+      <h4 class="trends" id="fav_category_1"> </h4>
+      <span class="trends" id="fav_category_1_pct"> </span>
+      <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+      <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+    </div>
+ </div>
+  
   
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
@@ -137,26 +172,10 @@
   <!-- Need to finalized -->
   {% block foot_script %}
   <!-- Insert footer script here-->
-  <script>
-  //photo_list_url = "{% url 'photo:photo-list' %}";
-  //photo_page_url = "{% url 'photo:photo_page' 1 %}";
-  //user_url = "{% url 'photo:user_page' 1 %}";
-  //user_url = user_url.substring(0, user_url.length - 2);
-  //photo_page_url = photo_page_url.substring(0, photo_page_url.length - 2);
-
-  site_stat_url = "/api/photos/stat";
-
-
-  $(document).ready(function(){
-        //get site stat api /api/photos/stat 
-        loadStat();
-       
-
-  });
-</script>
+  
 
 <!-- Include the    -->
-<script src="{% static 'site_stat.js' %}"></script>
+
 
 {% endblock %}
 
