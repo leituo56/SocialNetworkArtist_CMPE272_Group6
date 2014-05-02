@@ -76,7 +76,7 @@ function onLoadData(data) {
       html += '<a href='+ photo_page_url+item.id+ '><img src="'+ item.file +'" width="190"></a>';
       html += '<p><a href='+ photo_page_url+item.id+ '> Title: '+item.title+'</a></p>';
 
-      html += '<p><a href='+ user_url+item.author+ '> Author: '+item.authorName+'</p>';
+      html += '<p><a href='+ user_url+item.author+ '> Author: '+item.authorName+'</a></p>';
       if (item.portrait) {
         html+='<img id="categories" src="/static/images/portrait_yellow.png"/>';
       }
