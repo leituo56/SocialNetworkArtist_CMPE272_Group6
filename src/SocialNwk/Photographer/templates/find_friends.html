@@ -3,6 +3,7 @@
 {% block title %}{{ user.username }}{% endblock %}
 {% block head_script %}
     <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/user_page.css' %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
 
@@ -20,34 +21,35 @@
   {% endblock %}
 
 {% block content %}
-<div class="container"> 
-	<div id="head">
-        <div class="container">
-            <h4 id="photo_author"><a>{{ user.username }}</a></h4>
 
+    <div id="head">
+        <div class="nameimg">
+            <a><img id="userhead"/>
+            <h4 id="photo_author"> {{ user.username }}</a></h4>
+        </div>
+
+
+        <div class="userfav_left">
             <h4 class="fav" id="fav_make">Favorite Make: </h4>
             <h4 class="fav" id="fav_model">Favorite Model: </h4>
             <h4 class="fav" id="fav_category">Favorite Category: </h4>
-
         </div>
     </div>
-  </div>
 
-
-  <div class="container"> 
-	  <div class="checkbox">
+  <div class="checkboxes"> 
+	  <div class="checkbox1">
 	    <label>
 	      <input type="checkbox" id="make" > Same favorate camera make as me
 	    </label>
 	  </div>
 
-	  <div class="checkbox">
+	  <div class="checkbox1">
 	    <label>
 	      <input type="checkbox" id="model"> Same favorate camera model as me
 	    </label>
 	  </div>
 
-	  <div class="checkbox">
+	  <div class="checkbox1">
 	    <label>
 	      <input type="checkbox" id="category"> Same favorate category as me
 	    </label>
@@ -57,10 +59,8 @@
 
   <div class="container"> 
   		<h4>User List: <span id ="list_title"></span></h4>
-	  	<ul id = "firends">
-
+	  	<ul id="firends">
 	  		<!-- result user list -->
-
 	  	</ul>
   </div>
 
@@ -98,7 +98,7 @@
         	userlist_url += '&fav_make' + '&fav_model';
 
         } else if ($('#make').is(':checked') && $('#category').is(':checked')) {
-			userlist_url += '&fav_make'+'&fav_category';
+			     userlist_url += '&fav_make'+'&fav_category';
 
         } else if ($('#model').is(':checked') && $('#category').is(':checked')) {
         	userlist_url += '&fav_model'+'&fav_category';

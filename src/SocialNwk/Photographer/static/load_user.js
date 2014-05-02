@@ -22,9 +22,14 @@ function onLoadUser(data) {
   //console.log("in onloaduser");
   //console.log("data.make:" + data.fav_make);
 
-  $("#fav_make").append(data.fav_make);
-  $("#fav_model").append(data.fav_model);
-  $("#fav_category").append(data.fav_category);
-
+  $("#fav_make").append("<span id='fav_tag' >" + data.fav_make+"</span>");
+  $("#fav_model").append("<span id='fav_tag' >" +data.fav_model+"</span>");
+  $("#fav_category").append("<span id='fav_tag' >" +data.fav_category+"</span>");
+  $("img#userhead").attr("src",data.head);
+  $("#name").append("<span id='fav_tag' >" +data.name+"</span>");
+  $("#gender").append("<span id='user_info_text' >" +data.gender+"</span>");
+  $("#career").append("<span id='user_info_text' >" +data.career+"</span>");
+  $("#about").append("<span id='user_info_text' >" +data.about+"</span>");
+  $("#home_page").append("<span id='user_info_text' >" +data.home_page+"</span>");
 
 };

@@ -52,9 +52,12 @@ function onLoadUserList(data) {
     $.each(data.results, function(i, item) {
 
       var html = '';
-      html += '<li>';
+      html += '<li id="find_friend" >';
+      html += '<img id="find_head" src="'+ item.head+'"/>';
       html += '<a href='+ user_url+item.id+ '>'+item.username+'</a>';
-      html += '<p>Fav_make: '+item.fav_make+ '   Fav_Model: '+item.fav_model+ '  Fav_Cate: '+item.fav_category+'</p>';
+      html += '<p> Fav_make: <span id="find_fav"> '+item.fav_make+'</span></p>';
+      html += '<p> Fav_Model: <span id="find_fav">'+item.fav_model +'</span></p>';
+      html += '<p> Fav_Category: <span id="find_fav"> '+item.fav_category+'</span></p>';
       html += '</li>';
 
       console.log("html:" + html);
@@ -83,7 +86,8 @@ function onLoadUserList(data) {
 };
 
 function clearUsers(){
-    $('#friends').empty();
+    console.log("in clear");
+    $('#firends').empty();
     $('#list_title').empty();
 };
 
