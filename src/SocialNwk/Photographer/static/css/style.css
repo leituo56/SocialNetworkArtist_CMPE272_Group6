@@ -105,6 +105,7 @@ li#features, li#off {
 li#features {
     background: #fbc100;
     color: #ffffff;
+    width: 125px;
 }
 
 li#features img#categories {
@@ -120,12 +121,16 @@ li#off {
 div#find {
     margin-left: 30px;
     background: #eee;
-    padding: 20px;
-    width: 65%;
+    padding: 15px;
+    width: 90%;
 }
 
 /*for load more*/
 div#loadMore {
     text-align: center;
     margin: 20px;
+}
+
+div.container h4 {
+    margin-top: 450px;
 }
