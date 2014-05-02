@@ -111,4 +111,15 @@ li#off {
 	color: #999;
 }
 
+div#find {
+    margin-left: 30px;
+    background: #eee;
+    padding: 20px;
+    width: 65%;
+}
 
+/*for load more*/
+div#loadMore {
+    text-align: center;
+    margin: 20px;
+}

@@ -139,11 +139,11 @@
         $(window).scroll(function(e){
           $element = $('#filter');
           if ($(this).scrollTop() > 138 && $element.css('position') != 'fixed'){
-              $('#filter').css({'position': 'fixed', 'top': '17.5%', 'width':'88.5%'});
+              $('#filter').css({'position': 'fixed', 'top': '17.5%', 'width':'940px'});
           }
           if ($(this).scrollTop() < 138 && $element.css('position') == 'fixed'){
               $('#filter').css({'position': 'static',
-                                 'top': '10%', 'width': '100%'
+                                 'top': '10%', 'width': '940px'
                                });
           }
         });

@@ -11,7 +11,7 @@
   ================================================== -->
   <div class="introtitle">
       <div class="container">
-          <h2>PHOTO.ME  -  Find Photographor Just Like YOU</h2>
+          <h2>Find Photographers Like ME</h2>
       </div>
 
   </div>
@@ -35,33 +35,37 @@
 
 
   <div class="container"> 
+    <div id='find'><h3>Find on Photo.Me who have:</h3>
 	  <div class="checkbox">
 	    <label>
-	      <input type="checkbox" id="make" > Same favorate camera make as me
+	      <input type="checkbox" id="make" > Same favorite camera make as me
 	    </label>
 	  </div>
 
 	  <div class="checkbox">
 	    <label>
-	      <input type="checkbox" id="model"> Same favorate camera model as me
+	      <input type="checkbox" id="model"> Same favorite camera model as me
 	    </label>
 	  </div>
 
 	  <div class="checkbox">
 	    <label>
-	      <input type="checkbox" id="category"> Same favorate category as me
+	      <input type="checkbox" id="category"> Same favorite photo category as me
 	    </label>
 	  </div>
 	  <button id="find" onClick= "load_userlist()" class="btn btn-default">Submit</button>
+   </div>
   </div>
 
   <div class="container"> 
-  		<h4>User List: <span id ="list_title"></span></h4>
-	  	<ul id = "firends">
+  		<div id='friends'>
+        <h4>User List: <span id ="list_title"></span></h4>
+	  	  <ul id = "friends">
 
 	  		<!-- result user list -->
 
-	  	</ul>
+	  	  </ul>
+      </div>
   </div>
 
   <div id="loadMore"><a>Load More</a></div>
