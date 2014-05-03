@@ -57,7 +57,10 @@ d3.tsv("data.tsv", type, function(error, data) {
       .attr("dy", ".71em")
       .style("text-anchor", "end")
       .text("Frequency");
-
+  //for debugging
+  data =[{title:"Good Stock",values:[10,20,30,40,50]},
+         {title:"Bad Stock",values:[40,20,1,35,12]},
+         {title:"Bostock",values:[1,1,2,3,5,8,13,21,34,55,89]}];
   svg.selectAll(".bar")
       .data(data)
     .enter().append("rect")
@@ -76,3 +79,23 @@ function type(d) {
   return d;
 }
 
+function statVisualize(){
+  console.log("in loadStat");
+  console.log("url:"+site_stat_url);
+  
+  $.ajax({
+    type: 'GET',
+    url: site_stat_url, // Page parameter to make sure we load new data
+    dataType: 'json',
+    success: showStatData
+     //pass get data to onLoadData function
+    error: errorFn,
+    complete: function (xhr, status){
+      console.log("The request is complete");
+    }
+  });
+}
+
+function showStatData(data) {
+  
+}
