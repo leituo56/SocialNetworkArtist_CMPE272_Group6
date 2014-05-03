@@ -57,7 +57,6 @@
 #user_tiles {
     min-width: 850px;
     max-width: 1500px;
-    background-color: #fbc100;
     margin: 5px -8px;
     width: 100%;
 }
@@ -67,6 +66,7 @@
     list-style: none;
     padding: 10px;
     float: left;
+    border: 1px solid white;
 }
 
 #user_tiles li div {
@@ -128,7 +128,7 @@ img#userhead {
 
 .userfav{
   float:right;
-  width: 350px;
+  width: 300px;
   height: 100%;
   background-color: #fbc100;
   margin: 8px 5px;
@@ -138,10 +138,10 @@ img#userhead {
 
 .userfav_left{
   float:left;
-  width: 350px;
+  width: 300px;
   height: 100%;
   background-color: #fbc100;
-  margin: 8px 5px;
+  margin: 8px 35px;
     padding: 2px 9px 15px;
     border-radius: 10px;
 }
@@ -195,13 +195,17 @@ span#user_info_text{
   margin-left: 30px;
 }
 
+li#find_friend h4 {
+    text-decoration: underline;
+    font-variant: small-caps;
+}
 
 
 li#find_friend{
     list-style: none;
   float:left;
   width: 220px;
-  height: 180px;
+  height: 210px;
   background-color: #e8e8e8;
   margin-top: 8px;
   margin-left: 5px;
