@@ -72,7 +72,7 @@ function onLoadData(data) {
     $.each(data.results, function(i, item) {
       var html = '';
       html += '<li>';
-      html += '<div class="item"><a href='+ photo_page_url+item.id+ '><img src="'+ item.file +'" width="190"></a></div>';
+      html += '<div class="item"><a href='+ photo_page_url+item.id+ '><img src="'+ item.file +'"></a></div>';
       //html += '<p><a href='+ photo_page_url+item.id+ '> Title: '+item.title+'</a></p>';
 
      // html += '<p><a href='+ user_url+item.author+ '> Author: '+item.authorName+'</p>';

@@ -1,6 +1,7 @@
 div#feed_photo{
     background: #eee;
     border: 1px solid #dedede;
+    width: 75%;
     padding: 20px 100px 5px 20px;
     border-radius: 5px;
 }
@@ -14,9 +15,13 @@ div#feed_photo p {
     clear: both;
 }
 
-#container div img, #container div a{
-    width: 500px;
-    height: auto;
+#container div a{
+    display: block;
+}
+
+#container div img {
+    width: auto;
+    height: 300px;
     display: block;
 }
 

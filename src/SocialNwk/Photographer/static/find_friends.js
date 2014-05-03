@@ -45,7 +45,7 @@ function onLoadUserList(data) {
     finishLoad = false;
 
     if(countshow ==false){
-      $("#list_title").append("(Count: " + data.count+ ")");
+      $("#list_title").append("(ME.Matches: " + data.count+ ")");
       countshow=true;
     };
 
