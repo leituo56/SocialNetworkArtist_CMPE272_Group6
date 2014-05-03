@@ -31,9 +31,9 @@
 
         <div class="userfav_left">
           <h2>ME.Favs</h2>
-            <h4 class="fav" id="fav_make">Make: </h4>
-            <h4 class="fav" id="fav_model">Model: </h4>
-            <h4 class="fav" id="fav_category">Category: </h4>
+            <h4 class="fav" id="fav_make">Make: <span id="fav_make_pct"></span></h4>
+            <h4 class="fav" id="fav_model">Model: <span id="fav_model_pct"></span></h4>
+            <h4 class="fav" id="fav_category">Category: <span id="fav_catagory_pct"></span></h4>
         </div>
     </div>
 
@@ -90,6 +90,7 @@
   	
 	 $(document).ready(function(){
 	  	loadUser();
+      loadPct();
 	 });
 
 
