@@ -290,6 +290,7 @@ def photo_stat(request, format=None):
     return Response(result)
 
 
+# API, Profile List
 class ProfileList(generics.ListAPIView):
     def pre_save(self, obj):
         obj.user = self.request.user
@@ -299,6 +300,7 @@ class ProfileList(generics.ListAPIView):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
+# API, Profile Detail
 class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
     def pre_save(self, obj):
         obj.user = self.request.user

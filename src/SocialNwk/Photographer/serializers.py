@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from Photographer.models import Work, UserProfile
 
 
+# User Serializer
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     works = serializers.HyperlinkedRelatedField(many=True, view_name='photo:photo-detail', read_only=True)
     url = serializers.HyperlinkedIdentityField(view_name='photo:user-detail')
@@ -35,6 +36,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         #depth = 1
 
 
+# Photo Serializer
 class PhotoSerializer(serializers.HyperlinkedModelSerializer):
     #author = serializers.RelatedField()
     author = serializers.PrimaryKeyRelatedField(read_only=True)
@@ -62,6 +64,7 @@ class PhotoSerializer(serializers.HyperlinkedModelSerializer):
         #depth = 1
 
 
+# Profile Serializer
 class ProfileSerializer(serializers.HyperlinkedModelSerializer):
     user = serializers.PrimaryKeyRelatedField(read_only=True)
     url = serializers.HyperlinkedIdentityField(view_name='photo:user-detail')
