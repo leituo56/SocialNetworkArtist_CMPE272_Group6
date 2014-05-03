@@ -58,13 +58,14 @@ function onLoadFollowList(data) {
 
       var html = '';
       html += '<li id="follow_result" >';
-      html += '<img id="" src="/media/'+ item.head+'"/>';
+      html += '<img id="" src="/media/'+ item.head+'"/><br/>';
       html += '<a href='+ user_url+item.id+ '>'+item.name+'</a>';
-      html += '<p> Fav Make: <span id=""> '+item.fav_make+'</span></p>';
-      html += '<p> Fav Model: <span id="">'+item.fav_model +'</span></p>';
+      html += '<h4>Favs</h4>';
+      html += '<p>Make: <span id=""> '+item.fav_make+'</span></p>';
+      html += '<p>Model: <span id="">'+item.fav_model +'</span></p>';
       var cat = item.fav_category;
       cat = cat.replace("_"," ");
-      html += '<p> Fav Category: <span id=""> '+cat+'</span></p>';
+      html += '<p>Category: <span id=""> '+cat+'</span></p>';
       html += '</li>';
 
       console.log("html following:" + html);
@@ -87,13 +88,14 @@ function onLoadFollowList(data) {
 
       var html = '';
       html += '<li id="follow_result" >';
-      html += '<img id="" src="/media/'+ item.head+'"/>';
+      html += '<img id="" src="/media/'+ item.head+'"/><br/>';
       html += '<a href='+ user_url+item.id+ '>'+item.name+'</a>';
-      html += '<p> Fav Make: <span id=""> '+item.fav_make+'</span></p>';
-      html += '<p> Fav Model: <span id="">'+item.fav_model +'</span></p>';
+      html += '<h4>Favs</h4>';
+      html += '<p>Make: <span id=""> '+item.fav_make+'</span></p>';
+      html += '<p>Model: <span id="">'+item.fav_model +'</span></p>';
       var cat = item.fav_category;
       cat = cat.replace("_"," ");
-      html += '<p> Fav Category: <span id=""> '+cat+'</span></p>';
+      html += '<p>Category: <span id=""> '+cat+'</span></p>';
       html += '</li>';
 
       console.log("html followers:" + html);

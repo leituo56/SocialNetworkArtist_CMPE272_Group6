@@ -47,8 +47,8 @@
             <h4 id="photo_author"> {{ user_data.username }}</a></h4>
 
             {% if not me %}
-            <button id="unfollow">Unfollow</button>
-            <button id="follow">Follow</button>
+            <button id="unfollow">ME.Unfollow</button>
+            <button id="follow">ME.Follow</button>
             {% endif %}
 
 
@@ -93,9 +93,12 @@
 
         <div class="userfav">
             <h2>ME.Favs</h2>
-            <h4 class="fav" id="fav_make">Make: <span id="fav_make_pct"></span></h4>
-            <h4 class="fav" id="fav_model">Model: <span id="fav_model_pct"></span></h4>
-            <h4 class="fav" id="fav_category">Category: <span id="fav_catagory_pct"></span></h4>
+            <h4 class="fav">Make: <span id="fav_make"></span> 
+                <span class='pct' id="fav_make_pct"></span></h4>
+            <h4 class="fav">Model: <span id="fav_model"></span> 
+                <span class='pct' id="fav_model_pct"></span></h4>
+            <h4 class="fav">Category: <span id="fav_category"> </span>
+                <span class='pct' id="fav_catagory_pct"></span></h4>
         </div>
     </div>
 
