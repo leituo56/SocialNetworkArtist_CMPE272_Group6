@@ -16,7 +16,8 @@
   ================================================== -->
   <div class="introtitle">
       <div class="container">
-          <h2>TRENDING on Photo.Me</h2>
+          <h2>PHOTO.ME</h2>
+          <p>Current Trends on PHOTO.ME</p>
       </div>
 
   </div>
@@ -27,15 +28,7 @@
 {% block content %}
 
   <div class="container">
-    <!-- Top 1 made  model category-->
-    <div class="col-md-4">
-        <h4>Trending Camera Make Top 1</h4>
-        <h4 class="trends" id="fav_make_1"> </h4>
-        <span class="trends" id="fav_make_1_pct"> </span>
-        <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail"> 
-        <a class="btn btn-default" id="fav_make_1_btn" href="#" role="button">View Photos &raquo;</a>    
-    </div>
-
+    
     <div class="col-md-4">       
       <h4>Trending Camera Model Top 1</h4>
       <h4 class="trends" id="fav_model_1"> </h4>
@@ -55,8 +48,19 @@
 
   <!---Bar chart-->
   <div class="container">
-    <div id="visual_container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-  </div>
+    <div class="col-md-9 col-md-push-3" id="visual_container" style="min-width: 310px; height: 400px; margin: 0 auto">
+    </div>
+    <div class="col-md-3 col-md-pull-9">
+      <h4>Trending Camera Make Top 3</h4>
+      <h4 class="trends" id="fav_make_1"> </h4>
+      <span class="trends" id="fav_make_1_pct"> </span>
+      <div class="rotateShowPic">
+        <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Photo Gallery">
+        <img data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Photo Gallery">
+      </div> 
+      <a class="btn btn-default" id="fav_make_1_btn" href="#" role="button">View Photos &raquo;</a>
+    </div>
+  </div><!---End Bar chart-->
 
   <div class="container">
     <!-- Top 2 made  model category-->
@@ -112,11 +116,6 @@
     </div>
   </div>
 
-  <div id="container"> 
-  </div>
-
-
-    
 {% endblock %}
 
 {% block foot_script %}

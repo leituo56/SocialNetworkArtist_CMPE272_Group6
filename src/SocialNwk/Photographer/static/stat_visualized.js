@@ -25,7 +25,7 @@ function statVisualize(){
 
 function showStatData() {
   //$(function () {
-        $('#container').highcharts({
+        $('#visual_container').highcharts({
             chart: {
                 type: 'column'
             },
@@ -90,6 +90,4 @@ function showStatData() {
             }]
         });
   //  });
-    
-  
 }
