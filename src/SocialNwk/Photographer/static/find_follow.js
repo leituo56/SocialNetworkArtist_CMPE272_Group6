@@ -2,11 +2,11 @@
  * Created by Xiaoli on 05/02/14.
  */
 //define load handler
-var handler = null,
+/*var handler = null,
     //page = 1,
     isLoading = false,
     finishLoad = false;
-    countshow = false;
+    countshow = false;*/
 
 //$(document).bind('scroll', onScroll);
 
@@ -25,10 +25,10 @@ var handler = null,
 * Loads data from the API.
 */
 function LoadFollowList() {
-  isLoading = true;
+  //isLoading = true;
   $.ajax({
     type: 'GET',
-    url: userlist_url, // Page parameter to make sure we load new data
+    url: current_user_url, // Page parameter to make sure we load new data
     dataType: 'json',
     success: onLoadFollowList //pass get data to onLoadData function
   });
@@ -38,53 +38,93 @@ function LoadFollowList() {
 * Receives data from the API, creates HTML for images and updates the layout
 */
 function onLoadFollowList(data) {
-  isLoading = false;
+  //isLoading = false;
 
-  if(data.count != 0){
+  //if(data.count != 0){
     
-    finishLoad = false;
+    //finishLoad = false;
 
-    if(countshow ==false){
+    /*if(countshow ==false){
       $("#list_title").append("(Count: " + data.count+ ")");
       countshow=true;
-    };
+    };*/
 
-    $.each(data.results, function(i, item) {
+  /*
+  read follows list
+  */
+  if(data.follows != null){
+
+    $.each(data.follows, function(i, item) {
 
       var html = '';
-      html += '<li id="find_friend" >';
-      html += '<img id="find_head" src="'+ item.head+'"/>';
-      html += '<a href='+ user_url+item.id+ '>'+item.username+'</a>';
-      html += '<p> Fav Make: <span id="find_fav"> '+item.fav_make+'</span></p>';
-      html += '<p> Fav Model: <span id="find_fav">'+item.fav_model +'</span></p>';
+      html += '<li id="follow_result" >';
+      html += '<img id="" src="/media/'+ item.head+'"/>';
+      html += '<a href='+ user_url+item.id+ '>'+item.name+'</a>';
+      html += '<p> Fav Make: <span id=""> '+item.fav_make+'</span></p>';
+      html += '<p> Fav Model: <span id="">'+item.fav_model +'</span></p>';
       var cat = item.fav_category;
       cat = cat.replace("_"," ");
-      html += '<p> Fav Category: <span id="find_fav"> '+cat+'</span></p>';
+      html += '<p> Fav Category: <span id=""> '+cat+'</span></p>';
       html += '</li>';
 
-      console.log("html:" + html);
+      console.log("html following:" + html);
 
       // Add user HTML to the page.
-      $("#firends").append(html);
+      $("#following").append(html);
 
     });
+  } else {
+    var html = '<p> No Follows </p>';
+    $("#following").append(html);
+  }
 
-    if(data.next){
+  /*
+  read followers list
+  */
+  if(data.followers != null){
+
+    $.each(data.followers, function(i, item) {
+
+      var html = '';
+      html += '<li id="follow_result" >';
+      html += '<img id="" src="/media/'+ item.head+'"/>';
+      html += '<a href='+ user_url+item.id+ '>'+item.name+'</a>';
+      html += '<p> Fav Make: <span id=""> '+item.fav_make+'</span></p>';
+      html += '<p> Fav Model: <span id="">'+item.fav_model +'</span></p>';
+      var cat = item.fav_category;
+      cat = cat.replace("_"," ");
+      html += '<p> Fav Category: <span id=""> '+cat+'</span></p>';
+      html += '</li>';
+
+      console.log("html followers:" + html);
+
+      // Add user HTML to the page.
+      $("#followers").append(html);
+
+    });
+  } else {
+    var html = '<p> No Followers </p>';
+    $("#followers").append(html);
+  }
+
+
+
+    /*if(data.next){
       console.log("in next");
-      userlist_url = data.next;
+      current_user_url = data.next;
     }else{
       console.log("in no more else");
       finishLoad = true;
       countshow = false;
       $('#loadMore').html('No more users');
-    };
+    };*/
 
-  } else {
+  /*} else {
     console.log("in no data else");
-    finishLoad = true;
-    countshow = false;
-    $('#loadMore').html('No users like ME');
-  }
+    //finishLoad = true;
+   // countshow = false;
+    //$('#loadMore').html('No users like ME');
+  }*/
 };
 
 function clearUsers(){
