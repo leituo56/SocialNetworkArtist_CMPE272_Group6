@@ -6,7 +6,6 @@ demo.js from https://github.com/bennoleslie/jsjpegmeta
 
 */
 
-
 (function () {
     /* Imports */
     var $j = this.JpegMeta.JpegFile;
@@ -33,8 +32,13 @@ demo.js from https://github.com/bennoleslie/jsjpegmeta
 	return (a > b) ? 1 : (a == b) ? 0 : -1;
     }
 
-    function convertExpo(){
-    	
+    function convertExpo(expo){
+        console.log("in convertExpo");
+        var newexpo = expo.replace(/\s+/g, '');
+        console.log("exposure time:" + newexpo);
+        var expoarr = expo.split('/');
+        var expovalue = parseInt(expoarr[0])/parseInt(expoarr[1]);
+        return expovalue;
     }
 
     function loadFiles(files) {
@@ -89,6 +93,12 @@ demo.js from https://github.com/bennoleslie/jsjpegmeta
 		            		$("model").value = prop.value;
 		            		break;
 		            	case "Exposure time":
+		            		//var expo= prop.value;
+		            		//expovalue=convertExpo(expo);
+		            		//var newexpo = expo.replace(/\s+/g, '');
+		            		//console.log("exposure time:" + newexpo);
+			            	//var expoarr = expo.split('/');
+							//var expovalue = parseInt(expoarr[0])/parseInt(expoarr[1]);
 
 		            		//$("exposure_time").value = prop.value;	            		
 		            		break;
