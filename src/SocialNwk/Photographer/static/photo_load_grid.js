@@ -100,7 +100,7 @@ function onLoadData(data) {
       console.log("html:" + html);
 
       // Add image HTML to the page.
-      $("#tiles").append(html);
+      $("#user_tiles").append(html);
 
       //Apply layout.
       applyLayout();
