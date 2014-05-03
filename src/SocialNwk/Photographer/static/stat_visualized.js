@@ -46,17 +46,17 @@ function showStatData(arg1, arg2,arg3) {
         if( arg3 == "cameraMake"){
             barData.title={text: 'Camera Make Trending Rate'};
             //barData.series=[{name: 'Camera Make', data: [41.7, 29.2, 29.2]}];
-            barData.series=[{name: 'Camera Make', data: arg2}];
+            barData.series=[{name: 'Camera Make', color: '#fbc100', data: arg2}];
             $('#visual_container1').highcharts(barData);
          } 
          else if (arg3 =="cameraModel") {
             barData.title={text: 'Camera Model Trending Rate'};
-            barData.series=[{name: 'Camera Model', data: arg2}];
+            barData.series=[{name: 'Camera Model',color: '#5bc0de', data: arg2}];
             $('#visual_container2').highcharts(barData);
          } 
          else if (arg3 == "categoryTrends"){
             barData.title={text: 'Category Trending Rate'};
-            barData.series=[{name: 'Category', data: arg2}];
+            barData.series=[{name: 'Category', color: '#5bc85c', data: arg2}];
             $('#visual_container3').highcharts(barData);
          }
 }
