@@ -55,11 +55,12 @@ function onLoadUserList(data) {
       html += '<li id="find_friend" >';
       html += '<img id="find_head" src="'+ item.head+'"/>';
       html += '<a href='+ user_url+item.id+ '>'+item.username+'</a>';
-      html += '<p> Fav Make: <span id="find_fav"> '+item.fav_make+'</span></p>';
-      html += '<p> Fav Model: <span id="find_fav">'+item.fav_model +'</span></p>';
+      html += '<h4>Favs</h4>';
+      html += '<p>Make: <span id="find_fav"> '+item.fav_make+'</span></p>';
+      html += '<p>Model: <span id="find_fav">'+item.fav_model +'</span></p>';
       var cat = item.fav_category;
       cat = cat.replace("_"," ");
-      html += '<p> Fav Category: <span id="find_fav"> '+cat+'</span></p>';
+      html += '<p>Category: <span id="find_fav"> '+cat+'</span></p>';
       html += '</li>';
 
       console.log("html:" + html);
