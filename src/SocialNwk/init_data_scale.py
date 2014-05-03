@@ -14,8 +14,8 @@ for i in range(30):
     users.append(temp)
 
 uname = users
-make = ['Canon', 'Nikon', 'Olympas']
-model = ['400D', 'D50']
+make = ['Canon', 'Nikon', 'Sony']
+model = ['Canon EOS 5D Mark III', 'Nikon D7000', 'Canon EOS 6D', 'Canon EOS 600D']
 exposure_time = [0.0001, 10]
 fnumber = [2, 10]
 focal_length = [20, 150]
