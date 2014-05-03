@@ -20,7 +20,7 @@
                 <div class="container">
                     <a href="#close" title="Close" class="close">X</a>
                     <h2>Upload a new ME headshot</h2>
-                    <form id="updateHead" action="{% url 'photo:profile-detail' pk %}" method="POST" enctype="multipart/form-data"
+                    <form id="updateHead" action="{% url 'photo:profile-detail' profile_id %}" method="POST" enctype="multipart/form-data"
       class="form-horizontal">
                         {% csrf_token %}
                
