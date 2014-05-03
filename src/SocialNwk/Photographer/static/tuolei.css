@@ -1,7 +1,7 @@
 div#feed_photo{
     background: #eee;
     border: 1px solid #dedede;
-    padding: 20px 300px 5px 20px;
+    padding: 20px 100px 5px 20px;
     border-radius: 5px;
 }
 
@@ -15,26 +15,39 @@ div#feed_photo p {
 }
 
 #container div img, #container div a{
-    width: 300px;
+    width: 500px;
+    height: auto;
     display: block;
 }
-#container div img{
+
+/*#container div img{
     overflow: hidden;
-    height: 250px;
-}
+    height: auto;
+}*/
+
 div#feed_photo img#categories {
     width: 35px;
     height: 35px;
     float: left;
     margin: 1px 2px;
 }
+
 #container div{
     float: left;
     margin: 10px;
 }
+
 #container div a{
     text-align: left;
+    font-size: 20px;
 }
+
+#container h2 {
+    margin-left: 30px;
+}
+
+
+
 #container, #api, #head{
     clear: both;
     margin: auto;

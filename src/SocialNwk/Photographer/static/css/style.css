@@ -93,7 +93,8 @@ div#error1, div#error2 {
 li#features, li#off {
     font-size: 12px;
 	list-style: none;
-    width: 14%;
+    width: 15%;
+    height: 33px;
     padding: 0.5% 0.5%;
     margin: 1%;
     text-align: center;
@@ -104,6 +105,12 @@ li#features, li#off {
 li#features {
     background: #fbc100;
     color: #ffffff;
+    width: 125px;
+}
+
+li#features img#categories {
+    width: 25px;
+    height: 25px;
 }
 
 li#off {
@@ -114,12 +121,20 @@ li#off {
 div#find {
     margin-left: 30px;
     background: #eee;
-    padding: 20px;
-    width: 65%;
+    padding: 15px;
+    width: 90%;
 }
 
 /*for load more*/
 div#loadMore {
     text-align: center;
     margin: 20px;
+}
+
+div.container h4 {
+    margin-top: 450px;
+}
+
+select.form-control{
+    width:100px;
 }

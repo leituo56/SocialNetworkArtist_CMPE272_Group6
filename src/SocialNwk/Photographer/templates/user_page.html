@@ -4,11 +4,45 @@
 {% block head_script %}
     <!--<link href="{% static 'tuolei.css' %}" rel="stylesheet">-->
     <link href="{% static 'css/user_page.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/headshot_modal.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/follow_list.css' %}" rel="stylesheet" type="text/css">
+
 {% endblock %}
 {% block content %}
     <div id="head">
 
         <div class="nameimg">
+
+            {% if me %}
+            <!--headshot edit-->
+            <a href="#openModal" class="btn btn-default" id="changehead_btn">Change Head</a>
+            <div id="openModal" class="modalDialog">
+                <div class="container">
+                    <a href="#close" title="Close" class="close">X</a>
+                    <h2>Choose a new headshot</h2>
+                    <form id="updateHead" action="{% url 'photo:profile-detail' pk %}" method="POST" enctype="multipart/form-data"
+      class="form-horizontal">
+                        {% csrf_token %}
+               
+                        <label for="head" class="control-label">head:</label>
+                        <div class="controls">
+                            <input name="head" type="file" required="required" >
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn btn-primary js-tooltip" name="_method" value="PATCH"
+                                    data-original-title="Make a PATCH request on the Profile Detail resource">UPDATE
+                            </button>
+                        </div>
+
+                        <input type="hidden" name="_method" value="PATCH" />
+                    </form>
+
+                </div>                    
+            </div>  
+            {% endif %}
+            
+
             <a><img id="userhead"/>
             <h4 id="photo_author"> {{ user_data.username }}</a></h4>
 
@@ -16,18 +50,49 @@
             <button id="unfollow">Unfollow</button>
             <button id="follow">Follow</button>
             {% endif %}
+
+            {% if me %}
+            <!--check follow-->
+            <a href="#openFollow" class="btn btn-primary" id="chech_follow">Check Follow</a>
+            <div id="openFollow" class="followlistModal">
+                <div class="container">
+                    <a href="#close" title="Close" class="close">X</a>
+                    <div class="container"> 
+                        <h2>Following</h2>
+                        <ul id="fowllowing">
+                            <!--following list-->
+                        </ul>
+                    </div>
+
+                    <div class="container"> 
+                        <h2>Followers</h2>
+                        <ul id="followers">
+                            <!--following list-->
+                        </ul>
+                    </div>               
+                </div>                    
+            </div>  
+            {% endif %}
+
+
         </div>
 
         <div class="userinfo">
             <h4 class="fav" id="name">Name: </h4>
-            <h6 class="fav" id="gender">Gender: </h6>
-            <h6 class="fav" id="career">Career: </h6>
-            <h6 class="fav" id="about">About: </h6>
-            <h6 class="fav" id="home_page">Home page: </h6>
+            <h5 class="fav" id="gender">Gender: </h5>
+            <h5 class="fav" id="career">Career: </h5>
+            <h5 class="fav" id="about">About: </h5>
+            <h5 class="fav" id="home_page">URL: </h5>
+
+
+            {% if me %}
+            <a class="btn btn-default" id="edit_profile" href="{% url 'photo:edit_profile' %}" role="button">Edit Profile</a>
+            {% endif %}
 
         </div>
 
         <div class="userfav">
+            <h2>ME.Favs</h2>
             <h4 class="fav" id="fav_make">Favorite Make: </h4>
             <h4 class="fav" id="fav_model">Favorite Model: </h4>
             <h4 class="fav" id="fav_category">Favorite Category: </h4>
@@ -37,7 +102,9 @@
 
     <div id="container">
         <div id="main" role="main">
+            <h2>ME.photos</h2>
             <ul id="tiles">
+
             <!-- Place content loaded photo from the photo API -->
             </ul>
         </div>
@@ -93,6 +160,16 @@
                 $('#unfollow').hide()
             }, 'json');
         });
+  
+
+        //UPDATE Headshot
+        user_url = "{% url 'photo:user_page' 1 %}";
+        user_url = user_url.substring(0, user_url.length - 2);
+        $('#updateHead').ajaxForm(function() {
+            window.location.replace(user_url+{{ user.id }});
+        });
+
+
 
     })
 
@@ -105,6 +182,8 @@
 
 <!-- Include the plug-in -->
 <script src="{% static 'jquery.wookmark.min.js' %}"></script>
+
+<!--<script src="{% static 'jquery.row-grid.min.js' %}"></script>-->
 
 <!-- Include the photo_load.js -->
 <script src="{% static 'photo_load_grid.js' %}"></script>
