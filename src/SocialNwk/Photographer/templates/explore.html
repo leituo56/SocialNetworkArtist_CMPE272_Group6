@@ -13,8 +13,8 @@
   ================================================== -->
   <div class="introtitle">
       <div class="container">
-          <h2>PHOTO.ME</h2>
-          <p>Social Network for Professional Photographers<br/>
+          <!--<h2>PHOTO.ME</h2>-->
+          <p><br/><span id='tag'>PHOTO.ME</span><br/>the Social Network of Professional Photographers
           </p>
           <!--<p><b></b></p>-->
       </div>
@@ -146,11 +146,19 @@
             $('img.icons').active(sourceSwap, sourceSwap);
         });*/
 
+        //for centering filter div after scroll 
+        jQuery.fn.center = function () {
+            this.css("position","fixed");
+            this.css("left", ( $(window).width() - this.width() ) / 2+$(window).scrollLeft() + "px");
+            return this;
+        }
+
         //div follow scroll function
         $(window).scroll(function(e){
           $element = $('#filter');
           if ($(this).scrollTop() > 138 && $element.css('position') != 'fixed'){
-              $('#filter').css({'position': 'fixed', 'top': '18%', 'width':'940px'});
+              $('#filter').css({'position': 'fixed', 'top': '17.5%', 'width':'940px'});
+              $('#filter').center();
           }
           if ($(this).scrollTop() < 138 && $element.css('position') == 'fixed'){
               $('#filter').css({'position': 'static',

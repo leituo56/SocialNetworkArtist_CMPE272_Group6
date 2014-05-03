@@ -39,6 +39,7 @@ form input {
 	border: 2px solid #fdc100;
 	border-radius: 5px;
     margin-bottom: 15px;
+    width: 440px;
 }
 
 form#updateProfile, form#uploadForm {
@@ -147,7 +148,12 @@ div#loadMore {
 }
 
 div.container h4#user_list {
+    text-align: center;
+}
 
+div.container ul#firends {
+    margin: 0 auto;
+    min-width: 800px;
 }
 
 select.form-control{
@@ -161,16 +167,16 @@ button#find {
 
 /*for photo detail*/
 button#follow {
-    background: #fcb100;
-    border: 1px solid #fcb100;
+    background: #5cb85c;
+    border: 1px solid #5cb85c;
     border-radius: 5px;
     margin-bottom: 5px;
     color: white;
 }
 
 button#unfollow {
-    background: red;
-    border: 1px solid red;
+    background: #d9534f;
+    border: 1px solid #d9534f;
     border-radius: 5px;
     margin-bottom: 5px;
     color: white;

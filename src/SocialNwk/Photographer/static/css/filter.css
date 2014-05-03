@@ -22,7 +22,7 @@
 
 /*for scrolling function*/
 div#filter {
-  margin-top: -45px;
+  margin: -45px auto;
   background: #c2c2c2;
   z-index: 100;
   position: static;

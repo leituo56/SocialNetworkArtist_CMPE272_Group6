@@ -97,14 +97,18 @@
                 case 'low_light':
                 case 'high_speed':
                 case 'long_exposure':
-                    key = key.replace('_', '');
+                    var key1 = key;
+                    var key2 = key;
+                    key1 = key1.replace('_', '');
+                    key2 = key2.replace('_', ' ');
                     if(value==true){
-                        $('#features').append("<li id='features'><img id='categories' src='/static/images/"+key+"_white.png'><b>&nbsp;&nbsp;"+key + "</b></li>");
+                        $('#features').append("<li id='features'><img id='categories' src='/static/images/"+key1+"_white.png'><b>&nbsp;&nbsp;"+key2 + "</b></li>");
                     }
                     break;
                 default:
-                    key = key.replace('_', ' ');
-                    $('#stat').append("<li><b>" + key + "</b>: " + value + "</li>");    
+                    var key1 = key;
+                    key1 = key1.replace('_', ' ');
+                    $('#stat').append("<li><b>" + key1 + "</b>: " + value + "</li>");    
                     break;
             }
         });

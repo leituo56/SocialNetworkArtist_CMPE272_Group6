@@ -24,7 +24,7 @@
       class="form-horizontal">
                         {% csrf_token %}
                
-                        <label for="head" class="control-label">Upload:</label>
+                        <label for="head" class="control-label">Choose a file:</label>
                         <div class="controls">
                             <input name="head" type="file" required="required" >
                         </div>
@@ -53,19 +53,19 @@
 
 
             <!--check follow modal-->
-            <a href="#openFollow" class="btn btn-primary" id="chech_follow">Check Follow</a>
+            <a href="#openFollow" class="btn btn-primary" id="chech_follow">ME.Links</a>
             <div id="openFollow" class="followlistModal">
                 <div class="container">
                     <a href="#close" title="Close" class="close">X</a>
                     <div class="container"> 
-                        <h2>Following</h2>
+                        <h2>ME.Following</h2>
                         <ul id="following">
                             <!--following list-->
                         </ul>
                     </div>
 
                     <div class="container"> 
-                        <h2>Followers</h2>
+                        <h2>ME.Followers</h2>
                         <ul id="followers">
                             <!--following list-->
                         </ul>

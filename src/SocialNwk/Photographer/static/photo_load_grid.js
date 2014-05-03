@@ -112,7 +112,7 @@ function onLoadData(data) {
     }else{
       finishLoad = true;
       //$('#loadMore a').off('click');
-      $('#loadMore').html('No more photos')
+      $('#loadMore').html('End of photo list')
     }
 
   } else {
