@@ -5,8 +5,9 @@
     <link href="{% static 'css/site_stat.css' %}" rel="stylesheet" type="text/css">
     <script src="{% static 'holder.js' %}"></script>
     <script src="{% static 'stat_visualized.js' %}"></script>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <!---reference:http://jsfiddle.net/gh/get/jquery/1.9.1/highslide-software/highcharts.com/tree/master/samples/highcharts/demo/column-basic/ -->
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
 {% endblock %}
 
 
@@ -51,7 +52,12 @@
       <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
       <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
     </div>
- </div>
+  </div>
+
+  <!---Bar chart-->
+  <div class="container">
+    <div id="visual_container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+  </div>
 
   <div class="container">
     <!-- Top 2 made  model category-->
@@ -130,12 +136,12 @@
   $(document).ready(function(){
         //get site stat api /api/photos/stat 
         loadStat();
-        //category_stat, make_stat, model_stat
+        //category_stat, make_stat, model_sta
           // for each parameter
               //list top 3 results and %
               //thumnail photolist 4-5 photos from /api/photos/?make=Canon
               //button link to the whole list in new page
-
+        showStatData()
   });
 
   //$("#fav_make_1_btn").click(){
