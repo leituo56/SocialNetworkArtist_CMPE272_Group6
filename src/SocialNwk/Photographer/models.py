@@ -7,12 +7,14 @@ import uuid
 import os
 
 
+# Static photos uploads by users stored in certain folder group by date
 def get_file_path(instance, filename):
     ext = filename.split('.')[-1]
     filename = "%s.%s" % (uuid.uuid4().hex, ext)
     return os.path.join('uploads/', strftime('%Y%m%d', gmtime()),  filename)
 
 
+# Photo Model
 class Work(models.Model):
     #Basic Info
     author = models.ForeignKey(User, related_name='works')
@@ -41,6 +43,7 @@ class Work(models.Model):
     high_speed = models.BooleanField(default=False, blank=True)
     long_exposure = models.BooleanField(default=False, blank=True)
 
+    # Save Process, pre-process for photo tech category
     def save(self, *args, **kwargs):
         self.portrait = 0 < self.fnumber < 2.8 and self.focal_length > 50
         self.landscape = 0 < self.focal_length < 35
@@ -64,6 +67,7 @@ def create_photo(sender, instance, created, **kwargs):
     instance.author.profile.save(result=result)
 
 
+# User Profile Model
 class UserProfile(models.Model):
     GENDER_CHOICES = (
         ('M', 'Male'),
