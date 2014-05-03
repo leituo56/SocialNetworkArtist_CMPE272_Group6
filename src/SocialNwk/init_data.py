@@ -22,7 +22,7 @@ exposure_time = [0.0001, 10]
 fnumber = [2, 10]
 focal_length = [20, 150]
 iso = [100, 8000]
-for i in range(12):
+for i in range(31):
     p = []
     temp = Work(author=random.choice(uname), title='My Pic'+str(i), file='init/' + str(i) + '.jpg',
                 make=random.choice(make), model=random.choice(model),
