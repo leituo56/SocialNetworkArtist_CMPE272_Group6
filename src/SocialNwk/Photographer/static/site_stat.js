@@ -114,21 +114,27 @@ function onLoadStat(data) {
       switch(i){     
         case 0:
           if(key =="name"){
-            $("#fav_category_1").append(val);
+            //replace underscores with spaces
+            var val1 = val.replace("_"," ");
+            $("#fav_category_1").append(val1);
           } else {
             $("#fav_category_1_pct").append(changeToPercent(val));
           }
           break;
         case 1:
           if(key =="name"){
-            $("#fav_category_2").append(val);
+            //replace underscores with spaces
+            var val1 = val.replace("_"," ");
+            $("#fav_category_2").append(val1);
           } else {
             $("#fav_category_2_pct").append(changeToPercent(val));
           }
           break;
         case 2:
           if(key =="name"){
-            $("#fav_category_3").append(val);
+            //replace underscores with spaces
+            var val1 = val.replace("_"," ");
+            $("#fav_category_3").append(val1);
           } else {
             $("#fav_category_3_pct").append(changeToPercent(val));
           }

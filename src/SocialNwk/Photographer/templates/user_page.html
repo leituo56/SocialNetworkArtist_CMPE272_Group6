@@ -5,7 +5,7 @@
     <!--<link href="{% static 'tuolei.css' %}" rel="stylesheet">-->
     <link href="{% static 'css/user_page.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/headshot_modal.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/follow_list.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/followlist_modal.css' %}" rel="stylesheet" type="text/css">
 
 {% endblock %}
 {% block content %}
@@ -14,13 +14,13 @@
         <div class="nameimg">
 
             {% if me %}
-            <!--headshot edit-->
+            <!--headshot edit modal-->
             <a href="#openModal" class="btn btn-default" id="changehead_btn">Change Photo</a>
             <div id="openModal" class="modalDialog">
                 <div class="container">
                     <a href="#close" title="Close" class="close">X</a>
                     <h2>Upload a new ME headshot</h2>
-                    <form id="updateHead" action="{% url 'photo:profile-detail' pk %}" method="POST" enctype="multipart/form-data"
+                    <form id="updateHead" action="{% url 'photo:profile-detail' profile_id %}" method="POST" enctype="multipart/form-data"
       class="form-horizontal">
                         {% csrf_token %}
                
@@ -51,8 +51,8 @@
             <button id="follow">Follow</button>
             {% endif %}
 
-            {% if me %}
-            <!--check follow-->
+
+            <!--check follow modal-->
             <a href="#openFollow" class="btn btn-primary" id="chech_follow">Check Follow</a>
             <div id="openFollow" class="followlistModal">
                 <div class="container">
@@ -72,7 +72,7 @@
                     </div>               
                 </div>                    
             </div>  
-            {% endif %}
+
 
 
         </div>
@@ -125,6 +125,9 @@
     console.log("url:"+current_user_url);
     //loadUser();
 
+    user_url = "{% url 'photo:user_page' 1 %}";
+    user_url = user_url.substring(0, user_url.length - 2);
+
     var options = {
         autoResize: true, // This will auto-update the layout when the browser window is resized.
         container: $('#tiles'), // Optional, used for some extra CSS styling
@@ -138,6 +141,8 @@
         loadData();
 
         loadUser();
+
+        LoadFollowList();
 
         {% if followed %}
             $('#follow').hide()
@@ -163,8 +168,7 @@
   
 
         //UPDATE Headshot
-        user_url = "{% url 'photo:user_page' 1 %}";
-        user_url = user_url.substring(0, user_url.length - 2);
+
         $('#updateHead').ajaxForm(function() {
             window.location.replace(user_url+{{ user.id }});
         });
@@ -188,5 +192,6 @@
 <!-- Include the photo_load.js -->
 <script src="{% static 'photo_load_grid.js' %}"></script>
 <script src="{% static 'load_user.js' %}"></script>
+<script src="{% static 'find_follow.js' %}"></script>
 
 {% endblock %}
