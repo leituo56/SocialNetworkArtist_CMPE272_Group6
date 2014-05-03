@@ -38,6 +38,20 @@ form input {
 	font-size: 20px;
 	border: 2px solid #fdc100;
 	border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+form#updateProfile, form#uploadForm {
+    background: #eee;
+    padding: 15px 20px;
+}
+
+form#updateProfile input {
+    width: 500px;
+}
+
+form#uploadForm input {
+    width: 300px;
 }
 
 form input:focus {
@@ -61,6 +75,7 @@ div#error1, div#error2 {
 }
 #bigPhoto img{
     width: 100%;
+    height: auto;
     float: left;
     clear: left;
     margin: 0px 0px 15px 30px;
@@ -131,7 +146,7 @@ div#loadMore {
     margin: 20px;
 }
 
-div.container h4 {
+div.container h4#user_list {
     margin-top: 450px;
 }
 
