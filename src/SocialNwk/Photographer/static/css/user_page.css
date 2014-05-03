@@ -206,11 +206,20 @@ li#find_friend{
   float:left;
   width: 220px;
   height: 210px;
-  background-color: #e8e8e8;
+  background-color: #fbc100;
   margin-top: 8px;
   margin-left: 5px;
   padding: 10px;
-    border-radius: 10px;
+
+}
+
+li#find_friend a{
+    color: blue;
+    font-size: 20px;
+}
+
+li#find_friend span#find_fav {
+    color: white;
 }
 
 img#find_head {

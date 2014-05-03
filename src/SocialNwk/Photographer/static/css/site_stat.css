@@ -29,6 +29,46 @@ span {
 	size: 30px;
 }
 
+span.trends {
+    color: red;
+    font-size: 60px;
+}
+
+span.type {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+h4.trends {
+    font-size: 20px;
+}
+
+/* by column*/
+div#col1,div#col3 {
+    background: #eee;
+}
+
+div#col2 {
+    background: #b5b5b5;
+}
+
+div#col2 h4.trends {
+    color: white;
+}
+
+div#col1 span.type {
+    color: green;    
+}
+
+div#col2 span.type {
+    color: blue;
+}
+
+div#col3 span.type {
+    color: #9b0ccf;
+}
+
+
 /* visualization Histogram:
 * reference: http://bl.ocks.org/Caged/6476579
 */
