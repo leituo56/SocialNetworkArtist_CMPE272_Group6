@@ -29,10 +29,9 @@ span {
 	size: 30px;
 }
 
-/* visualization part:
+/* visualization Histogram:
 * reference: http://bl.ocks.org/Caged/6476579
 */
-
 .axis path,
 .axis line {
   fill: none;
