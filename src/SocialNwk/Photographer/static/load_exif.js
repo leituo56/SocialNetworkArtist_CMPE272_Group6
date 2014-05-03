@@ -33,6 +33,10 @@ demo.js from https://github.com/bennoleslie/jsjpegmeta
 	return (a > b) ? 1 : (a == b) ? 0 : -1;
     }
 
+    function convertExpo(){
+    	
+    }
+
     function loadFiles(files) {
 		var dataurl_reader = new FileReader();
 
@@ -85,6 +89,7 @@ demo.js from https://github.com/bennoleslie/jsjpegmeta
 		            		$("model").value = prop.value;
 		            		break;
 		            	case "Exposure time":
+
 		            		//$("exposure_time").value = prop.value;	            		
 		            		break;
 		            	case "FNumber":

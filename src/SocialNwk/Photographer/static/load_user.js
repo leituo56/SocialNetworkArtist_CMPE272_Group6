@@ -4,14 +4,23 @@ load current user info
 
 function loadUser() {
 
-  //console.log("in loaduser");
-  //console.log("url:"+current_user_url);
-
   $.ajax({
     type: 'GET',
     url: current_user_url, 
     dataType: 'json',
     success: onLoadUser //pass get data to onLoadData function
+  });
+};
+
+function loadPct() {
+
+  console.log("in pct");
+
+  $.ajax({
+    type: 'GET',
+    url: current_user_url+"/stat", 
+    dataType: 'json',
+    success: onLoadPct //pass get data to onLoadData function
   });
 };
 
@@ -33,5 +42,36 @@ function onLoadUser(data) {
   $("#career").append("<span id='user_info_text' >" +data.career+"</span>");
   $("#about").append("<span id='user_info_text' >" +data.about+"</span>");
   $("#home_page").append("<span id='user_info_text' >" +data.home_page+"</span>");
+
+};
+
+function onLoadPct(data) {
+  console.log("in onloadPct");
+  //console.log("data.make:" + data.fav_make);
+
+  $.each(data.make_stat, function(i, item) {
+    if(i==0){
+      var pct= Math.floor(item.pct*100).toFixed(1);
+      $("#fav_make_pct").append(pct+ "%");
+    }
+  });
+
+
+  $.each(data.model_stat, function(i, item) {
+    if(i==0){
+      var pct= Math.floor(item.pct*100).toFixed(1);
+      $("#fav_model_pct").append(pct + "%");
+    }
+  });
+  
+  $.each(data.category_stat, function(i, item) {
+    if(i==0){
+      var pct= Math.floor(item.pct*100).toFixed(1);
+      $("#fav_catagory_pct").append( pct + "%");
+    }
+  });
+
+
+
 
 };
