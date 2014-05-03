@@ -87,7 +87,9 @@ def user_page(request, pk):
         followed = int(pk) in lists
         print pk, lists, followed
     me = int(pk) == int(request.user.id) if request.user.is_authenticated() else 0
-    return render(request, 'user_page.html', {'pk': pk, 'followed': followed, 'user_data': user, 'me': me})
+    profile_id = user.profile.id
+    return render(request, 'user_page.html', {'pk': pk, 'profile_id': profile_id, 'followed': followed,
+                                              'user_data': user, 'me': me})
 
 
 # View for Signup Page
