@@ -32,15 +32,6 @@ demo.js from https://github.com/bennoleslie/jsjpegmeta
 	return (a > b) ? 1 : (a == b) ? 0 : -1;
     }
 
-    function convertExpo(expo){
-        console.log("in convertExpo");
-        var newexpo = expo.replace(/\s+/g, '');
-        console.log("exposure time:" + newexpo);
-        var expoarr = expo.split('/');
-        var expovalue = parseInt(expoarr[0])/parseInt(expoarr[1]);
-        return expovalue;
-    }
-
     function loadFiles(files) {
 		var dataurl_reader = new FileReader();
 
@@ -100,7 +91,7 @@ demo.js from https://github.com/bennoleslie/jsjpegmeta
 			            	//var expoarr = expo.split('/');
 							//var expovalue = parseInt(expoarr[0])/parseInt(expoarr[1]);
 
-		            		//$("exposure_time").value = prop.value;	            		
+		            		$("exposure_time").value = prop.value;	            		
 		            		break;
 		            	case "FNumber":
 		            		$("fnumber").value = prop.value;
