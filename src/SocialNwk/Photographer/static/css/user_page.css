@@ -2,10 +2,10 @@
 /**
  * Grid container
  */
-#tiles {
+/*#tiles {
     background: #fbc100;
   list-style-type: none;
-  position: relative; /** Needed to ensure items are laid out relative to this container **/
+  position: relative; 
   margin: 0 20px 0 28px;
   padding: 0;
   clear: both;
@@ -13,14 +13,14 @@
 
 #tiles h2 {
     margin: 30px 15px;
-}
+}*/
 /**
  * Grid items
  */
-#tiles li {
+/*#tiles li {
   width: 200px;
-  display: none; /** Hide items initially to avoid a flicker effect **/
-  cursor: pointer;
+  display: none;*/ /** Hide items initially to avoid a flicker effect **/
+/*  cursor: pointer;
   padding: 4px;
 }
 
@@ -39,19 +39,55 @@
     float: left;
     margin: 1px 1px;
     padding-bottom: 2px;
-}
+}*/
 
 /**
  * Grid item text
  */
-#tiles li p {
+/*#tiles li p {
   color: #fbc100;
   font-size: 16px;
   line-height: 20px;
   text-align: left;
   font-weight: 200;
   margin: 2px 0 2px 2px;
+}*/
+
+/*For USER PAGE tiles */
+#user_tiles {
+    min-width: 850px;
+    max-width: 1500px;
+    margin: 5px -8px;
+    width: 100%;
 }
+
+#user_tiles li {
+    background: #fbc100;
+    list-style: none;
+    padding: 10px;
+    float: left;
+    border: 1px solid white;
+}
+
+#user_tiles li div {
+    height: 150px;
+    width: 150px;
+    overflow: hidden;
+}
+
+#user_tiles li img {
+    height: 180px;   
+    width: auto;
+    overflow: hidden;
+}
+
+
+
+div#loadMore {
+    clear: both;
+    padding-top: 50px;
+}
+
 
 button#categories {
     background: #fbc100;
@@ -92,7 +128,7 @@ img#userhead {
 
 .userfav{
   float:right;
-  width: 350px;
+  width: 300px;
   height: 100%;
   background-color: #fbc100;
   margin: 8px 5px;
@@ -102,10 +138,10 @@ img#userhead {
 
 .userfav_left{
   float:left;
-  width: 350px;
+  width: 300px;
   height: 100%;
   background-color: #fbc100;
-  margin: 8px 5px;
+  margin: 8px 35px;
     padding: 2px 9px 15px;
     border-radius: 10px;
 }
@@ -159,13 +195,17 @@ span#user_info_text{
   margin-left: 30px;
 }
 
+li#find_friend h4 {
+    text-decoration: underline;
+    font-variant: small-caps;
+}
 
 
 li#find_friend{
     list-style: none;
   float:left;
   width: 220px;
-  height: 180px;
+  height: 210px;
   background-color: #e8e8e8;
   margin-top: 8px;
   margin-left: 5px;

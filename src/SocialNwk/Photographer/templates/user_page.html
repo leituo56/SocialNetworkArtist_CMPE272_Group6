@@ -5,7 +5,7 @@
     <!--<link href="{% static 'tuolei.css' %}" rel="stylesheet">-->
     <link href="{% static 'css/user_page.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/headshot_modal.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/follow_list.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/followlist_modal.css' %}" rel="stylesheet" type="text/css">
 
 {% endblock %}
 {% block content %}
@@ -93,17 +93,17 @@
 
         <div class="userfav">
             <h2>ME.Favs</h2>
-            <h4 class="fav" id="fav_make">Favorite Make: </h4>
-            <h4 class="fav" id="fav_model">Favorite Model: </h4>
-            <h4 class="fav" id="fav_category">Favorite Category: </h4>
+            <h4 class="fav" id="fav_make">Make: </h4>
+            <h4 class="fav" id="fav_model">Model: </h4>
+            <h4 class="fav" id="fav_category">Category: </h4>
         </div>
     </div>
 
 
     <div id="container">
         <div id="main" role="main">
-            <h2>ME.photos</h2>
-            <ul id="tiles">
+            <h2 id='photo_title'>ME.photos</h2>
+            <ul id="user_tiles">
 
             <!-- Place content loaded photo from the photo API -->
             </ul>

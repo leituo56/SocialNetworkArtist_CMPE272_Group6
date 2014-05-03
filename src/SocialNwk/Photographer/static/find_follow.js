@@ -1,5 +1,5 @@
 /**
- * Created by Xiaoli on 4/26/14.
+ * Created by Xiaoli on 05/02/14.
  */
 //define load handler
 var handler = null,
@@ -8,36 +8,36 @@ var handler = null,
     finishLoad = false;
     countshow = false;
 
-$(document).bind('scroll', onScroll);
+//$(document).bind('scroll', onScroll);
 
-function onScroll(event) {
+/*function onScroll(event) {
   // Only check when we're not still waiting for data.
   if(!isLoading && !finishLoad) {
     // Check if we're within 100 pixels of the bottom edge of the broser window.
     var closeToBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 100);
     if(closeToBottom) {
-      LoadUserList();
+      LoadFollowList();
     }
   }
-};
+};*/
 
 /**
 * Loads data from the API.
 */
-function LoadUserList() {
+function LoadFollowList() {
   isLoading = true;
   $.ajax({
     type: 'GET',
     url: userlist_url, // Page parameter to make sure we load new data
     dataType: 'json',
-    success: onLoadUserList //pass get data to onLoadData function
+    success: onLoadFollowList //pass get data to onLoadData function
   });
 };
 
 /**
 * Receives data from the API, creates HTML for images and updates the layout
 */
-function onLoadUserList(data) {
+function onLoadFollowList(data) {
   isLoading = false;
 
   if(data.count != 0){
@@ -45,7 +45,7 @@ function onLoadUserList(data) {
     finishLoad = false;
 
     if(countshow ==false){
-      $("#list_title").append("(ME.Matches: " + data.count+ ")");
+      $("#list_title").append("(Count: " + data.count+ ")");
       countshow=true;
     };
 
@@ -55,12 +55,11 @@ function onLoadUserList(data) {
       html += '<li id="find_friend" >';
       html += '<img id="find_head" src="'+ item.head+'"/>';
       html += '<a href='+ user_url+item.id+ '>'+item.username+'</a>';
-      html += '<h4>Favs</h4>';
-      html += '<p>Make: <span id="find_fav"> '+item.fav_make+'</span></p>';
-      html += '<p>Model: <span id="find_fav">'+item.fav_model +'</span></p>';
+      html += '<p> Fav Make: <span id="find_fav"> '+item.fav_make+'</span></p>';
+      html += '<p> Fav Model: <span id="find_fav">'+item.fav_model +'</span></p>';
       var cat = item.fav_category;
       cat = cat.replace("_"," ");
-      html += '<p>Category: <span id="find_fav"> '+cat+'</span></p>';
+      html += '<p> Fav Category: <span id="find_fav"> '+cat+'</span></p>';
       html += '</li>';
 
       console.log("html:" + html);
