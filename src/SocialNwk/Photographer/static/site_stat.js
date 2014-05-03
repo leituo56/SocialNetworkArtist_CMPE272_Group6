@@ -120,9 +120,12 @@ function onLoadStat(data) {
   showStatData(Array4model_1, Array4model_2, "cameraModel");
 
   //data.category_stat - first layer of JSON key i, value item
-  var Array4category=[];
+  var Array4category_1=[];
+  var Array4category_2=[];
   $.each(data.category_stat, function(i, item) {
     //second layer of JSON key key, value val 
+    Array4category_1[i]=item.name;
+    Array4category_2[i]=item.pct;
     $.each(item, function(key, val) {      
       switch(i){     
         case 0:
@@ -155,6 +158,7 @@ function onLoadStat(data) {
       }
     });
   }); 
+  showStatData(Array4category_1, Array4category_2, "categoryTrends");
 }
 
 
