@@ -52,7 +52,7 @@ function onLoadPct(data) {
   $.each(data.make_stat, function(i, item) {
     if(i==0){
       var pct= Math.floor(item.pct*100).toFixed(1);
-      $("#fav_make_pct").append(pct+ "%");
+      $("#fav_make_pct").append("("+pct+ "%)");
     }
   });
 
@@ -60,14 +60,14 @@ function onLoadPct(data) {
   $.each(data.model_stat, function(i, item) {
     if(i==0){
       var pct= Math.floor(item.pct*100).toFixed(1);
-      $("#fav_model_pct").append(pct + "%");
+      $("#fav_model_pct").append("("+pct + "%)");
     }
   });
   
   $.each(data.category_stat, function(i, item) {
     if(i==0){
       var pct= Math.floor(item.pct*100).toFixed(1);
-      $("#fav_catagory_pct").append( pct + "%");
+      $("#fav_catagory_pct").append("("+pct + "%)");
     }
   });
 

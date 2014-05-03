@@ -147,9 +147,31 @@ div#loadMore {
 }
 
 div.container h4#user_list {
-    margin-top: 450px;
+
 }
 
 select.form-control{
     width:100px;
+}
+
+button#find {
+    clear: both;
+    margin-right: 500px;
+}
+
+/*for photo detail*/
+button#follow {
+    background: #fcb100;
+    border: 1px solid #fcb100;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+button#unfollow {
+    background: red;
+    border: 1px solid red;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    color: white;
 }

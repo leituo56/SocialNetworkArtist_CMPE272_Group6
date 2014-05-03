@@ -81,6 +81,24 @@
     overflow: hidden;
 }
 
+button#follow {
+    background: #fcb100;
+    border: 1px solid #fcb100;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    color: white;
+    font-size: 21px;
+}
+
+button#unfollow {
+    background: red;
+    border: 1px solid red;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    color: white;
+    font-size: 17px;
+}
+
 
 
 div#loadMore {
@@ -128,7 +146,7 @@ img#userhead {
 
 .userfav{
   float:right;
-  width: 300px;
+  width: 350px;
   height: 100%;
   background-color: #fbc100;
   margin: 8px 5px;
@@ -136,9 +154,15 @@ img#userhead {
     border-radius: 10px;
 }
 
+.userfav span.pct, .userfav_left span.pct {
+    color: blue;
+    margin-left: 5px;
+    font-size: 15px;
+}
+
 .userfav_left{
   float:left;
-  width: 300px;
+  width: 350px;
   height: 100%;
   background-color: #fbc100;
   margin: 8px 35px;
