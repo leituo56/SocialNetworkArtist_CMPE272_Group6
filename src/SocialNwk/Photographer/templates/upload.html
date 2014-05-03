@@ -44,6 +44,7 @@
                 <label for="exposure_time" class="control-label">exposure time:</label>
                 <div class="controls">
                     <input name="exposure_time" id="exposure_time" type="text" value="0">
+                    <button class="btn btn-default" onClick="preExpo()"> Convert</button>
                 </div>
             </div>
             <div class="control-group ">
@@ -72,7 +73,7 @@
             </div>
             </br>
             <div class="form-actions">
-                <button class="btn btn-primary" title="Make a POST request on the Photo List resource">UPLOAD PHOTO</button>
+                <button class="btn btn-primary" id="upload_photo" onClick="test()" title="Make a POST request on the Photo List resource">UPLOAD PHOTO</button>
             </div>
         </fieldset>
     </form>
@@ -102,12 +103,45 @@
 <script>
     user_url = "{% url 'photo:user_page' 1 %}";
     user_url = user_url.substring(0, user_url.length - 2);
+
+
+
     
     $(document).ready(function(){
+
+       //preExpo();
         $('#uploadForm').ajaxForm(function() {
+
+            
+        //preExpo();
             window.location.replace(user_url+{{ user.id }});
         });
     });
+
+    function preExpo(){
+        console.log("in preExpo");
+        var expo= document.getElementById('exposure_time').value;
+        var newexpo = expo.replace(/\s+/g, '');
+        console.log("exposure time:" + newexpo);
+        var expoarr = expo.split('/');
+        var expovalue = parseInt(expoarr[0])/parseInt(expoarr[1]);
+        document.getElementById('exposure_time').value = expovalue;
+    };
+
+    $('#upload_photo').click=function(){
+        console.log("in fucn");
+        alert("in func");
+
+
+    }
+
+    function test(){
+        alert("in func");    
+    }
+
+
+
+
 
 //$("input[name='make']").val("Canon");
 
