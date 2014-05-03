@@ -39,7 +39,7 @@ div#feed_photo img#categories {
 
 #container div{
     float: left;
-    margin: 10px;
+    margin: 5px 60px;
 }
 
 #container div a{
@@ -48,7 +48,7 @@ div#feed_photo img#categories {
 }
 
 #container h2 {
-    margin-left: 30px;
+    margin-left: 60px;
 }
 
 

@@ -7,7 +7,7 @@
     <form id="uploadForm" action="{% url 'photo:photo-list' %}" method="POST" enctype="multipart/form-data" class="form-horizontal">
         <fieldset>
             {% csrf_token %}
-            
+            <h2>Upload PHOTO</h2>
             <!--file loading control-->
             <div class="control-group ">
                 <label for="file" class="control-label">file:</label>
@@ -15,7 +15,7 @@
                 <div class="controls">
                        
                       <input name="file" id="fileWidget" type="file">
-                      <img id="img" height="100" alt="Image preview" src="">
+                      <img id="img" height="100" alt="Photo preview" src="">
                       <!--<div id="status"></div>-->
                     </div>
                 </div>

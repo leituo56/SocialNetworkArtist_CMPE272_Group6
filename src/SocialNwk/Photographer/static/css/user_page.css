@@ -56,7 +56,6 @@
 /*For USER PAGE tiles */
 #user_tiles {
     min-width: 850px;
-    max-width: 1500px;
     margin: 5px -8px;
     width: 100%;
 }
@@ -64,7 +63,7 @@
 #user_tiles li {
     background: #fbc100;
     list-style: none;
-    padding: 10px;
+    padding: 5px;
     float: left;
     border: 1px solid white;
 }
@@ -82,21 +81,21 @@
 }
 
 button#follow {
-    background: #fcb100;
-    border: 1px solid #fcb100;
+    background: #5cb85c;
+    border: 1px solid #5cb85c;
     border-radius: 5px;
     margin-bottom: 5px;
     color: white;
-    font-size: 21px;
+    font-size: 16px;
 }
 
 button#unfollow {
-    background: red;
-    border: 1px solid red;
+    background: #d9534f;
+    border: 1px solid #d9534f;
     border-radius: 5px;
     margin-bottom: 5px;
     color: white;
-    font-size: 17px;
+    font-size: 16px;
 }
 
 
@@ -104,6 +103,8 @@ button#unfollow {
 div#loadMore {
     clear: both;
     padding-top: 50px;
+    color: #d9534f;
+    font-size: 16px;
 }
 
 
@@ -155,7 +156,7 @@ img#userhead {
 }
 
 .userfav span.pct, .userfav_left span.pct {
-    color: blue;
+    color: #428bca;
     margin-left: 5px;
     font-size: 15px;
 }
@@ -191,13 +192,17 @@ span#fav_tag{
 .nameimg{
   width: 120px;
   float:left;
+    text-align: center;
+    margin-bottom: 5px;
 }
 
 span#user_info_text{
-  color:#fbc100;
+  color: #428bca;
   font-weight: 400;
   font-size:20px;
 }
+
+
 
 /*******friend list page*******/
 .checkbox1 {
@@ -230,20 +235,21 @@ li#find_friend{
   float:left;
   width: 220px;
   height: 210px;
-  background-color: #fbc100;
-  margin-top: 8px;
-  margin-left: 5px;
+  background-color: #eee;
+  margin-top: 2px;
+  margin-left: 2px;
   padding: 10px;
+
 
 }
 
 li#find_friend a{
-    color: blue;
+    color: #428bca;
     font-size: 20px;
 }
 
 li#find_friend span#find_fav {
-    color: white;
+    color: #fcb100;
 }
 
 img#find_head {
@@ -258,8 +264,8 @@ span#find_fav{
   font-size:15px;
 }
 
-#edit_profile{
-
+span#fav_make, span#fav_model, span#fav_category {
+    color: white;   
 }
 
 /*******follow list modal window*******/

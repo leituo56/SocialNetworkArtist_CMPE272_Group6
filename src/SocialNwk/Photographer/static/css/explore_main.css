@@ -1,7 +1,12 @@
 /*
 created by xiaoli 04/26/14
 */
-
+/*for tag line*/
+span#tag {
+    color: white;
+    font-size: 50px;
+    margin-top: 10px;
+}
 
 #loadMore{
     clear: both;
