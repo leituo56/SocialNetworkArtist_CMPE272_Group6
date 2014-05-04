@@ -5,6 +5,10 @@
     <!--<link href="{% static 'tuolei.css' %}" rel="stylesheet" type="text/css">-->
 {% endblock %}
 {% block content %}
+    <div id="bigPhoto">
+        <img src="" />
+    </div>
+
     <div id="head">
         <h3 id="photo_title"></h3>
         <h4 id="photo_author"><a></a></h4>
@@ -13,16 +17,14 @@
         <button id="follow">Follow</button>
         {% endif %}
     </div>
-    <div id='features'><h3>Categories</h3>
-    </div>
     <div id="stat">
         <h3>Photo Details</h3>
+        <div id='features'></div>
+        <div id='empty'></div>
     </div>
 
     </div>
-    <div id="bigPhoto">
-        <img src="" />
-    </div>
+    
 
     <div id="comment"></div>
 {% endblock %}
@@ -54,7 +56,52 @@
                 $('#unfollow').hide()
             });
         });
-        //for photo detail stat to scroll with page
+
+        //stat box scrolling float function
+        $(function(){
+            // get initial top offset of navigation
+            var floating_navigation_offset_top = $('#stat').offset().top;
+             
+              // define the floating navigation function
+              var floating_navigation = function(){
+                  // current vertical position from the top
+                  var scroll_top = $(window).scrollTop();
+                  console.log(scroll_top);
+                  // if scrolled more than the navigation, change its
+                  // position to fixed to float to top, otherwise change
+                  // it back to relative
+                  if (scroll_top > floating_navigation_offset_top-10) {
+                        $('#stat').css({ 'position': 'fixed', 'top': '80px', 'left': '68%'});
+                  } 
+                  else {
+                        $('#stat').css({ 'position': 'default', 'top': '0px' });
+                  }  
+              };
+     
+          // run function on load
+          floating_navigation();
+       
+          // run function every time you scroll
+          $(window).scroll(function() {
+              floating_navigation();
+
+              //make sure not to cover footer
+              footertotop = ($('.footer').position().top);
+                scrolltop = $(document).scrollTop()+450;
+                difference = scrolltop-footertotop;
+                // if user has scrolled further than footer,
+                // pull sidebar up using a negative margin
+
+                if (scrolltop > footertotop) {
+                    $('#stat').css('margin-top',  0-difference);
+                }
+
+                else  {
+                    $('#stat').css('margin-top', 0);
+                }
+              });
+        });
+        /*//for photo detail stat to scroll with page
         $(window).scroll(function(){
             footertotop = ($('.footer').position().top);
             scrolltop = $(document).scrollTop()+450;
@@ -70,10 +117,7 @@
                 $('#stat').css('margin-top', 0);
             }
 
-        });
-
-        //to show li if true
-        //$('#portrait').hide();
+        });*/
 
     })
     function checkPhotoDetail(selector){
@@ -104,6 +148,27 @@
                     if(value==true){
                         $('#features').append("<li id='features'><img id='categories' src='/static/images/"+key1+"_white.png'><b>&nbsp;&nbsp;"+key2 + "</b></li>");
                     }
+                    break;
+                case 'upload_time':
+                    //convert iso time into readable format
+                    var timestamp = new Date(value);
+                    var d = timestamp.getDate();
+                    var m = timestamp.getMonth();
+                    var y = timestamp.getFullYear();
+                    var h = timestamp.getHours();
+                    var min = timestamp.getMinutes();
+                    var m_names = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+                    timestamp = m_names[m]+' '+d+', '+y+' at '+h+':'+min;
+                    var key1 = key;
+                    key1 = key1.replace('_', ' ');
+                    $('#stat').append("<li><b>" + key1 + "</b>: " + timestamp + "</li>");    
+                    break;
+                case 'author':
+                case 'id':
+                case 'url':
+                case 'authorName':
+                case 'title':
+                    //ignore as user doesn't need to see this or already on page
                     break;
                 default:
                     var key1 = key;
