@@ -26,7 +26,7 @@ div#filter {
   background: #c2c2c2;
   z-index: 100;
   position: static;
-  width: 940px; 
+  width: 1000px; 
   height:55px;
 }
 
@@ -48,9 +48,20 @@ div#filter {
   display:initial;
   height: 35px;
 }
-#filter ul li a {
-  color:#333;
+#filter ul a {
+  color: white;
   margin-bottom:20px;
+}
+
+#filter ul li.top_button {
+    background: #fbc100;
+    font-size: 16px;
+}
+
+#filter ul li.top_button.hover, #filter ul a.hover {
+    color: #e8e8e8;
+    text-decoration: none;
+    background: black;
 }
 
 /*#filter ul li .selected {
