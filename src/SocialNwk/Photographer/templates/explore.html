@@ -97,14 +97,15 @@
 
         $('.button').hover(function(){
           $(this).toggleClass('hover');
+
           //$('img').toggleClass('hover');
           //$('img',this).toggleClass('hover');
         });
 
-        $('.top_button').hover(function(){
+        /*$('.top_button').hover(function(){
           $(this).toggleClass('hover');
           $('a',this).toggleClass('hover');
-        })
+        })*/
 
         //switch color of icons on hover
         var switchToWhite = function() {
@@ -215,24 +216,31 @@
     switch(selector){
       case 'All':
         photo_list_url = "{% url 'photo:photo-list' %}";
+        window.location = "#top";
         break;
       case 'portrait':
         photo_list_url = "{% url 'photo:photo-list' %}?portrait=True";
+        window.location = "#top";
         break;
       case 'landscape':
         photo_list_url = "/api/photos/?landscape=True";
+        window.location = "#top";
         break;
       case 'telephoto':
         photo_list_url = "/api/photos/?telephoto=True";
+        window.location = "#top";
         break;
       case 'low_light':
         photo_list_url = "/api/photos/?low_light=True";
+        window.location = "#top";
         break;
       case 'high_speed':
         photo_list_url = "/api/photos/?high_speed=True";
+        window.location = "#top";
         break;
       case 'long_exposure':
         photo_list_url = "/api/photos/?long_exposure=True";
+        window.location = "#top";
         break;               
     }
 

@@ -1,3 +1,55 @@
+div.row {
+    margin-bottom: 15px;
+}
+
+h4#no_1 {
+    font-size: 45px;
+    color: #fbc100;
+}
+
+h4#no_2 {
+    font-size: 30px;
+    color: #428bca;
+}
+
+h4#no_3 {
+    font-size: 20px;
+    color: #5cb85c;
+}
+
+div#no_1 {
+    background: #eee;
+    height: 320px;
+}
+
+div#no_2 {
+    background: #c4c4c4;
+    height: 280px;
+    margin-top: 40px;
+}
+
+div#no_3 {
+    background: #eee;
+    height: 250px;
+    margin-top: 70px;
+}
+
+div.col-md-6 img {
+    margin-top: 10px;
+    border: 2px solid #fcb100;
+}
+
+
+#fav_category_1_img, #fav_category_2_img, #fav_category_3_img {
+    background: white;
+    border: none;
+}
+
+div#row1, div#row2 {
+    border-bottom: 2px solid black;
+}
+
+
 
 /*
  * Placeholder dashboard ideas
@@ -20,10 +72,7 @@
   border-radius: 50%;
 }
 
-.trends {
-	size:30px;
-	color:#fbc100;
-}
+
 
 span {
 	size: 30px;
@@ -31,7 +80,7 @@ span {
 
 span.trends {
     color: red;
-    font-size: 60px;
+    font-size: 20px;
 }
 
 span.type {

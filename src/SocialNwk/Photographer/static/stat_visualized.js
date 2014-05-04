@@ -30,7 +30,7 @@ function showStatData(arg1, arg2,arg3) {
         var barData={};
         barData.chart={type: 'column'};
         
-        barData.title={text: 'Cameral Make Trending Rate'};
+        barData.title={text: 'Camera Make Trending Rate'};
         barData.subtitle={text: ' '};
         //barData.xAxis={categories: ['Nikon', 'Canon', 'Olympas']};
         barData.xAxis={categories: arg1};
@@ -40,22 +40,25 @@ function showStatData(arg1, arg2,arg3) {
                         '<td style="padding:0"><b>{point.y:.1f} %</b></td></tr>',
                         footerFormat: '</table>',
                         shared: true,
-                         useHTML: true};
+                         useHTML: true
+                       };
         barData.plotOptions={column: {pointPadding: 0.2, borderWidth: 0}};
+        barData.legend={enabled: false};
+
 
         if( arg3 == "cameraMake"){
-            barData.title={text: 'Camera Make Trending Rate'};
+            barData.title={text: 'Top Camera Makes'};
             //barData.series=[{name: 'Camera Make', data: [41.7, 29.2, 29.2]}];
             barData.series=[{name: 'Camera Make', color: '#fbc100', data: arg2}];
             $('#visual_container1').highcharts(barData);
          } 
          else if (arg3 =="cameraModel") {
-            barData.title={text: 'Camera Model Trending Rate'};
+            barData.title={text: 'Top Camera Models'};
             barData.series=[{name: 'Camera Model',color: '#5bc0de', data: arg2}];
             $('#visual_container2').highcharts(barData);
          } 
          else if (arg3 == "categoryTrends"){
-            barData.title={text: 'Category Trending Rate'};
+            barData.title={text: 'Top Photo Categories'};
             barData.series=[{name: 'Category', color: '#5bc85c', data: arg2}];
             $('#visual_container3').highcharts(barData);
          }
