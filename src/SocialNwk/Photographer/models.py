@@ -45,7 +45,7 @@ class Work(models.Model):
 
     # Save Process, pre-process for photo tech category
     def save(self, *args, **kwargs):
-        self.portrait = 0 < self.fnumber <= 4.0 and self.focal_length >= 50
+        self.portrait = 0 < self.fnumber < 4.0 and self.focal_length >= 50
         self.landscape = 0 < self.focal_length <= 35
         self.telephoto = self.focal_length >= 100
         self.low_light = self.iso >= 1600
