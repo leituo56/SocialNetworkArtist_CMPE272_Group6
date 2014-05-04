@@ -5,6 +5,10 @@
     <link href="{% static 'css/site_stat.css' %}" rel="stylesheet" type="text/css">
     <script src="{% static 'holder.js' %}"></script>
     <script src="{% static 'stat_visualized.js' %}"></script>
+
+    <link href="{% static 'css/pie_chart.css' %}" rel="stylesheet" type="text/css">
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+
     <!---reference:http://jsfiddle.net/gh/get/jquery/1.9.1/highslide-software/highcharts.com/tree/master/samples/highcharts/demo/column-basic/ -->
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
@@ -26,6 +30,17 @@
   {% endblock %}
 
 {% block content %}
+
+
+  <!---Pie chart make-->
+  <div class="container" id="make_pie">
+
+    <button class="randomize">randomize</button>
+
+  </div>
+
+
+
   <!---Bar chart-->
   <div class="container">
     <div class= "row">
@@ -65,6 +80,14 @@
 
     </div>
   </div>
+
+  <!---Pie chart model-->
+  <div class="container" id="model_pie">
+
+    <button class="randomize">randomize</button>
+
+  </div>
+
 
   <div class="container">
     <div class= "row">
@@ -163,6 +186,7 @@
   $(document).ready(function(){
         //get site stat api /api/photos/stat 
         loadStat();
+        //loadPie();
         //category_stat, make_stat, model_sta
           // for each parameter
               //list top 3 results and %
