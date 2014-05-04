@@ -50,10 +50,10 @@ function onLoadStat(data) {
   //data.make_stat - first layer of JSON key i, value item
   var Array4make_1=[];
   var Array4make_2=[];
-  var a1=data.make_stat;
-  $.each(a1, function(i, item) {
+  $.each(data.make_stat, function(i, item) {
     Array4make_1[i]=item.make;
-    Array4make_2[i]=item.pct;
+    var a1=item.pct;
+    Array4make_2[i]=a1 * 100;
     //second layer of JSON key key, value val 
     $.each(item, function(key, val) {
 
@@ -90,7 +90,8 @@ function onLoadStat(data) {
   $.each(data.model_stat, function(i, item) {
     //second layer of JSON key key, value val 
     Array4model_1[i]= item.model;
-    Array4model_2[i]= item.pct;
+    var a2 = item.pct;
+    Array4model_2[i]= a2 * 100;
     $.each(item, function(key, val) {      
       switch(i){     
         case 0:
@@ -125,7 +126,8 @@ function onLoadStat(data) {
   $.each(data.category_stat, function(i, item) {
     //second layer of JSON key key, value val 
     Array4category_1[i]=item.name;
-    Array4category_2[i]=item.pct;
+    var a3 = item.pct;
+    Array4category_2[i]= a3 * 100;
     $.each(item, function(key, val) {      
       switch(i){     
         case 0:
