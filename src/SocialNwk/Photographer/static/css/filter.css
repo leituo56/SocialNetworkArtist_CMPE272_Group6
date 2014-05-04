@@ -54,14 +54,14 @@ div#filter {
 }
 
 #filter ul li.top_button {
-    background: #fbc100;
+    background: black;
     font-size: 16px;
 }
 
 #filter ul li.top_button.hover, #filter ul a.hover {
-    color: #e8e8e8;
+    color: white;
     text-decoration: none;
-    background: black;
+    background: #fcb100;
 }
 
 /*#filter ul li .selected {
