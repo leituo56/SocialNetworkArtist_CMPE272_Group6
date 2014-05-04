@@ -68,6 +68,11 @@ div#col3 span.type {
     color: #9b0ccf;
 }
 
+div#make_pie{
+  width: 100%;
+
+}
+
 
 /* visualization Histogram:
 * reference: http://bl.ocks.org/Caged/6476579
