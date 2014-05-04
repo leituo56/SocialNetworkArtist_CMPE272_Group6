@@ -45,7 +45,7 @@
 	  <div class="checkbox1">
 
 	    <label>
-	      <input type="checkbox" id="make" > Same favorite camera make as me
+	      <input type="checkbox" id="make" checked> Same favorite camera make as me
 	    </label>
 	  </div>
 
@@ -60,7 +60,7 @@
 	      <input type="checkbox" id="category"> Same favorite photo category as me
 	    </label>
 	  </div>
-	  <button id="find" onClick= "load_userlist()" class="btn btn-default">Submit</button>
+	  <button id="find" onClick= "load_userlist()" class="btn btn-warning">Submit</button>
    </div>
   </div>
 
@@ -86,6 +86,7 @@
 	  //if hit, add to user list #friends
 
   	current_user_url = "/api/users/"+ {{ user.id }};
+    userlist_url = "/api/users/?find&fav_make";
 
     
     user_url = "{% url 'photo:user_page' 1 %}";
@@ -94,6 +95,7 @@
 	 $(document).ready(function(){
 	  	loadUser();
       loadPct();
+      LoadUserList();
 	 });
 
 
