@@ -154,11 +154,11 @@
         });*/
 
         //for centering filter div after scroll 
-        /*jQuery.fn.center = function () {
+        jQuery.fn.center = function () {
             this.css("position","fixed");
             this.css("left", ( $(window).width() - this.width() ) / 2+$(window).scrollLeft() + "px");
             return this;
-        }*/
+        }
 
         //filter bar scrolling float function
         $(function(){
@@ -177,7 +177,7 @@
                         $('#filter').css({ 'position': 'fixed', 'top': '120px'});
                   } 
                   else {
-                        $('#filter').css({ 'position': 'relative', 'top': '0px' });
+                        $('#filter').css({ 'position': 'relative', 'top': '0px'});
                   }  
               };
      
