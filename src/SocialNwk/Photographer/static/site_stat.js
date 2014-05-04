@@ -74,6 +74,7 @@ function onLoadStat(data) {
           if(key =="make"){
             makes.push(val);
             $("#fav_make_1").append(val);
+            $("#fav_make_1_img").attr("src","/static/images/"+val+".jpg");
           } else if(key =="pct") {
             make_pcts.push(val);
             $("#fav_make_1_pct").append(changeToPercent(val));
@@ -83,6 +84,7 @@ function onLoadStat(data) {
           if(key =="make"){
             makes.push(val);
             $("#fav_make_2").append(val);
+            $("#fav_make_2_img").attr("src","/static/images/"+val+".jpg");
           } else if(key =="pct"){
             make_pcts.push(val);
             $("#fav_make_2_pct").append(changeToPercent(val));
@@ -92,6 +94,7 @@ function onLoadStat(data) {
           if(key =="make"){
             makes.push(val);
             $("#fav_make_3").append(val);
+            $("#fav_make_3_img").attr("src","/static/images/"+val+".jpg");
           } else if(key =="pct"){
             make_pcts.push(val);
             $("#fav_make_3_pct").append(changeToPercent(val));
@@ -122,6 +125,7 @@ function onLoadStat(data) {
           if(key =="model"){
             models.push(val);
             $("#fav_model_1").append(val);
+            $("#fav_model_1_img").attr("src","/static/images/"+val+".jpg");
           } else if(key =="pct"){
             models_pcts.push(val);
             $("#fav_model_1_pct").append(changeToPercent(val));
@@ -131,6 +135,7 @@ function onLoadStat(data) {
           if(key =="model"){
             models.push(val);
             $("#fav_model_2").append(val);
+            $("#fav_model_2_img").attr("src","/static/images/"+val+".jpg");
           } else if(key =="pct"){
             models_pcts.push(val);
             $("#fav_model_2_pct").append(changeToPercent(val));
@@ -140,6 +145,7 @@ function onLoadStat(data) {
           if(key =="model"){
             models.push(val);
             $("#fav_model_3").append(val);
+            $("#fav_model_3_img").attr("src","/static/images/"+val+".jpg");
           } else if(key =="pct"){
             models_pcts.push(val);
             $("#fav_model_3_pct").append(changeToPercent(val));
@@ -171,6 +177,7 @@ function onLoadStat(data) {
             //replace underscores with spaces
             var val1 = val.replace("_"," ");
             $("#fav_category_1").append(val1);
+            $("#fav_category_1_img").attr("src","/static/images/"+val+".png");
           } else {
             $("#fav_category_1_pct").append(changeToPercent(val));
           }
@@ -180,6 +187,7 @@ function onLoadStat(data) {
             //replace underscores with spaces
             var val1 = val.replace("_"," ");
             $("#fav_category_2").append(val1);
+            $("#fav_category_2_img").attr("src","/static/images/"+val+".png");
           } else {
             $("#fav_category_2_pct").append(changeToPercent(val));
           }
@@ -189,6 +197,7 @@ function onLoadStat(data) {
             //replace underscores with spaces
             var val1 = val.replace("_"," ");
             $("#fav_category_3").append(val1);
+            $("#fav_category_3_img").attr("src","/static/images/"+val+".png");
           } else {
             $("#fav_category_3_pct").append(changeToPercent(val));
           }
