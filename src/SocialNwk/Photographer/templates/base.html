@@ -56,12 +56,14 @@
                                         <li><a href="{% url 'photo:logout' %}">LOGOUT</a></li>
                                     </ul>
                                 </li>
+                                <li><a href="{% url 'photo:upload' %}">UPLOAD</a></li>
                                 {% else %}
                                 <li><a href="{% url 'photo:signup' %}">SIGNUP</a></li>
                                 <li><a href="{% url 'photo:login' %}">LOGIN</a></li>
                                 {% endif %}
+
                                 <li><a href="{% url 'photo:api_root' %}">API</a></li>
-                                <li><a href="{% url 'photo:test' %}">Test</a></li>
+                                
 
 
                             </ul>
