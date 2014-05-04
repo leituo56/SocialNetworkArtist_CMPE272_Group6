@@ -49,9 +49,13 @@ div#filter {
   height: 35px;
 }
 #filter ul a {
-  color: white;
+  color: black;
   margin-bottom:20px;
 }
+
+#filter ul a li.top_button {
+    color: white;
+} 
 
 #filter ul li.top_button {
     background: black;

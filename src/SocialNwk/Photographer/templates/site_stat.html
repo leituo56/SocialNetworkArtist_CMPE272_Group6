@@ -6,7 +6,7 @@
     <script src="{% static 'holder.js' %}"></script>
     <script src="{% static 'stat_visualized.js' %}"></script>
 
-    <link href="{% static 'css/pie_chart.css' %}" rel="stylesheet" type="text/css">
+    <!--<link href="{% static 'css/pie_chart.css' %}" rel="stylesheet" type="text/css">-->
     <script src="http://d3js.org/d3.v3.min.js"></script>
 
     <!---reference:http://jsfiddle.net/gh/get/jquery/1.9.1/highslide-software/highcharts.com/tree/master/samples/highcharts/demo/column-basic/ -->
@@ -20,8 +20,7 @@
   ================================================== -->
   <div class="introtitle">
       <div class="container">
-          <h2>PHOTO.ME</h2>
-          <p>Current Trends on PHOTO.ME</p>
+          <h2>Trending on PHOTO.ME</h2>
       </div>
 
   </div>
@@ -32,35 +31,36 @@
 {% block content %}
 
 
+  
   <!---Pie chart make-->
-  <div class="container" id="make_pie">
-  </div>
+  <!--<div class="container" id="make_pie">
+  </div>-->
 
 
 
   <!---Bar chart-->
   <div class="container">
     <div class= "row">
-      <div class="col-md-6">
+      <div class="col-md-6" id='row1'>
         <!-- Put Picture 1, 2, 3-->
-        <div class="row">
-
-          <div class="col-md-4">
-            <h4>Trending Camera Make Top 1</h4>
+        <div class="row1">
+          <h2>Camera Make</h2>
+          <div class="col-md-4" id='no_1'>
+            <h4 id='no_1'>#1</h4>
             <h4 class="trends" id="fav_make_1"> </h4>
             <span class="trends" id="fav_make_1_pct"> </span>
             <img id="fav_make_1_img" height="100" width="100" class="img-responsive" alt="Photo Gallery"> 
           </div>
 
-           <div class="col-md-4">
-            <h4>Trending Camera Make Top 2</h4>
+           <div class="col-md-4" id="no_2">
+            <h4 id='no_2'>#2</h4>
             <h4 class="trends" id="fav_make_2"> </h4>
             <span class="trends" id="fav_make_2_pct"> </span>
             <img id="fav_make_2_img" height="100" width="100" class="img-responsive" alt="Generic placeholder thumbnail">
           </div>
 
-           <div class="col-md-4">
-            <h4>Trending Camera Make Top 3</h4>
+           <div class="col-md-4" id="no_3">
+            <h4 id='no_3'>#3</h4>
             <h4 class="trends" id="fav_make_3"> </h4>
             <span class="trends" id="fav_make_3_pct"> </span>
             <img id="fav_make_3_img" height="100" width="100" class="img-responsive" alt="Generic placeholder thumbnail">
@@ -74,34 +74,34 @@
 
     </div>
   </div>
-
+<hr class='break'>
   <!---Pie chart model-->
-  <div class="container" id="model_pie">
-  </div>
+  <!--<div class="container" id="model_pie">
+  </div>-->
 
 
   <div class="container">
     <div class= "row">
-      <div class="col-md-6">
+      <div class="col-md-6" id='row2'>
         <!-- Put Picture 1, 2, 3-->
-        <div class="row">
-   
-          <div class="col-md-4">       
-            <h4>Trending Camera Model Top 1</h4>
+        <div class="row2">
+          <h2>Camera Model</h2>
+          <div class="col-md-4" id="no_1">       
+            <h4 id='no_1'>#1</h4>
             <h4 class="trends" id="fav_model_1"> </h4>
             <span class="trends" id="fav_model_1_pct"> </span>
             <img id="fav_model_1_img" height="100" width="100" class="img-responsive" alt="Generic placeholder thumbnail">
           </div>
 
-          <div class="col-md-4">       
-            <h4>Trending Camera Model Top 2</h4>
+          <div class="col-md-4" id="no_2">       
+            <h4 id='no_2'>#2</h4>
               <h4 class="trends" id="fav_model_2"> </h4>
               <span class="trends" id="fav_model_2_pct"> </span>
               <img id="fav_model_2_img" height="100" width="100" class="img-responsive" alt="Generic placeholder thumbnail">
           </div>
 
-          <div class="col-md-4">       
-            <h4>Trending Camera Model Top 3</h4>
+          <div class="col-md-4" id="no_3">       
+            <h4 id='no_3'>#3</h4>
               <h4 class="trends" id="fav_model_3"> </h4>
               <span class="trends" id="fav_model_3_pct"> </span>
               <img id="fav_model_3_img" height="100" width="100" class="img-responsive" alt="Generic placeholder thumbnail">
@@ -115,30 +115,32 @@
 
     </div>
   </div>
+  <hr class='break'>
 
  <!-- Top 3 Category-->
  <div class="container">
     <div class= "row">
-      <div class="col-md-6">
+      <div class="col-md-6" id='row3'>
+        <h2>Photo Category</h2>
         <!-- Put Picture 1, 2, 3-->
-        <div class="row">
-
-          <div class="col-md-4">
-            <h4>Trending Category Top 1</h4>
+        <div class="row3">
+          
+          <div class="col-md-4" id="no_1">
+            <h4 id='no_1'>#1</h4>
             <h4 class="trends" id="fav_category_1"> </h4>
             <span class="trends" id="fav_category_1_pct"> </span>
             <img id="fav_category_1_img" height="100" width="100" class="img-responsive" alt="Generic placeholder thumbnail">
           </div>
 
-          <div class="col-md-4">
-            <h4>Trending Category Top 2</h4>
+          <div class="col-md-4" id="no_2">
+            <h4 id='no_2'>#2</h4>
             <h4 class="trends" id="fav_category_2"> </h4>
             <span class="trends" id="fav_category_2_pct"> </span>
             <img id="fav_category_2_img" height="100" width="100" class="img-responsive" alt="Generic placeholder thumbnail">
           </div>
 
-          <div class="col-md-4">
-            <h4>Trending Category Top 3</h4>
+          <div class="col-md-4" id="no_3">
+            <h4 id='no_3'>#3</h4>
             <h4 class="trends" id="fav_category_3"> </h4>
             <span class="trends" id="fav_category_3_pct"> </span>
             <img id="fav_category_3_img" height="100" width="100" class="img-responsive" alt="Generic placeholder thumbnail">
