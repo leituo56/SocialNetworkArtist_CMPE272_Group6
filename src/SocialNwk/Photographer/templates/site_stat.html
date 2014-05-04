@@ -5,6 +5,10 @@
     <link href="{% static 'css/site_stat.css' %}" rel="stylesheet" type="text/css">
     <script src="{% static 'holder.js' %}"></script>
     <script src="{% static 'stat_visualized.js' %}"></script>
+
+    <link href="{% static 'css/pie_chart.css' %}" rel="stylesheet" type="text/css">
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+
     <!---reference:http://jsfiddle.net/gh/get/jquery/1.9.1/highslide-software/highcharts.com/tree/master/samples/highcharts/demo/column-basic/ -->
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
@@ -26,6 +30,14 @@
   {% endblock %}
 
 {% block content %}
+
+
+  <!---Pie chart make-->
+  <div class="container" id="make_pie">
+  </div>
+
+
+
   <!---Bar chart-->
   <div class="container">
     <div class= "row">
@@ -37,24 +49,21 @@
             <h4>Trending Camera Make Top 1</h4>
             <h4 class="trends" id="fav_make_1"> </h4>
             <span class="trends" id="fav_make_1_pct"> </span>
-            <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Photo Gallery"> 
-            <a class="btn btn-default" id="fav_make_1_btn" href="#" role="button">View Photos &raquo;</a>
+            <img id="fav_make_1_img" height="100" width="100" class="img-responsive" alt="Photo Gallery"> 
           </div>
 
            <div class="col-md-4">
             <h4>Trending Camera Make Top 2</h4>
             <h4 class="trends" id="fav_make_2"> </h4>
             <span class="trends" id="fav_make_2_pct"> </span>
-            <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-            <a class="btn btn-default" id="fav_make_2_btn" href="#" role="button">View Photos &raquo;</a>
+            <img id="fav_make_2_img" height="100" width="100" class="img-responsive" alt="Generic placeholder thumbnail">
           </div>
 
            <div class="col-md-4">
             <h4>Trending Camera Make Top 3</h4>
             <h4 class="trends" id="fav_make_3"> </h4>
             <span class="trends" id="fav_make_3_pct"> </span>
-            <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-            <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+            <img id="fav_make_3_img" height="100" width="100" class="img-responsive" alt="Generic placeholder thumbnail">
           </div>
 
         </div>
@@ -66,6 +75,11 @@
     </div>
   </div>
 
+  <!---Pie chart model-->
+  <div class="container" id="model_pie">
+  </div>
+
+
   <div class="container">
     <div class= "row">
       <div class="col-md-6">
@@ -76,24 +90,21 @@
             <h4>Trending Camera Model Top 1</h4>
             <h4 class="trends" id="fav_model_1"> </h4>
             <span class="trends" id="fav_model_1_pct"> </span>
-            <img data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-            <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+            <img id="fav_model_1_img" height="100" width="100" class="img-responsive" alt="Generic placeholder thumbnail">
           </div>
 
           <div class="col-md-4">       
             <h4>Trending Camera Model Top 2</h4>
               <h4 class="trends" id="fav_model_2"> </h4>
               <span class="trends" id="fav_model_2_pct"> </span>
-              <img data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+              <img id="fav_model_2_img" height="100" width="100" class="img-responsive" alt="Generic placeholder thumbnail">
           </div>
 
           <div class="col-md-4">       
             <h4>Trending Camera Model Top 3</h4>
               <h4 class="trends" id="fav_model_3"> </h4>
               <span class="trends" id="fav_model_3_pct"> </span>
-              <img data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+              <img id="fav_model_3_img" height="100" width="100" class="img-responsive" alt="Generic placeholder thumbnail">
           </div>
 
         </div>
@@ -116,24 +127,21 @@
             <h4>Trending Category Top 1</h4>
             <h4 class="trends" id="fav_category_1"> </h4>
             <span class="trends" id="fav_category_1_pct"> </span>
-            <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-            <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+            <img id="fav_category_1_img" height="100" width="100" class="img-responsive" alt="Generic placeholder thumbnail">
           </div>
 
           <div class="col-md-4">
             <h4>Trending Category Top 2</h4>
             <h4 class="trends" id="fav_category_2"> </h4>
             <span class="trends" id="fav_category_2_pct"> </span>
-            <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-            <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+            <img id="fav_category_2_img" height="100" width="100" class="img-responsive" alt="Generic placeholder thumbnail">
           </div>
 
           <div class="col-md-4">
             <h4>Trending Category Top 3</h4>
             <h4 class="trends" id="fav_category_3"> </h4>
             <span class="trends" id="fav_category_3_pct"> </span>
-            <img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-            <a class="btn btn-default" href="#" role="button">View Photos &raquo;</a>
+            <img id="fav_category_3_img" height="100" width="100" class="img-responsive" alt="Generic placeholder thumbnail">
           </div>
 
         </div>
@@ -163,6 +171,7 @@
   $(document).ready(function(){
         //get site stat api /api/photos/stat 
         loadStat();
+        //loadPie();
         //category_stat, make_stat, model_sta
           // for each parameter
               //list top 3 results and %

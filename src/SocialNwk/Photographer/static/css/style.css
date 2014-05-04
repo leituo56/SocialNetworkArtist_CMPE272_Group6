@@ -39,6 +39,7 @@ form input {
 	border: 2px solid #fdc100;
 	border-radius: 5px;
     margin-bottom: 15px;
+    width: 440px;
 }
 
 form#updateProfile, form#uploadForm {
@@ -74,63 +75,62 @@ div#error1, div#error2 {
     width: 65%;
 }
 #bigPhoto img{
+    border: 3px solid #fcb100;
+    padding: 1px;
     width: 100%;
     height: auto;
     float: left;
-    clear: left;
     margin: 0px 0px 15px 30px;
     margin-top: 0%;
 }
-#head,#features {
-    margin-left: 30px;
-    margin-bottom: 10px;
-    width: 65%;
+#head {
+    margin: 0% 1% 1%;
+    left: 68%;
+    width: 30%;
     float: left;
     background: #eee;
-    padding: 0px 15px 5px;
+    padding: 0px 10px 10px;
 }
 
 #stat{
-	position: fixed;
 	left: 68%;
     background: #eee;
-    padding: 10px;
-    float: right;
+    padding: 0px 10px 20px;
+    float: left;
+    clear: right;
     width: 30%;
     margin: 0% 1% 2%;
 }
 #stat li{
+    clear: both;
     display: block;
     word-wrap: break-word;
     width: 90%;
 }
 
-li#features, li#off {
-    font-size: 12px;
-	list-style: none;
-    width: 15%;
-    height: 33px;
-    padding: 0.5% 0.5%;
-    margin: 1%;
-    text-align: center;
-    float: left;
-
+div#empty {
+    clear: both;
+    height: 15px;
 }
 
 li#features {
+    font-size: 12px;
+	list-style: none;
+    height: 33px;
+    margin: 1%;
+    text-align: center;
     background: #fbc100;
     color: #ffffff;
     width: 125px;
+    padding: 5px;
+    text-align: left;
+    float: left;
+    clear: none;
 }
 
 li#features img#categories {
     width: 25px;
     height: 25px;
-}
-
-li#off {
-	background: #e0e0e0;
-	color: #999;
 }
 
 div#find {
@@ -147,7 +147,12 @@ div#loadMore {
 }
 
 div.container h4#user_list {
+    text-align: center;
+}
 
+div.container ul#firends {
+    margin: 0 auto;
+    min-width: 800px;
 }
 
 select.form-control{
@@ -161,16 +166,16 @@ button#find {
 
 /*for photo detail*/
 button#follow {
-    background: #fcb100;
-    border: 1px solid #fcb100;
+    background: #5cb85c;
+    border: 1px solid #5cb85c;
     border-radius: 5px;
     margin-bottom: 5px;
     color: white;
 }
 
 button#unfollow {
-    background: red;
-    border: 1px solid red;
+    background: #d9534f;
+    border: 1px solid #d9534f;
     border-radius: 5px;
     margin-bottom: 5px;
     color: white;

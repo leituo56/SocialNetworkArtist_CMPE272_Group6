@@ -31,11 +31,11 @@ function onLoadUser(data) {
   //console.log("in onloaduser");
   //console.log("data.make:" + data.fav_make);
 
-  $("#fav_make").append("<span id='fav_tag' >" + data.fav_make+"</span>");
-  $("#fav_model").append("<span id='fav_tag' >" +data.fav_model+"</span>");
+  $("#fav_make").append(data.fav_make);
+  $("#fav_model").append(data.fav_model);
   var fav = data.fav_category;
   fav = fav.replace('_',' ');
-  $("#fav_category").append("<span id='fav_tag' >" +fav+"</span>");
+  $("#fav_category").append(fav);
   $("img#userhead").attr("src",data.head);
   $("#name").append("<span id='user_info_text' >" +data.name+"</span>");
   $("#gender").append("<span id='user_info_text' >" +data.gender+"</span>");

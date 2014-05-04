@@ -9,12 +9,13 @@
 {% endblock %}
 
   {% block header %}
+
   <!-- Intro
   ================================================== -->
   <div class="introtitle">
       <div class="container">
-          <h2>PHOTO.ME</h2>
-          <p>Social Network for Professional Photographers<br/>
+          <!--<h2>PHOTO.ME</h2>-->
+          <p><br/><span id='tag'>PHOTO.ME</span><br/>the Social Network of Professional Photographers
           </p>
           <!--<p><b></b></p>-->
       </div>
@@ -31,7 +32,8 @@
   <div class="container"> 
     <div id="filter">
       <ul>
-        <li class='button' onclick="onClickFilter('All')"        >ALL</li>
+        <a href='#top'><li class='top_button' disabled>TOP</li></a>
+        <li class='button' onclick="onClickFilter('All')"        >All</li>
         <li class='button' onclick="onClickFilter('portrait')"   >
             <img class='icon' id="icon1" src="/static/images/portrait_yellow.png"/>
             &nbsp;portrait 
@@ -99,6 +101,11 @@
           //$('img',this).toggleClass('hover');
         });
 
+        $('.top_button').hover(function(){
+          $(this).toggleClass('hover');
+          $('a',this).toggleClass('hover');
+        })
+
         //switch color of icons on hover
         var switchToWhite = function() {
           if ($('img',this).is('.active')) return;
@@ -146,18 +153,58 @@
             $('img.icons').active(sourceSwap, sourceSwap);
         });*/
 
-        //div follow scroll function
+        //for centering filter div after scroll 
+        /*jQuery.fn.center = function () {
+            this.css("position","fixed");
+            this.css("left", ( $(window).width() - this.width() ) / 2+$(window).scrollLeft() + "px");
+            return this;
+        }*/
+
+        //filter bar scrolling float function
+        $(function(){
+            // get initial top offset of navigation
+            var floating_navigation_offset_top = $('#filter').offset().top;
+             
+              // define the floating navigation function
+              var floating_navigation = function(){
+                  // current vertical position from the top
+                  var scroll_top = $(window).scrollTop();
+                  console.log(scroll_top);
+                  // if scrolled more than the navigation, change its
+                  // position to fixed to float to top, otherwise change
+                  // it back to relative
+                  if (scroll_top > floating_navigation_offset_top-80) {
+                        $('#filter').css({ 'position': 'fixed', 'top': '120px'});
+                  } 
+                  else {
+                        $('#filter').css({ 'position': 'relative', 'top': '0px' });
+                  }  
+              };
+     
+          // run function on load
+          floating_navigation();
+       
+          // run function every time you scroll
+          $(window).scroll(function() {
+              floating_navigation();
+          });
+        });
+
+
+        /*//div follow scroll function
         $(window).scroll(function(e){
           $element = $('#filter');
+          //$('#filter').center();
           if ($(this).scrollTop() > 138 && $element.css('position') != 'fixed'){
-              $('#filter').css({'position': 'fixed', 'top': '18%', 'width':'940px'});
+              $('#filter').css({'position': 'fixed', 'top': '120px', 'width':'1000px'});
+              $('#filter').center();
           }
-          if ($(this).scrollTop() < 138 && $element.css('position') == 'fixed'){
+          if ($(this).scrollTop() <= 143 && $element.css('position') == 'fixed'){
               $('#filter').css({'position': 'static',
-                                 'top': '10%', 'width': '940px'
-                               });
+                                 'top': '120px', 'width': '1000px'});
+              //$('#filter').center();
           }
-        });
+        });*/
   });
 
 
