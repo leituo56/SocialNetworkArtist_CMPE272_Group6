@@ -45,12 +45,12 @@ class Work(models.Model):
 
     # Save Process, pre-process for photo tech category
     def save(self, *args, **kwargs):
-        self.portrait = 0 < self.fnumber < 2.8 and self.focal_length > 50
-        self.landscape = 0 < self.focal_length < 35
-        self.telephoto = self.focal_length > 135
-        self.low_light = self.iso > 6400
-        self.high_speed = 0 < self.exposure_time < 0.001
-        self.long_exposure = self.exposure_time > 8
+        self.portrait = 0 < self.fnumber <= 4.0 and self.focal_length >= 50
+        self.landscape = 0 < self.focal_length <= 35
+        self.telephoto = self.focal_length >= 100
+        self.low_light = self.iso >= 1600
+        self.high_speed = 0 < self.exposure_time <= 0.001
+        self.long_exposure = self.exposure_time >= 5
         super(Work, self).save(*args, **kwargs)
 
     def __unicode__(self):
