@@ -59,7 +59,7 @@ function onLoadFollowList(data) {
       var html = '';
       html += '<li id="follow_result" >';
       html += '<img id="" src="/media/'+ item.head+'"/><br/>';
-      html += '<a href='+ user_url+item.id+ '>'+item.name+'</a>';
+      html += '<a href='+ user_url+item.user_id+ '>'+item.name+'</a>';
       html += '<h4>Favs</h4>';
       html += '<p>Make: <span id=""> '+item.fav_make+'</span></p>';
       html += '<p>Model: <span id="">'+item.fav_model +'</span></p>';
@@ -89,7 +89,7 @@ function onLoadFollowList(data) {
       var html = '';
       html += '<li id="follow_result" >';
       html += '<img id="" src="/media/'+ item.head+'"/><br/>';
-      html += '<a href='+ user_url+item.id+ '>'+item.name+'</a>';
+      html += '<a href='+ user_url+item.user_id+ '>'+item.name+'</a>';
       html += '<h4>Favs</h4>';
       html += '<p>Make: <span id=""> '+item.fav_make+'</span></p>';
       html += '<p>Model: <span id="">'+item.fav_model +'</span></p>';
