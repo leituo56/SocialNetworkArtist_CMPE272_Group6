@@ -1,3 +1,7 @@
+div#disclaimer h4{
+    color: orange;
+}
+
 /*form style*/
 form {
 	background-color: white;
@@ -138,6 +142,27 @@ div#find {
     background: #eee;
     padding: 15px;
     width: 90%;
+}
+
+#stat #disclaimer {
+    border: 2px solid orange;
+    padding: 15px 3px 0px;
+    margin-bottom: 5px;
+    margin-top: -20px;
+}
+
+#stat #disclaimer h4{
+    color: orange;
+    margin-top: -10px;
+}
+
+#stat #disclaimer p{
+    font-size: 10px;
+}
+
+#stat #disclaimer span img{
+    width: 0;
+    height: 0;
 }
 
 /*for load more*/

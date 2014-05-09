@@ -1,5 +1,6 @@
 div.row {
     margin-bottom: 15px;
+    width: 100%;
 }
 
 h4#no_1 {
@@ -20,18 +21,21 @@ h4#no_3 {
 div#no_1 {
     background: #eee;
     height: 320px;
+    width: 150px;
 }
 
 div#no_2 {
     background: #c4c4c4;
     height: 280px;
     margin-top: 40px;
+        width: 150px;
 }
 
 div#no_3 {
     background: #eee;
     height: 250px;
     margin-top: 70px;
+        width: 150px;
 }
 
 div.col-md-6 img {
@@ -49,6 +53,13 @@ div#row1, div#row2, div#row3 {
     border-bottom: 2px solid black;
 }
 
+div.col-md-6 {
+    width: 480px;
+}
+
+div#visual_container1, div#visual_container2, div#visual_container3 {
+    width: 55%;
+}
 
 
 /*

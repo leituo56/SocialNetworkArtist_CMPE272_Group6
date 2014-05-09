@@ -21,21 +21,13 @@
         <h3>Photo Details</h3>
 
         </br>
-        <h4 style="color: orange">Disclaimer EXIF Categorization:</h4>
-        <h5 style="color: orange">
+        <div id='disclaimer'>
+        <h4>Disclaimer:</h4>
+        <p>
             Currently Photo.Me provides 6 categories for auto sorting.
-            If your photo falls outside the criteria of our sorting algorithm, it may not be automatically categorized.
-        </h5>
-
-        <h6>Catogorization rules:</h6>
-        Portrait: FNumber>4, FocalLength>=50;</br>
-        Lanscape:            FocalLength<=35;</br>
-        Telephoto:               Length>=100;</br>
-        Low Litght:                ISO>=1600;</br>
-        High Speed:   Exposure Time <= 0.001;</br>
-        Long Exposure:     Exposure Time >=5;</p>
-        </br>
-
+            If your photo falls outside the criteria of our sorting algorithm, it may not be automatically categorized. The following chart illustrates our sorting criteria.
+            <div id='theimg'><img src='/static/images/sorting-criteria.png' width='310px' alt='sorting criteria'/></div>
+        </p></div>
 
         <div id='features'></div>
         <div id='empty'>
@@ -91,23 +83,29 @@
                   // if scrolled more than the navigation, change its
                   // position to fixed to float to top, otherwise change
                   // it back to relative
-                  if (scroll_top > floating_navigation_offset_top-10) {
+                   footertotop = ($('.footer').position().top);
+                  if (scroll_top > floating_navigation_offset_top) {
+                    if(scroll_top-500 > footertotop) {
+                        $('#stat').css({'position': 'relative'});
+                    }
+                    else {
                         $('#stat').css({ 'position': 'fixed', 'top': '80px', 'left': '68%'});
+                    }
                   } 
                   else {
-                        $('#stat').css({ 'position': 'default', 'top': '0px' });
+                        $('#stat').css({ 'position': 'static' });
                   }  
               };
      
           // run function on load
-          floating_navigation();
+          //floating_navigation();
        
           // run function every time you scroll
           $(window).scroll(function() {
-              floating_navigation();
+              //floating_navigation();
 
               //make sure not to cover footer
-              footertotop = ($('.footer').position().top);
+              /*footertotop = ($('.footer').position().top);
                 scrolltop = $(document).scrollTop()+450;
                 difference = scrolltop-footertotop;
                 // if user has scrolled further than footer,
@@ -119,7 +117,7 @@
 
                 else  {
                     $('#stat').css('margin-top', 0);
-                }
+                }*/
               });
         });
         /*//for photo detail stat to scroll with page
@@ -141,6 +139,7 @@
         });*/
 
     })
+
     function checkPhotoDetail(selector){
         console.log("selector: "+selector);
         console.log("value: " + selector.value);
